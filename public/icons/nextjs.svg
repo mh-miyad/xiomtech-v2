@@ -3,7 +3,7 @@
     <circle cx="90" cy="90" r="90" fill="#000"/>
   </mask>
   <g mask="url(#a)">
-    <circle cx="90" cy="90" r="87" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="6"/>
+    <circle cx="90" cy="90" r="87" fill="#000" stroke="#fff" stroke-width="6"/>
     <path fill="url(#b)" d="M149.508 157.52L69.142 54H54v71.97h12.114V69.384l73.885 95.461a90.304 90.304 0 009.509-7.325z"/>
     <path fill="url(#c)" d="M115 54h12v72h-12z"/>
   </g>

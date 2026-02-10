@@ -1,6 +1,6 @@
 "use client";
 import gsap from "gsap";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Star } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import Logo from "../common/Logo";
@@ -10,6 +10,122 @@ const brandLogos = Array.from({ length: 10 }, (_, i) => ({
   src: `/brand-logo/b-${i + 1}.png`,
   alt: `Client ${i + 1}`,
 }));
+
+const actionWords = ["Engineer", "Build", "Craft", "Design", "Develop"];
+const resultWords = ["Scale", "Grow", "Succeed", "Thrive", "Launch"];
+
+function WordRotator({
+  words,
+  className,
+}: {
+  words: string[];
+  className?: string;
+}) {
+  const containerRef = useRef<HTMLSpanElement>(null);
+  const timelineRef = useRef<gsap.core.Timeline | null>(null);
+  const isPaused = useRef(false);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const spans = container.querySelectorAll<HTMLSpanElement>("[data-word]");
+    const measurer = container.querySelector<HTMLSpanElement>("[data-measurer]");
+    if (spans.length === 0 || !measurer) return;
+
+    // Measure each word's width
+    const widths: number[] = [];
+    for (const span of spans) {
+      gsap.set(span, { position: "absolute", visibility: "visible", opacity: 1 });
+      widths.push(span.offsetWidth);
+      gsap.set(span, { opacity: 0 });
+    }
+
+    // Set initial state: first word visible, rest below
+    gsap.set(container, { width: widths[0] });
+    gsap.set(spans[0], { y: 0, opacity: 1 });
+    for (let i = 1; i < spans.length; i++) {
+      gsap.set(spans[i], { y: "100%", opacity: 0 });
+    }
+
+    const tl = gsap.timeline({ repeat: -1, delay: 2 });
+
+    for (let i = 0; i < spans.length; i++) {
+      const next = (i + 1) % spans.length;
+
+      // Animate width to next word + slide current out + slide next in
+      tl.to(container, {
+        width: widths[next],
+        duration: 0.5,
+        ease: "power2.inOut",
+      })
+        .to(
+          spans[i],
+          {
+            y: "-100%",
+            opacity: 0,
+            duration: 0.5,
+            ease: "power2.in",
+          },
+          "<"
+        )
+        .fromTo(
+          spans[next],
+          { y: "100%", opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.5, ease: "power2.out" },
+          "-=0.3"
+        );
+
+      // Pause between swaps
+      if (next !== 0) {
+        tl.to({}, { duration: 2.5 });
+      }
+    }
+
+    timelineRef.current = tl;
+
+    return () => {
+      tl.kill();
+    };
+  }, [words]);
+
+  const handleMouseEnter = () => {
+    if (timelineRef.current && !isPaused.current) {
+      timelineRef.current.pause();
+      isPaused.current = true;
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (timelineRef.current && isPaused.current) {
+      timelineRef.current.resume();
+      isPaused.current = false;
+    }
+  };
+
+  return (
+    <span
+      ref={containerRef}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className={`relative inline-block overflow-hidden cursor-pointer ${className ?? ""}`}
+      style={{ height: "1.1em", verticalAlign: "bottom" }}
+    >
+      {words.map((word) => (
+        <span
+          key={word}
+          data-word
+          className="absolute left-0 whitespace-nowrap"
+        >
+          {word}
+        </span>
+      ))}
+      <span data-measurer className="invisible whitespace-nowrap">
+        {words[0]}
+      </span>
+    </span>
+  );
+}
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -138,12 +254,10 @@ const HeroSection = () => {
           data-hero-rating
           className="flex items-center gap-2.5 rounded-full border border-gray-200 bg-white/80 backdrop-blur-sm px-5 py-2.5 mb-8 opacity-0"
         >
-          <div className="flex gap-0.5 text-amber-500 text-base">
-            <span>&#9733;</span>
-            <span>&#9733;</span>
-            <span>&#9733;</span>
-            <span>&#9733;</span>
-            <span>&#9733;</span>
+          <div className="flex gap-0.5">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <Star key={i} className="size-4 fill-amber-400 text-amber-400" />
+            ))}
           </div>
           <span className="text-base font-medium text-[#1a1a1a]">
             Leading Software Development Agency
@@ -156,39 +270,50 @@ const HeroSection = () => {
           className="font-[family-name:var(--font-syne)] text-[#1a1a1a] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight max-w-4xl"
         >
           <span className="block">
-            We <span className="italic font-serif text-blue-600">Engineer</span>{" "}
+            We{" "}
+            <WordRotator
+              words={actionWords}
+              className="italic font-serif text-blue-600"
+            />{" "}
             Products
           </span>
           <span className="flex flex-wrap items-center justify-center gap-3 mt-2">
             <span>That</span>
             {/* Tech stack pill */}
-            <span className="inline-flex items-center gap-2.5 bg-gray-100 rounded-full px-4 py-2 border border-gray-200">
+            <span className="inline-flex items-center gap-3 bg-gray-100 rounded-full px-5 py-2.5 border border-gray-200">
+              <Image
+                src="/icons/figma.svg"
+                alt="Figma"
+                width={24}
+                height={24}
+                className="size-7"
+              />
               <Image
                 src="/icons/react.svg"
                 alt="React"
                 width={28}
                 height={28}
+                className="size-7"
+              />
+              <Image
+                src="/icons/openai.svg"
+                alt="OpenAI"
+                width={28}
+                height={28}
+                className="size-7"
               />
               <Image
                 src="/icons/nextjs.svg"
                 alt="Next.js"
                 width={28}
                 height={28}
-              />
-              <Image
-                src="/icons/typescript.svg"
-                alt="TypeScript"
-                width={28}
-                height={28}
-              />
-              <Image
-                src="/icons/nodejs.svg"
-                alt="Node.js"
-                width={28}
-                height={28}
+                className="size-7"
               />
             </span>
-            <span className="italic font-serif text-sky-600">Scale</span>
+            <WordRotator
+              words={resultWords}
+              className="italic font-serif text-sky-600"
+            />
           </span>
         </h1>
 

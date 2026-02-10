@@ -1,6 +1,7 @@
 import SmoothScroll from "@/components/common/SmoothScroll";
 import type { Metadata } from "next";
 import { Inter, Syne } from "next/font/google";
+
 import "./globals.css";
 
 const syne = Syne({

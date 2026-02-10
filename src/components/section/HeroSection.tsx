@@ -19,78 +19,64 @@ const HeroSection = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      const tl = gsap.timeline({
+        defaults: { ease: "power4.out", duration: 0.9 },
+        delay: 0.7,
+      });
 
-      // Stagger the center content in
+      // Phase 1: Center content flows in as one cohesive unit
       tl.fromTo(
         "[data-hero-rating]",
-        { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8 },
+        { y: 40, opacity: 0, scale: 0.95 },
+        { y: 0, opacity: 1, scale: 1, duration: 0.7 },
       )
         .fromTo(
           "[data-hero-headline] > *",
-          { y: 60, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.9, stagger: 0.15 },
-          "-=0.4",
+          { y: 70, opacity: 0 },
+          { y: 0, opacity: 1, duration: 1, stagger: 0.12 },
+          "-=0.35",
         )
         .fromTo(
           "[data-hero-sub]",
           { y: 30, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.7 },
-          "-=0.3",
+          { y: 0, opacity: 1, duration: 0.8 },
+          "-=0.5",
         )
         .fromTo(
           "[data-hero-cta]",
-          { y: 30, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.7 },
-          "-=0.3",
+          { y: 25, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8 },
+          "-=0.45",
         )
         .fromTo(
           "[data-hero-proof]",
-          { y: 20, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.6 },
-          "-=0.2",
+          { y: 20, opacity: 0, scale: 0.97 },
+          { y: 0, opacity: 1, scale: 1, duration: 0.7 },
+          "-=0.35",
         );
 
-      // Slide left and right images
+      // Phase 2: Side images glide in together, timed to overlap with end of text
       tl.fromTo(
         '[data-hero-bar="left"]',
-        { x: -120, opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 1.2,
-          ease: "power2.out",
-          onComplete: () => {
-            gsap.to('[data-hero-bar="left"]', {
-              y: -15,
-              duration: 2,
-              ease: "sine.inOut",
-              yoyo: true,
-              repeat: -1,
-            });
-          },
-        },
-        "-=1",
+        { x: -100, opacity: 0 },
+        { x: 0, opacity: 1, duration: 1.4, ease: "power3.out" },
+        "-=1.2",
       ).fromTo(
         '[data-hero-bar="right"]',
-        { x: 120, opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 1.2,
-          ease: "power2.out",
-          onComplete: () => {
-            gsap.to('[data-hero-bar="right"]', {
-              y: 15,
-              duration: 2,
-              ease: "sine.inOut",
-              yoyo: true,
-              repeat: -1,
-            });
-          },
-        },
-        "-=1.1",
+        { x: 100, opacity: 0 },
+        { x: 0, opacity: 1, duration: 1.4, ease: "power3.out" },
+        "<0.08",
+      );
+
+      // Phase 3: Gentle floating after everything has settled
+      tl.to(
+        '[data-hero-bar="left"]',
+        { y: -14, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: -1 },
+        "-=0.1",
+      ).to(
+        '[data-hero-bar="right"]',
+        { y: 14, duration: 2.8, ease: "sine.inOut", yoyo: true, repeat: -1 },
+        "<",
       );
     }, sectionRef);
 

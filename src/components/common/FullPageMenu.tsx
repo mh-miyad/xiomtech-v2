@@ -424,7 +424,7 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
                   alt={p.name}
                   width={80}
                   height={40}
-                  className="h-6 md:h-7 w-auto object-contain grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300"
+                  className="h-6 md:h-7 w-auto object-contain transition-all duration-300 hover:scale-110"
                   unoptimized
                 />
               </div>

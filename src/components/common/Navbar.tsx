@@ -1,9 +1,9 @@
 "use client";
-import gsap from "gsap";
 import { IconMenu } from "@tabler/icons-react";
+import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
-import Logo from "./Logo";
 import FullPageMenu from "./FullPageMenu";
+import Logo from "./Logo";
 
 const navlink = [
   { id: 1, link: "", name: "Service" },
@@ -38,14 +38,19 @@ const Navbar = () => {
 
   return (
     <>
-      <header ref={headerRef} className=" backdrop-blur-sm sticky top-0 w-full h-20 z-50 px-6 md:px-10">
+      <header
+        ref={headerRef}
+        className=" backdrop-blur-sm sticky top-0 w-full h-20 z-50 px-6 md:px-10"
+      >
         <nav className="flex items-center justify-between h-full">
-          <div className="bg-red-500">
-            <ul className=" sr-only">
-              {navlink.map((el) => {
-                return <li key={el.id}>{el.name}</li>;
-              })}
-            </ul>
+          <div className="">
+            <button
+              className=""
+              aria-label="Open menu"
+              onClick={() => setIsopen(true)}
+            >
+              <IconMenu size={46} strokeWidth={1} color={"black"} />
+            </button>
           </div>
           {/* Logo */}
           <div data-nav-logo className="opacity-0">

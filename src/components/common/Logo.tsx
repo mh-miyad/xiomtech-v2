@@ -7,7 +7,7 @@ const arimo = Smooch_Sans({
 });
 const Logo = () => {
   return (
-    <div className="flex  items-center gap-1 ">
+    <div className="flex  items-center  ">
       <Image
         src={"/logo.webp"}
         alt="Xiomtech Logo Icon"

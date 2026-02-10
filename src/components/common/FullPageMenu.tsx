@@ -8,7 +8,6 @@ import {
   IconBrandWhatsapp,
   IconBrandX,
   IconMail,
-  IconMapPin,
   IconPhone,
   IconX,
 } from "@tabler/icons-react";
@@ -112,6 +111,13 @@ const partners = [
   },
 ];
 
+const countries = [
+  { name: "Bangladesh", flag: "https://flagcdn.com/w40/bd.png" },
+  { name: "UAE", flag: "https://flagcdn.com/w40/ae.png" },
+  { name: "Saudi Arabia", flag: "https://flagcdn.com/w40/sa.png" },
+  { name: "Qatar", flag: "https://flagcdn.com/w40/qa.png" },
+];
+
 interface FullPageMenuProps {
   isOpen: boolean;
   onClose: () => void;
@@ -136,13 +142,7 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
       .fromTo(
         menu,
         { scale: 0, borderRadius: "50%", opacity: 0 },
-        {
-          scale: 1,
-          borderRadius: "0%",
-          opacity: 1,
-          duration: 0.7,
-          ease: "power3.inOut",
-        },
+        { scale: 1, borderRadius: "24px", opacity: 1, duration: 0.7, ease: "power3.inOut" },
       )
       .fromTo(
         "[data-menu-close]",
@@ -220,13 +220,7 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
       { opacity: 0, y: -10, duration: 0.2, stagger: 0.008 },
     ).to(
       menu,
-      {
-        scale: 0,
-        borderRadius: "50%",
-        opacity: 0,
-        duration: 0.5,
-        ease: "power3.inOut",
-      },
+      { scale: 0, borderRadius: "50%", opacity: 0, duration: 0.5, ease: "power3.inOut" },
       "-=0.05",
     );
   }, []);
@@ -247,22 +241,22 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 rounded-2xl z-100 hidden"
+      className="fixed inset-0 z-100 hidden"
       aria-hidden={!isOpen}
     >
-      {/* Backdrop */}
+      {/* Backdrop — blurred website visible behind */}
       <div
-        className="absolute inset-0 bg-black/30 backdrop-blur-md"
+        className="absolute inset-0 bg-black/40 backdrop-blur-xl"
         onClick={onClose}
       />
 
-      {/* Menu panel */}
+      {/* Menu panel — rounded, semi-transparent glass */}
       <div
         ref={menuRef}
-        className="absolute inset-0 md:inset-3  lg:inset-5 bg-white/97 backdrop-blur-2xl md:rounded-[2rem] overflow-y-auto origin-center opacity-0 scale-0 "
+        className="absolute inset-3 md:inset-5 lg:inset-8 bg-white/90 backdrop-blur-2xl rounded-3xl overflow-y-auto origin-center opacity-0 scale-0 flex flex-col shadow-2xl"
       >
         {/* ── Top bar ── */}
-        <div className="flex items-center justify-between px-5 md:px-10 lg:px-14 pt-5 md:pt-7">
+        <div className="flex items-center justify-between px-5 md:px-10 lg:px-14 pt-5 md:pt-7 shrink-0">
           <div data-menu-logo className="opacity-0">
             <Logo />
           </div>
@@ -296,11 +290,11 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
           </div>
         </div>
 
-        {/* ── Main content ── */}
-        <div className="px-5 md:px-10 lg:px-14 pt-8 md:pt-10 pb-6">
-          <div className="flex flex-col lg:flex-row gap-10 lg:gap-6">
+        {/* ── Main content — grows to fill space ── */}
+        <div className="px-5 md:px-10 lg:px-14 pt-8 md:pt-10 pb-4 flex-1">
+          <div className="flex flex-col lg:flex-row gap-10 lg:gap-6 h-full">
             {/* ── LEFT: Big nav links ── */}
-            <div className="lg:w-[22%] lg:border-r lg:border-gray-100 lg:pr-6">
+            <div className="lg:w-[22%] lg:border-r lg:border-gray-200/60 lg:pr-6">
               <nav className="flex flex-row flex-wrap lg:flex-col gap-3 lg:gap-1">
                 {mainNav.map((link) => (
                   <a
@@ -417,9 +411,9 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
         {/* ── Partners strip ── */}
         <div
           data-menu-partners
-          className="opacity-0 relative mx-5 md:mx-10 lg:mx-14 mt-4 rounded-2xl bg-gradient-to-r from-blue-50/80 via-indigo-50/60 to-violet-50/80 border border-gray-100 px-6 py-5 md:py-6"
+          className="opacity-0 mx-5 md:mx-10 lg:mx-14 rounded-2xl bg-gradient-to-r from-blue-50/80 via-indigo-50/60 to-violet-50/80 border border-gray-100 px-6 py-4 md:py-5 shrink-0"
         >
-          <p className="text-[10px] md:text-xs font-[family-name:var(--font-syne)] font-bold uppercase tracking-[0.15em] text-gray-400 mb-4 text-center">
+          <p className="text-[10px] md:text-xs font-[family-name:var(--font-syne)] font-bold uppercase tracking-[0.15em] text-gray-400 mb-3 text-center">
             Trusted Technology Partners
           </p>
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8 lg:gap-10">
@@ -438,14 +432,14 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
           </div>
         </div>
 
-        {/* ── Footer bar ── */}
+        {/* ── Footer ── */}
         <div
           data-menu-footer
-          className="opacity-0 mx-5 md:mx-10 lg:mx-14 mt-5 py-5 border-t border-gray-200"
+          className="opacity-0 mx-5 md:mx-10 lg:mx-14 mt-4 py-4 md:py-5 border-t border-gray-200 shrink-0"
         >
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
-            {/* Contact */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 text-xs text-gray-500">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            {/* Contact row */}
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-5 text-xs text-gray-600 font-medium">
               <a
                 href="mailto:info.xiomtech@gmail.com"
                 className="flex items-center gap-1.5 hover:text-blue-600 transition-colors duration-200"
@@ -469,12 +463,6 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
                 <IconPhone size={15} stroke={1.5} />
                 <span>+880 1822-830775</span>
               </a>
-              <span className="flex items-center gap-1.5">
-                <IconMapPin size={15} stroke={1.5} />
-                <span>
-                  Bangladesh &middot; UAE &middot; Saudi Arabia &middot; Qatar
-                </span>
-              </span>
             </div>
 
             {/* CTA */}
@@ -492,6 +480,33 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
             </a>
           </div>
 
+          {/* Flags + locations + copyright row */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mt-4">
+            {/* Country flags */}
+            <div className="flex items-center gap-4">
+              <span className="text-xs font-semibold text-gray-500">Serving</span>
+              {countries.map((c) => (
+                <span key={c.name} className="inline-flex items-center gap-1">
+                  <Image
+                    src={c.flag}
+                    alt={c.name}
+                    width={24}
+                    height={16}
+                    className="rounded-sm"
+                    unoptimized
+                  />
+                  <span className="text-[11px] font-medium text-gray-600">{c.name}</span>
+                </span>
+              ))}
+              <span className="text-xs font-semibold text-gray-500">& beyond</span>
+            </div>
+
+            {/* Copyright */}
+            <p className="text-xs font-semibold text-gray-500 font-[family-name:var(--font-syne)]">
+              &copy; {new Date().getFullYear()} XiomTech
+            </p>
+          </div>
+
           {/* Mobile social icons */}
           <div className="flex md:hidden items-center gap-3 mt-4">
             {socials.map((s) => (
@@ -505,11 +520,6 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
               </a>
             ))}
           </div>
-
-          <p className="mt-4 text-[11px] text-gray-400 tracking-wide font-[family-name:var(--font-syne)]">
-            &copy; {new Date().getFullYear()} XiomTech &mdash; Engineering the
-            future, one product at a time.
-          </p>
         </div>
       </div>
     </div>

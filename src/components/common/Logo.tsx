@@ -13,9 +13,9 @@ const Logo = () => {
         alt="Xiomtech Logo Icon"
         width={1000}
         height={1000}
-        className="size-8"
+        className="size-10"
       />
-      <span className={`text-4xl font-bold ${arimo.className}`}>XiomTech</span>
+      <span className={`text-5xl font-bold ${arimo.className}`}>XiomTech</span>
     </div>
   );
 };

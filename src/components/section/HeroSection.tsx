@@ -3,8 +3,8 @@ import gsap from "gsap";
 import { ArrowRight, Star } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
-import Logo from "../common/Logo";
 import { Marquee } from "../ui/marquee";
+import { WordRotator } from "./hero/WordRotator";
 
 const brandLogos = Array.from({ length: 10 }, (_, i) => ({
   src: `/brand-logo/b-${i + 1}.png`,
@@ -13,119 +13,6 @@ const brandLogos = Array.from({ length: 10 }, (_, i) => ({
 
 const actionWords = ["Engineer", "Build", "Craft", "Design", "Develop"];
 const resultWords = ["Scale", "Grow", "Succeed", "Thrive", "Launch"];
-
-function WordRotator({
-  words,
-  className,
-}: {
-  words: string[];
-  className?: string;
-}) {
-  const containerRef = useRef<HTMLSpanElement>(null);
-  const timelineRef = useRef<gsap.core.Timeline | null>(null);
-  const isPaused = useRef(false);
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const spans = container.querySelectorAll<HTMLSpanElement>("[data-word]");
-    const measurer = container.querySelector<HTMLSpanElement>("[data-measurer]");
-    if (spans.length === 0 || !measurer) return;
-
-    // Measure each word's width
-    const widths: number[] = [];
-    for (const span of spans) {
-      gsap.set(span, { position: "absolute", visibility: "visible", opacity: 1 });
-      widths.push(span.offsetWidth);
-      gsap.set(span, { opacity: 0 });
-    }
-
-    // Set initial state: first word visible, rest below
-    gsap.set(container, { width: widths[0] });
-    gsap.set(spans[0], { y: 0, opacity: 1 });
-    for (let i = 1; i < spans.length; i++) {
-      gsap.set(spans[i], { y: "100%", opacity: 0 });
-    }
-
-    const tl = gsap.timeline({ repeat: -1, delay: 2 });
-
-    for (let i = 0; i < spans.length; i++) {
-      const next = (i + 1) % spans.length;
-
-      // Animate width to next word + slide current out + slide next in
-      tl.to(container, {
-        width: widths[next],
-        duration: 0.5,
-        ease: "power2.inOut",
-      })
-        .to(
-          spans[i],
-          {
-            y: "-100%",
-            opacity: 0,
-            duration: 0.5,
-            ease: "power2.in",
-          },
-          "<"
-        )
-        .fromTo(
-          spans[next],
-          { y: "100%", opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.5, ease: "power2.out" },
-          "-=0.3"
-        );
-
-      // Pause between swaps
-      if (next !== 0) {
-        tl.to({}, { duration: 2.5 });
-      }
-    }
-
-    timelineRef.current = tl;
-
-    return () => {
-      tl.kill();
-    };
-  }, [words]);
-
-  const handleMouseEnter = () => {
-    if (timelineRef.current && !isPaused.current) {
-      timelineRef.current.pause();
-      isPaused.current = true;
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (timelineRef.current && isPaused.current) {
-      timelineRef.current.resume();
-      isPaused.current = false;
-    }
-  };
-
-  return (
-    <span
-      ref={containerRef}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      className={`relative inline-block overflow-hidden cursor-pointer ${className ?? ""}`}
-      style={{ height: "1.1em", verticalAlign: "bottom" }}
-    >
-      {words.map((word) => (
-        <span
-          key={word}
-          data-word
-          className="absolute left-0 whitespace-nowrap"
-        >
-          {word}
-        </span>
-      ))}
-      <span data-measurer className="invisible whitespace-nowrap">
-        {words[0]}
-      </span>
-    </span>
-  );
-}
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -138,31 +25,31 @@ const HeroSection = () => {
       tl.fromTo(
         "[data-hero-rating]",
         { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8 }
+        { y: 0, opacity: 1, duration: 0.8 },
       )
         .fromTo(
           "[data-hero-headline] > *",
           { y: 60, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.9, stagger: 0.15 },
-          "-=0.4"
+          "-=0.4",
         )
         .fromTo(
           "[data-hero-sub]",
           { y: 30, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.7 },
-          "-=0.3"
+          "-=0.3",
         )
         .fromTo(
           "[data-hero-cta]",
           { y: 30, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.7 },
-          "-=0.3"
+          "-=0.3",
         )
         .fromTo(
           "[data-hero-proof]",
           { y: 20, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.6 },
-          "-=0.2"
+          "-=0.2",
         );
 
       // Slide left and right images
@@ -184,7 +71,7 @@ const HeroSection = () => {
             });
           },
         },
-        "-=1"
+        "-=1",
       ).fromTo(
         '[data-hero-bar="right"]',
         { x: 120, opacity: 0 },
@@ -203,7 +90,7 @@ const HeroSection = () => {
             });
           },
         },
-        "-=1.1"
+        "-=1.1",
       );
     }, sectionRef);
 
@@ -211,11 +98,14 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="min-h-screen relative overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="min-h-[50vh] h-auto relative overflow-hidden"
+    >
       {/* Left floating image */}
       <div
         data-hero-bar="left"
-        className="hidden lg:block absolute lg:top-[18%] left-0 lg:w-[220px] xl:w-[320px] 2xl:w-[450px] opacity-0"
+        className="hidden lg:block absolute lg:top-[5%] left-0 lg:w-[220px] xl:w-[320px] 2xl:w-[450px] opacity-0"
       >
         <Image
           src="/hero-left.avif"
@@ -230,7 +120,7 @@ const HeroSection = () => {
       {/* Right floating image */}
       <div
         data-hero-bar="right"
-        className="hidden lg:block absolute lg:top-[18%] right-0 lg:w-[220px] xl:w-[320px] 2xl:w-[450px] opacity-0"
+        className="hidden lg:block absolute lg:top-[10%] right-0 lg:w-[220px] xl:w-[320px] 2xl:w-[450px] opacity-0"
       >
         <Image
           src="/left-hero.avif"
@@ -243,12 +133,7 @@ const HeroSection = () => {
       </div>
 
       {/* Center content */}
-      <div className="relative z-10 flex flex-col items-center text-center px-6 pt-6">
-        {/* Logo */}
-        <div className="mb-16">
-          <Logo />
-        </div>
-
+      <div className="relative z-10 flex flex-col items-center text-center px-6 pt-5 md:pt-14">
         {/* Rating badge */}
         <div
           data-hero-rating
@@ -256,10 +141,13 @@ const HeroSection = () => {
         >
           <div className="flex gap-0.5">
             {Array.from({ length: 5 }).map((_, i) => (
-              <Star key={i} className="size-4 fill-amber-400 text-amber-400" />
+              <Star
+                key={i}
+                className="size-2 md:size-4 fill-amber-400 text-amber-400"
+              />
             ))}
           </div>
-          <span className="text-base font-medium text-[#1a1a1a]">
+          <span className="text-xs font-medium text-[#1a1a1a]">
             Leading Software Development Agency
           </span>
         </div>
@@ -286,33 +174,33 @@ const HeroSection = () => {
                 alt="Figma"
                 width={24}
                 height={24}
-                className="size-7"
+                className="size-5 md:size-7"
               />
               <Image
                 src="/icons/react.svg"
                 alt="React"
                 width={28}
                 height={28}
-                className="size-7"
+                className="size-5 md:size-7"
               />
               <Image
                 src="/icons/openai.svg"
                 alt="OpenAI"
                 width={28}
                 height={28}
-                className="size-7"
+                className="size-5 md:size-7"
               />
               <Image
                 src="/icons/nextjs.svg"
                 alt="Next.js"
                 width={28}
                 height={28}
-                className="size-7"
+                className="size-5 md:size-7"
               />
             </span>
             <WordRotator
               words={resultWords}
-              className="italic font-serif text-sky-600"
+              className="italic font-serif text-blue-600"
             />
           </span>
         </h1>
@@ -320,27 +208,24 @@ const HeroSection = () => {
         {/* Sub-headline */}
         <p
           data-hero-sub
-          className="mt-7 text-base sm:text-lg text-gray-700 max-w-xl leading-relaxed opacity-0"
+          className="mt-4 md:mt-7 text-base sm:text-lg text-gray-700 max-w-xl leading-relaxed opacity-0"
         >
           Transforming ideas into high-performance SaaS platforms and custom
           digital experiences for businesses across the globe.
         </p>
 
         {/* CTA buttons */}
-        <div
-          data-hero-cta
-          className="mt-9 flex flex-col sm:flex-row gap-4 opacity-0"
-        >
+        <div data-hero-cta className="mt-9 flex flex-row gap-4 opacity-0">
           <button
             type="button"
-            className="group inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3.5 rounded-full font-semibold text-base hover:bg-blue-700 transition-colors duration-300"
+            className="group inline-flex items-center gap-2 bg-blue-600 text-white px-5 py-3 md:px-8 md:py-3.5 rounded-full font-semibold text-xs hover:bg-blue-700 transition-colors duration-300"
           >
             Book a Consultation
             <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
           </button>
           <button
             type="button"
-            className="inline-flex items-center gap-2 border-2 border-[#1a1a1a] text-[#1a1a1a] px-8 py-3.5 rounded-full font-semibold text-base hover:bg-[#1a1a1a] hover:text-white transition-colors duration-300"
+            className="inline-flex items-center gap-2 border-2 border-[#1a1a1a] text-[#1a1a1a] px-5 py-3 md:px-8 md:py-3.5 rounded-full font-semibold text-xs hover:bg-[#1a1a1a] hover:text-white transition-colors duration-300"
           >
             View Our Work
           </button>
@@ -349,12 +234,10 @@ const HeroSection = () => {
         {/* Social proof - countries */}
         <div
           data-hero-proof
-          className="mt-10 flex items-center gap-3 bg-gray-50 border border-gray-200 rounded-full px-6 py-3 opacity-0"
+          className="mt-10 text-xs px-5 py-2 flex items-center gap-3 bg-gray-50 border border-gray-200 rounded-full md:px-6 md:py-3 opacity-0"
         >
-          <span className="text-sm font-medium text-gray-500">
-            Serving clients in
-          </span>
-          <span className="flex items-center gap-1.5 text-xl">
+          <span className=" font-medium text-gray-500">Serving clients in</span>
+          <span className="flex items-center gap-1.5 ">
             <Image
               src="https://flagcdn.com/w40/bd.png"
               alt="Bangladesh"
@@ -384,22 +267,22 @@ const HeroSection = () => {
               className="rounded-sm"
             />
           </span>
-          <span className="text-sm font-medium text-gray-500">& beyond</span>
+          <span className=" font-medium text-gray-500">& beyond</span>
         </div>
       </div>
 
       {/* Brand logos marquee with blue gradient */}
-      <div className="relative mt-20">
+      <div className="relative mt-5   ">
         {/* Blue gradient background */}
         {/* <div className="absolute inset-0 bg-linear-to-b from-white via-sky-50 to-blue-700/50 rounded-t-[3rem]" /> */}
 
-        <div className="relative pt-16 pb-20 space-y-4 overflow-hidden">
-          <p className="text-center text-2xl font-medium  mb-8 tracking-wide uppercase">
+        <div className="relative 2xl:pt-10 pb-20 space-y-4 overflow-hidden">
+          <p className="text-center text-sm sm:text-base md:text-2xl font-medium  mb-8 tracking-wide uppercase">
             Trusted by innovative companies worldwide
           </p>
 
           {/* Row 1: left to right */}
-          <Marquee pauseOnHover className="[--duration:30s] [--gap:3rem]">
+          <Marquee pauseOnHover className="[--duration:50s] [--gap:3rem]">
             {brandLogos.map((logo) => (
               <Image
                 key={logo.src}
@@ -416,16 +299,16 @@ const HeroSection = () => {
           <Marquee
             reverse
             pauseOnHover
-            className="[--duration:30s] [--gap:3rem]"
+            className="[--duration:50s] [--gap:3rem]"
           >
             {brandLogos.map((logo) => (
               <Image
                 key={logo.src}
                 src={logo.src}
                 alt={logo.alt}
-                width={160}
-                height={60}
-                className="h-10 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
+                width={120}
+                height={30}
+                className="h-7 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
               />
             ))}
           </Marquee>

@@ -195,7 +195,7 @@ const HeroSection = () => {
         {/* Sub-headline */}
         <p
           data-hero-sub
-          className="mt-7 text-base sm:text-lg text-gray-500 max-w-xl leading-relaxed opacity-0"
+          className="mt-7 text-base sm:text-lg text-gray-700 max-w-xl leading-relaxed opacity-0"
         >
           Transforming ideas into high-performance SaaS platforms and custom
           digital experiences for businesses across the globe.

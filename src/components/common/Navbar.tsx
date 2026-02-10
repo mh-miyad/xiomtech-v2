@@ -3,6 +3,8 @@ import gsap from "gsap";
 import { IconMenu } from "@tabler/icons-react";
 import { useEffect, useRef, useState } from "react";
 import Logo from "./Logo";
+import FullPageMenu from "./FullPageMenu";
+
 const navlink = [
   { id: 1, link: "", name: "Service" },
   { id: 2, link: "", name: "Projects" },
@@ -35,26 +37,34 @@ const Navbar = () => {
   }, []);
 
   return (
-    <header ref={headerRef} className=" backdrop-blur-sm sticky top-0 w-full h-20 z-50 px-10">
-      <nav className="flex items-center justify-between h-full">
-        <div className="bg-red-500">
-          <ul className=" sr-only">
-            {navlink.map((el) => {
-              return <li>{el.name}</li>;
-            })}
-          </ul>
-        </div>
-        {/* Logo */}
-        <div data-nav-logo className="opacity-0">
-          <Logo />
-        </div>
-        <div data-nav-menu className="opacity-0">
-          <button className="" aria-label="navbar menu ">
-            <IconMenu size={46} strokeWidth={1} color={"black"} />
-          </button>
-        </div>
-      </nav>
-    </header>
+    <>
+      <header ref={headerRef} className=" backdrop-blur-sm sticky top-0 w-full h-20 z-50 px-6 md:px-10">
+        <nav className="flex items-center justify-between h-full">
+          <div className="bg-red-500">
+            <ul className=" sr-only">
+              {navlink.map((el) => {
+                return <li key={el.id}>{el.name}</li>;
+              })}
+            </ul>
+          </div>
+          {/* Logo */}
+          <div data-nav-logo className="opacity-0">
+            <Logo />
+          </div>
+          <div data-nav-menu className="opacity-0">
+            <button
+              className=""
+              aria-label="Open menu"
+              onClick={() => setIsopen(true)}
+            >
+              <IconMenu size={46} strokeWidth={1} color={"black"} />
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      <FullPageMenu isOpen={isOpen} onClose={() => setIsopen(false)} />
+    </>
   );
 };
 

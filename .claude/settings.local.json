@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:xiomtech.vercel.app)"
+      "WebFetch(domain:xiomtech.vercel.app)",
+      "Bash(findstr:*)"
     ]
   }
 }

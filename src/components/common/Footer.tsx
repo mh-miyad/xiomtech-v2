@@ -183,7 +183,7 @@ const Footer = () => {
         },
       );
 
-      // Big text — at the very bottom, so use a generous trigger
+      // Big text — use the footer container as trigger so it fires reliably
       gsap.fromTo(
         "[data-footer-bigtext]",
         { y: 40, opacity: 0 },
@@ -193,15 +193,21 @@ const Footer = () => {
           duration: 1,
           ease: "power3.out",
           scrollTrigger: {
-            trigger: "[data-footer-bigtext]",
-            start: "top bottom", // fires as soon as it enters viewport
-            end: "bottom bottom", // safety: resolves even at page end
+            trigger: footerRef.current,
+            start: "bottom 120%",
           },
         },
       );
+
     }, footerRef);
 
-    return () => ctx.revert();
+    // Recalculate triggers after layout settles (fonts, video, images)
+    const timer = setTimeout(() => ScrollTrigger.refresh(), 500);
+
+    return () => {
+      clearTimeout(timer);
+      ctx.revert();
+    };
   }, []);
 
   return (

@@ -81,23 +81,25 @@ const Navbar = () => {
       >
         <nav className="flex items-center justify-between h-full">
           <div>
-            <button
+            {/* <button
               aria-label="Open menu"
               onClick={() => setIsopen(true)}
             >
               <IconMenu size={46} strokeWidth={1} color={iconColor} className="transition-colors duration-300" />
-            </button>
+            </button> */}
           </div>
           {/* Logo */}
           <div data-nav-logo className="opacity-0">
             <Logo inverted={isDark} />
           </div>
           <div data-nav-menu className="opacity-0">
-            <button
-              aria-label="Open menu"
-              onClick={() => setIsopen(true)}
-            >
-              <IconMenu size={46} strokeWidth={1} color={iconColor} className="transition-colors duration-300" />
+            <button aria-label="Open menu" onClick={() => setIsopen(true)}>
+              <IconMenu
+                size={46}
+                strokeWidth={1}
+                color={iconColor}
+                className="transition-colors duration-300"
+              />
             </button>
           </div>
         </nav>

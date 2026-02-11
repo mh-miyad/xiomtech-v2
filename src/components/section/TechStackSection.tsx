@@ -7,40 +7,29 @@ import { useEffect, useRef } from "react";
 gsap.registerPlugin(ScrollTrigger);
 
 /* ── Technology Data (all colorful logos) ── */
-const aiTools = [
-  {
-    name: "ChatGPT",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/openai/openai-original.svg",
-  },
-  {
-    name: "Gemini",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/google/google-original.svg",
-  },
-  {
-    name: "Claude",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Claude_AI_logo.svg",
-  },
-  {
-    name: "GitHub Copilot",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg",
-  },
-  {
-    name: "TensorFlow",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg",
-  },
-  {
-    name: "PyTorch",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg",
-  },
-  {
-    name: "Hugging Face",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-plain-wordmark.svg",
-  },
-  {
-    name: "Keras",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/keras/keras-original.svg",
-  },
-];
+// const aiTools = [
+//   {
+//     name: "OpenAI",
+//     logo: "https://www.royex.ae/media/kilptnii/chatgpt.png",
+//   },
+//   {
+//     name: "Claude",
+//     logo: "https://www.royex.ae/media/d3vlbaiv/claude.png",
+//   },
+//   {
+//     name: "Gemini",
+//     logo: "https://www.royex.ae/media/l4dhptri/gimini.png",
+//   },
+
+//   {
+//     name: "DeepSeek",
+//     logo: "https://www.royex.ae/media/ldjjg2ks/deepseek.png",
+//   },
+//   {
+//     name: "LLAMA 4",
+//     logo: "https://www.royex.ae/media/3izgaxsg/llama4.png",
+//   },
+// ];
 
 const frontendTech = [
   {
@@ -196,13 +185,13 @@ const devopsTech = [
 ];
 
 const categories = [
-  {
-    id: "ai",
-    label: "AI Tools We Use",
-    subtitle:
-      "Powerful AI models and tools we leverage to deliver intelligent, scalable solutions.",
-    items: aiTools,
-  },
+  // {
+  //   id: "ai",
+  //   label: "AI Tools We Use",
+  //   subtitle:
+  //     "Powerful AI models and tools we leverage to deliver intelligent, scalable solutions.",
+  //   items: aiTools,
+  // },
   {
     id: "frontend",
     label: "Frontend & Mobile",
@@ -285,9 +274,9 @@ function TechCard({
           unoptimized
         />
       </div>
-      <figcaption className="text-xs md:text-sm font-medium text-gray-600 group-hover:text-gray-900 transition-colors duration-300 text-center">
+      {/* <figcaption className="text-xs md:text-sm font-medium text-gray-600 group-hover:text-gray-900 transition-colors duration-300 text-center">
         {name}
-      </figcaption>
+      </figcaption> */}
     </figure>
   );
 }

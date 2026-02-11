@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <circle cx="60" cy="60" r="56" fill="#000" opacity="0.05"/>
+  <defs>
+    <linearGradient id="km1" x1="30" y1="30" x2="90" y2="90" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6366F1"/>
+      <stop offset="1" stop-color="#8B5CF6"/>
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="32" fill="url(#km1)"/>
+  <text x="60" y="68" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="22" fill="white">K</text>
+  <circle cx="78" cy="42" r="5" fill="#A78BFA"/>
+  <circle cx="82" cy="52" r="3" fill="#C4B5FD"/>
+</svg>

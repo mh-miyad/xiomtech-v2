@@ -221,9 +221,13 @@ const Footer = () => {
           muted
           loop
           playsInline
+          preload="none"
           className="absolute inset-0 w-full h-full object-cover opacity-80"
         >
-          <source src="/footer_globe.mp4" type="video/mp4" />
+          <source
+            src="https://xiomtech-dev.vercel.app/footer_globe.mp4"
+            type="video/mp4"
+          />
         </video>
 
         {/* Gradient overlay from top */}
@@ -240,9 +244,11 @@ const Footer = () => {
               >
                 <Image
                   src={c.flag}
-                  alt={c.name}
+                  alt={`${c.name} flag - XiomTech office location`}
                   width={52}
                   height={50}
+                  sizes="52px"
+                  loading="lazy"
                   className="mx-auto mb-2 "
                 />
                 <p className="text-white font-bold text-sm font-[family-name:var(--font-syne)]">
@@ -262,9 +268,11 @@ const Footer = () => {
           <div className="flex items-center gap-3">
             <Image
               src="/logo.webp"
-              alt="XiomTech"
+              alt="XiomTech - Premier Digital Agency Logo"
               width={40}
               height={40}
+              sizes="36px"
+              loading="lazy"
               className="size-9"
             />
             <span className="text-white text-2xl font-bold font-[family-name:var(--font-syne)]">
@@ -342,9 +350,11 @@ const Footer = () => {
               >
                 <Image
                   src={p.src}
-                  alt={p.name}
+                  alt={`${p.name} - ${p.label} of XiomTech`}
                   width={80}
                   height={40}
+                  sizes="80px"
+                  loading="lazy"
                   className="h-7 md:h-8 w-auto object-contain transition-opacity duration-300"
                   unoptimized
                 />

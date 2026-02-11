@@ -204,7 +204,7 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer ref={footerRef} className="relative mt-20 overflow-hidden">
+    <footer ref={footerRef} data-dark-section className="relative mt-20 overflow-hidden">
       {/* ─── Globe Video + Country Cards ─── */}
       <div
         data-footer-globe

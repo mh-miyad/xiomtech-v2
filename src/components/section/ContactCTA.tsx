@@ -114,75 +114,75 @@ export default function ContactCTA() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="px-4 md:px-8 lg:px-16 pt-12 pb-6">
-      <div className="max-w-5xl mx-auto space-y-5">
+    <section ref={sectionRef} className="px-4 md:px-8 lg:px-16 pt-8 md:pt-12 pb-6">
+      <div className="max-w-5xl mx-auto space-y-4 md:space-y-5">
         {/* ── Main Card ── */}
-        <div className="bg-black rounded-2xl overflow-hidden relative">
-          {/* Blue ambient glows — more prominent like reference */}
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/30 rounded-full blur-[140px] -translate-x-1/4 translate-y-1/4 pointer-events-none" />
-          <div className="absolute top-0 right-0 w-96 h-96 bg-sky-500/25 rounded-full blur-[140px] translate-x-1/4 -translate-y-1/4 pointer-events-none" />
-          <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-[100px] pointer-events-none" />
+        <div data-dark-section className="bg-black rounded-2xl overflow-hidden relative">
+          {/* Blue ambient glows */}
+          <div className="absolute bottom-0 left-0 w-56 md:w-96 h-56 md:h-96 bg-blue-600/30 rounded-full blur-[100px] md:blur-[140px] -translate-x-1/4 translate-y-1/4 pointer-events-none" />
+          <div className="absolute top-0 right-0 w-56 md:w-96 h-56 md:h-96 bg-sky-500/25 rounded-full blur-[100px] md:blur-[140px] translate-x-1/4 -translate-y-1/4 pointer-events-none" />
+          <div className="absolute top-1/2 right-1/4 w-40 md:w-64 h-40 md:h-64 bg-blue-500/10 rounded-full blur-[80px] md:blur-[100px] pointer-events-none" />
 
-          <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 p-7 md:p-12">
+          <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-14 p-5 sm:p-6 md:p-8 lg:p-12">
             {/* ── Left ── */}
-            <div data-contact-left className="flex flex-col gap-2">
+            <div data-contact-left className="flex flex-col gap-2 md:gap-2.5">
               <span className="inline-block w-fit text-[11px] font-semibold text-blue-600 border border-blue-500/30 bg-blue-800/10 rounded-full px-4 py-1.5 tracking-wide">
                 Claim a $799 Consultation, on Us!
               </span>
 
-              <h2 className="text-3xl md:text-4xl  md:leading-[1.15] font-bold text-white font-[family-name:var(--font-syne)]">
+              <h2 className="text-[1.65rem] leading-[1.2] sm:text-3xl md:text-4xl md:leading-[1.15] font-bold text-white font-[family-name:var(--font-syne)]">
                 Enhance Your Brand Potential{" "}
                 <span className="italic font-serif text-blue-400">
                   At No Cost!
                 </span>
               </h2>
 
-              <ul className="space-y-2.5">
+              <ul className="space-y-2 md:space-y-2.5">
                 {bulletPoints.map((point) => (
                   <li
                     key={point}
-                    className="flex items-center gap-2.5 text-[13px] text-white/65"
+                    className="flex items-start gap-2.5 text-sm text-white/65"
                   >
                     <IconCheck
-                      size={16}
+                      size={18}
                       stroke={2}
-                      className="text-blue-400 shrink-0"
+                      className="text-blue-400 shrink-0 mt-0.5"
                     />
                     {point}
                   </li>
                 ))}
               </ul>
 
-              {/* Profile card — stacked like reference */}
-              <div className="mt-3">
-                <div className="relative w-44 h-[156px] rounded-2xl overflow-hidden border border-blue-500/25 mb-3 shadow-lg shadow-blue-500/10">
+              {/* Profile card — large on mobile/tablet, compact on desktop */}
+              <div className="mt-3 md:mt-4">
+                <div className="relative w-full sm:w-72 lg:w-44 h-52 sm:h-60 lg:h-[156px] rounded-2xl overflow-hidden border border-blue-500/25 mb-3 shadow-lg shadow-blue-500/10">
                   <div className="absolute inset-0 bg-linear-to-br from-blue-600/50 via-transparent to-sky-500/40 pointer-events-none z-10" />
                   <Image
                     src="/profile-image-png.png"
                     alt="Founder"
-                    width={240}
-                    height={280}
+                    width={400}
+                    height={400}
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <h3 className="text-white font-bold text-base font-[family-name:var(--font-syne)]">
+                <h3 className="text-white font-bold text-lg lg:text-base font-[family-name:var(--font-syne)]">
                   Mahamudul Hasan Miyad
                 </h3>
-                <p className="text-white/45 text-xs mt-0.5">Founder & CTO</p>
+                <p className="text-white/45 text-sm lg:text-xs mt-0.5">Founder & CTO</p>
 
-                <div className="flex flex-col gap-1.5 mt-3">
+                <div className="flex flex-col gap-2 lg:gap-1.5 mt-3">
                   <a
                     href="https://wa.me/8801822830775"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-xs text-white/55 hover:text-green-400 transition-colors duration-200"
+                    className="flex items-center gap-2 text-sm lg:text-xs text-white/55 hover:text-green-400 transition-colors duration-200"
                   >
-                    <IconBrandWhatsapp size={15} stroke={1.5} />
+                    <IconBrandWhatsapp size={18} stroke={1.5} className="lg:size-[15px]" />
                     +880 1822-830775
                   </a>
                   <a
                     href="#"
-                    className="text-xs text-blue-400 font-semibold hover:text-blue-300 transition-colors duration-200"
+                    className="text-sm lg:text-xs text-blue-400 font-semibold hover:text-blue-300 transition-colors duration-200"
                   >
                     Book a Call Directly
                   </a>
@@ -191,7 +191,7 @@ export default function ContactCTA() {
             </div>
 
             {/* ── Right — Form ── */}
-            <div data-contact-form className="flex flex-col gap-6">
+            <div data-contact-form className="flex flex-col gap-5 lg:gap-6">
               <div>
                 <label className="text-xs font-semibold text-white mb-1.5 block">
                   Full Name
@@ -203,7 +203,7 @@ export default function ContactCTA() {
                 />
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="text-xs font-semibold text-white mb-1.5 block">
                     Your Email
@@ -259,7 +259,7 @@ export default function ContactCTA() {
                 />
               </div>
 
-              <ShimmerButton variant="primary" className="w-fit mt-1">
+              <ShimmerButton variant="primary" className="w-fit">
                 Let&apos;s Connect
                 <IconArrowRight size={16} stroke={2} />
               </ShimmerButton>
@@ -270,14 +270,14 @@ export default function ContactCTA() {
         {/* ── Bottom CTA Marquee Banner ── */}
         <div
           data-contact-banner
-          className="relative rounded-full py-3 px-5 flex items-center gap-5 overflow-hidden bg-gray-50 border border-gray-200"
+          className="relative rounded-xl sm:rounded-full py-2.5 md:py-3 px-4 md:px-5 flex items-center gap-3 md:gap-5 overflow-hidden bg-gray-50 border border-gray-200"
         >
           {/* Blurry blue overlays on left & right */}
-          <div className="absolute left-0 top-0 bottom-0 w-28 bg-linear-to-r from-blue-500/30 to-transparent blur-xl pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-28 bg-linear-to-l from-blue-500/30 to-transparent blur-xl pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-16 md:w-28 bg-linear-to-r from-blue-500/30 to-transparent blur-xl pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 md:w-28 bg-linear-to-l from-blue-500/30 to-transparent blur-xl pointer-events-none" />
 
-          {/* Team avatars + count */}
-          <div className="relative z-10 flex items-center shrink-0">
+          {/* Team avatars + count — hidden on very small screens */}
+          <div className="relative z-10 hidden sm:flex items-center shrink-0">
             <div className="flex -space-x-2.5">
               {teamAvatars.map((src, i) => (
                 <Image
@@ -286,19 +286,19 @@ export default function ContactCTA() {
                   alt={`Team member ${i + 1}`}
                   width={36}
                   height={36}
-                  className="size-9 rounded-full border-2 border-white object-cover"
+                  className="size-7 md:size-9 rounded-full border-2 border-white object-cover"
                   unoptimized
                 />
               ))}
             </div>
-            <span className="ml-2.5 text-sm font-bold text-gray-900 whitespace-nowrap">
+            <span className="ml-2 md:ml-2.5 text-xs md:text-sm font-bold text-gray-900 whitespace-nowrap">
               40+
             </span>
           </div>
 
           {/* Scrolling text */}
-          <Marquee className="relative z-10 flex-1 [--duration:22s] [--gap:3rem]" repeat={4}>
-            <span className="text-sm font-medium text-gray-600 whitespace-nowrap">
+          <Marquee className="relative z-10 flex-1 [--duration:22s] [--gap:2rem] md:[--gap:3rem]" repeat={4}>
+            <span className="text-xs md:text-sm font-medium text-gray-600 whitespace-nowrap">
               {marqueeText.split(" ").map((word, i) => {
                 const isBold = [
                   "Brand's",
@@ -323,30 +323,30 @@ export default function ContactCTA() {
       </div>
 
       {/* ── Newsletter Section ── */}
-      <div data-contact-newsletter className="max-w-3xl mx-auto text-center mt-16 mb-10 px-4">
-        <p className="text-sm sm:text-base md:text-lg text-gray-500 leading-relaxed max-w-2xl mx-auto">
+      <div data-contact-newsletter className="max-w-3xl mx-auto text-center mt-12 md:mt-16 mb-8 md:mb-10 px-4">
+        <p className="text-sm md:text-lg text-gray-500 leading-relaxed max-w-2xl mx-auto">
           Say goodbye to outdated enterprise software and welcome the smoother one.
           We lead you from design to product innovation to shape your path from idea to success
         </p>
 
         {/* Social icons */}
-        <div className="flex items-center justify-center gap-3 mt-8">
+        <div className="flex items-center justify-center gap-2.5 md:gap-3 mt-6 md:mt-8">
           {socials.map((s) => (
             <a
               key={s.label}
               href="#"
-              className="size-10 flex items-center justify-center rounded-full border border-gray-200 text-gray-500 hover:text-blue-600 hover:border-blue-300 transition-colors duration-200"
+              className="size-9 md:size-10 flex items-center justify-center rounded-full border border-gray-200 text-gray-500 hover:text-blue-600 hover:border-blue-300 transition-colors duration-200"
               aria-label={s.label}
             >
-              <s.icon size={18} stroke={1.5} />
+              <s.icon size={17} stroke={1.5} />
             </a>
           ))}
         </div>
 
         {/* Email subscribe */}
-        <div className="flex items-center gap-3 mt-8 max-w-md mx-auto">
-          <div className="flex-1 flex items-center gap-2.5 border border-gray-200 rounded-full px-4 py-3 bg-white">
-            <IconMail size={18} stroke={1.5} className="text-gray-400 shrink-0" />
+        <div className="flex items-center gap-2.5 md:gap-3 mt-6 md:mt-8 max-w-md mx-auto">
+          <div className="flex-1 flex items-center gap-2.5 border border-gray-200 rounded-full px-4 py-2.5 md:py-3 bg-white">
+            <IconMail size={17} stroke={1.5} className="text-gray-400 shrink-0" />
             <input
               type="email"
               placeholder="Your email here"

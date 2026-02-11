@@ -225,7 +225,7 @@ const Footer = () => {
           className="absolute inset-0 w-full h-full object-cover opacity-80"
         >
           <source
-            src="https://xiomtech-dev.vercel.app/footer_globe.mp4"
+            src="https://xiomtech.vercel.app//footer_globe.mp4"
             type="video/mp4"
           />
         </video>

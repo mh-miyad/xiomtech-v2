@@ -19,7 +19,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const BASE_URL = "https://xiomtech-dev.vercel.app";
+const BASE_URL = "https://xiomtech.vercel.app/";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),

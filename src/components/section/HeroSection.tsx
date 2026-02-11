@@ -1,6 +1,7 @@
 "use client";
 import gsap from "gsap";
 import { ArrowRight, Star } from "lucide-react";
+import { ShimmerButton } from "../ui/shimmer-button";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { Marquee } from "../ui/marquee";
@@ -201,20 +202,14 @@ const HeroSection = () => {
         </p>
 
         {/* CTA buttons */}
-        <div data-hero-cta className="mt-9 flex flex-row gap-4 opacity-0">
-          <button
-            type="button"
-            className="group inline-flex items-center gap-2 bg-blue-600 text-white px-5 py-3 md:px-8 md:py-3.5 rounded-full font-semibold text-xs hover:bg-blue-700 transition-colors duration-300"
-          >
+        <div data-hero-cta className="mt-9 flex flex-row gap-5 opacity-0">
+          <ShimmerButton variant="primary">
             Book a Consultation
             <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
-          </button>
-          <button
-            type="button"
-            className="inline-flex items-center gap-2 border-2 border-[#1a1a1a] text-[#1a1a1a] px-5 py-3 md:px-8 md:py-3.5 rounded-full font-semibold text-xs hover:bg-[#1a1a1a] hover:text-white transition-colors duration-300"
-          >
+          </ShimmerButton>
+          <ShimmerButton variant="outline">
             View Our Work
-          </button>
+          </ShimmerButton>
         </div>
 
         {/* Social proof - countries */}

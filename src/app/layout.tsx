@@ -149,7 +149,7 @@ export const metadata: Metadata = {
   },
   category: "technology",
   verification: {
-    // Add your verification tokens here when ready:
+    google: "i2xDaeI_WGRld9xi5E2so4E057YAqAmky_Hj_pPF_IM",
     // google: "your-google-verification-token",
     // yandex: "your-yandex-verification-token",
   },

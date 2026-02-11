@@ -1,10 +1,10 @@
 "use client";
 import gsap from "gsap";
 import { ArrowRight, Star } from "lucide-react";
-import { ShimmerButton } from "../ui/shimmer-button";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { Marquee } from "../ui/marquee";
+import { ShimmerButton } from "../ui/shimmer-button";
 import { WordRotator } from "./hero/WordRotator";
 
 const brandLogos = Array.from({ length: 10 }, (_, i) => ({
@@ -207,9 +207,7 @@ const HeroSection = () => {
             Book a Consultation
             <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
           </ShimmerButton>
-          <ShimmerButton variant="outline">
-            View Our Work
-          </ShimmerButton>
+          <ShimmerButton variant="outline">View Our Work</ShimmerButton>
         </div>
 
         {/* Social proof - countries */}
@@ -257,7 +255,7 @@ const HeroSection = () => {
         {/* Blue gradient background */}
         {/* <div className="absolute inset-0 bg-linear-to-b from-white via-sky-50 to-blue-700/50 rounded-t-[3rem]" /> */}
 
-        <div className="relative 2xl:pt-10 pb-20 space-y-4 overflow-hidden">
+        <div className="relative 2xl:pt-10 pb-20 space-y-4 overflow-hidden max-w-5xl mx-auto">
           <p className="text-center text-sm sm:text-base md:text-2xl font-medium  mb-8 tracking-wide uppercase">
             Trusted by innovative companies worldwide
           </p>

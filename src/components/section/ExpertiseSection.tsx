@@ -231,7 +231,7 @@ export default function ExpertiseSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative px-4 md:px-8 lg:px-16 py-20 md:py-28 overflow-hidden"
+      className="relative px-4 md:px-8 lg:px-16 overflow-hidden"
     >
       {/* Section Header */}
       <div data-expertise-header className="text-center mb-16 md:mb-24">

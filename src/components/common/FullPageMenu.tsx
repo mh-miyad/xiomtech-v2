@@ -273,12 +273,15 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
     if (isOpen) {
       animateOpen();
       document.body.style.overflow = "hidden";
+      window.__lenis?.stop();
     } else {
       animateClose();
       document.body.style.overflow = "";
+      window.__lenis?.start();
     }
     return () => {
       document.body.style.overflow = "";
+      window.__lenis?.start();
     };
   }, [isOpen, animateOpen, animateClose]);
 
@@ -297,6 +300,7 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
       {/* Menu panel — rounded, semi-transparent glass */}
       <div
         ref={menuRef}
+        data-lenis-prevent
         className="absolute inset-3 md:inset-5 lg:inset-8 bg-white/90 backdrop-blur-2xl rounded-3xl overflow-y-auto origin-center opacity-0 scale-0 flex flex-col shadow-2xl"
       >
         {/* ── Top bar ── */}

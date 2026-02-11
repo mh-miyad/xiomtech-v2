@@ -44,7 +44,7 @@ export function ShimmerButton({
           "absolute inset-[2px] rounded-full transition-colors duration-300",
           isPrimary
             ? "bg-blue-600 group-hover:bg-blue-700"
-            : "bg-white group-hover:bg-blue-50/50",
+            : "bg-white group-hover:bg-blue-50",
         )}
       />
       {/* Top highlight */}

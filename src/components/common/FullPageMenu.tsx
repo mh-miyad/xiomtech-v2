@@ -1,20 +1,54 @@
 "use client";
 import {
+  IconApi,
   IconArrowRight,
+  IconBrain,
   IconBrandDribbble,
   IconBrandFacebook,
   IconBrandInstagram,
   IconBrandLinkedin,
   IconBrandWhatsapp,
   IconBrandX,
+  IconBuildingBank,
+  IconBuildingEstate,
+  IconCloud,
+  IconCode,
+  IconDeviceMobile,
+  IconDeviceTv,
+  IconGitBranch,
+  IconHeartbeat,
   IconMail,
+  IconPalette,
   IconPhone,
+  IconSchool,
+  IconServer,
+  IconShoppingCart,
+  IconTruck,
+  IconUsersGroup,
+  IconWorld,
   IconX,
 } from "@tabler/icons-react";
 import gsap from "gsap";
 import Image from "next/image";
+import Link from "next/link";
+import type { ComponentType, SVGProps } from "react";
 import { useCallback, useEffect, useRef } from "react";
 import Logo from "./Logo";
+
+/* ── Types ── */
+type IconComponent = ComponentType<
+  SVGProps<SVGSVGElement> & { size?: number; stroke?: number }
+>;
+
+type MenuItem = {
+  name: string;
+  icon: IconComponent;
+};
+
+type ProductItem = {
+  name: string;
+  icon: string;
+};
 
 const mainNav = [
   { name: "Home", href: "#" },
@@ -24,39 +58,37 @@ const mainNav = [
   { name: "Contact Us", href: "#" },
 ];
 
-const services = [
-  "Custom Software Development",
-  "Web Application Development",
-  "Mobile App Development",
-  "UI/UX Design & Branding",
-  "SaaS Platform Development",
-  "AI & Machine Learning",
-  "Cloud Infrastructure",
-  "DevOps & CI/CD",
-  "API Development & Integration",
-  "E-Commerce Solutions",
+const services: MenuItem[] = [
+  { name: "Custom Software Development", icon: IconCode },
+  { name: "Web Application Development", icon: IconWorld },
+  { name: "Mobile App Development", icon: IconDeviceMobile },
+  { name: "UI/UX Design & Branding", icon: IconPalette },
+  { name: "SaaS Platform Development", icon: IconCloud },
+  { name: "AI & Machine Learning", icon: IconBrain },
+  { name: "Cloud Infrastructure", icon: IconServer },
+  { name: "DevOps & CI/CD", icon: IconGitBranch },
+  { name: "API Development & Integration", icon: IconApi },
+  { name: "E-Commerce Solutions", icon: IconShoppingCart },
 ];
 
-const products = [
-  "XiomOS",
-  "XiomCloud",
-  "XiomAI",
-  "XiomCRM",
-  "XiomAnalytics",
-  "XiomPay",
-  "XiomHR",
-  "XiomEdu",
+const products: ProductItem[] = [
+  { name: "XiomPOS", icon: "/xiom/xiompos.png" },
+  { name: "XiomAccounts", icon: "/xiom/xiomaccount.png" },
+  { name: "XiomHR", icon: "/xiom/hrm.png" },
+  { name: "XiomEdu", icon: "/xiom/XiomEduFlow.png" },
+  { name: "XiomTickets", icon: "/xiom/xiomTickets.png" },
+  { name: "XiomCare", icon: "/xiom/xiomCare.png" },
 ];
 
-const industries = [
-  "Healthcare & MedTech",
-  "Finance & Banking",
-  "E-Commerce & Retail",
-  "Education & EdTech",
-  "Real Estate & PropTech",
-  "Logistics & Supply Chain",
-  "Government & Public Sector",
-  "Media & Entertainment",
+const industries: MenuItem[] = [
+  { name: "Healthcare & MedTech", icon: IconHeartbeat },
+  { name: "Finance & Banking", icon: IconBuildingBank },
+  { name: "E-Commerce & Retail", icon: IconShoppingCart },
+  { name: "Education & EdTech", icon: IconSchool },
+  { name: "Real Estate & PropTech", icon: IconBuildingEstate },
+  { name: "Logistics & Supply Chain", icon: IconTruck },
+  { name: "Government & Public Sector", icon: IconUsersGroup },
+  { name: "Media & Entertainment", icon: IconDeviceTv },
 ];
 
 const explore = [
@@ -142,61 +174,67 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
       .fromTo(
         menu,
         { scale: 0, borderRadius: "50%", opacity: 0 },
-        { scale: 1, borderRadius: "24px", opacity: 1, duration: 0.7, ease: "power3.inOut" },
+        {
+          scale: 1,
+          borderRadius: "24px",
+          opacity: 1,
+          duration: 0.7,
+          ease: "power3.inOut",
+        }
       )
       .fromTo(
         "[data-menu-close]",
         { rotate: -90, opacity: 0, scale: 0.5 },
         { rotate: 0, opacity: 1, scale: 1, duration: 0.4 },
-        "-=0.2",
+        "-=0.2"
       )
       .fromTo(
         "[data-menu-logo]",
         { y: -20, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.5 },
-        "-=0.3",
+        "-=0.3"
       )
       .fromTo(
         "[data-menu-social]",
         { y: -15, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.4, stagger: 0.05 },
-        "-=0.3",
+        "-=0.3"
       )
       .fromTo(
         "[data-menu-main-link]",
         { x: -40, opacity: 0 },
         { x: 0, opacity: 1, duration: 0.5, stagger: 0.06 },
-        "-=0.3",
+        "-=0.3"
       )
       .fromTo(
         "[data-menu-col-title]",
         { y: 25, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.45, stagger: 0.06 },
-        "-=0.4",
+        "-=0.4"
       )
       .fromTo(
         "[data-menu-item]",
         { y: 15, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.35, stagger: 0.015 },
-        "-=0.3",
+        "-=0.3"
       )
       .fromTo(
         "[data-menu-partners]",
         { y: 20, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.5 },
-        "-=0.2",
+        "-=0.2"
       )
       .fromTo(
         "[data-menu-partner-logo]",
         { scale: 0.8, opacity: 0 },
         { scale: 1, opacity: 1, duration: 0.3, stagger: 0.04 },
-        "-=0.3",
+        "-=0.3"
       )
       .fromTo(
         "[data-menu-footer]",
         { y: 20, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.5 },
-        "-=0.2",
+        "-=0.2"
       );
   }, []);
 
@@ -217,11 +255,17 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
 
     tl.to(
       "[data-menu-item], [data-menu-col-title], [data-menu-main-link], [data-menu-partner-logo], [data-menu-partners], [data-menu-footer], [data-menu-logo], [data-menu-social], [data-menu-close]",
-      { opacity: 0, y: -10, duration: 0.2, stagger: 0.008 },
+      { opacity: 0, y: -10, duration: 0.2, stagger: 0.008 }
     ).to(
       menu,
-      { scale: 0, borderRadius: "50%", opacity: 0, duration: 0.5, ease: "power3.inOut" },
-      "-=0.05",
+      {
+        scale: 0,
+        borderRadius: "50%",
+        opacity: 0,
+        duration: 0.5,
+        ease: "power3.inOut",
+      },
+      "-=0.05"
     );
   }, []);
 
@@ -269,7 +313,7 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
                   key={s.label}
                   href={s.href}
                   data-menu-social
-                  className="opacity-0 size-9 flex items-center justify-center rounded-full border border-gray-200 text-gray-500 hover:text-blue-600 hover:border-blue-300 transition-colors duration-200"
+                  className="opacity-0 size-10 flex items-center justify-center rounded-full border border-gray-200 text-gray-500 hover:text-blue-600 hover:border-blue-300 transition-colors duration-200"
                   aria-label={s.label}
                 >
                   <s.icon size={18} stroke={1.5} />
@@ -301,7 +345,7 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
                     key={link.name}
                     href={link.href}
                     data-menu-main-link
-                    className="opacity-0 group flex items-center gap-2 font-[family-name:var(--font-syne)] text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 hover:text-blue-600 transition-colors duration-200 py-1 lg:py-2.5"
+                    className="opacity-0 group flex items-center gap-2 font-[family-name:var(--font-syne)] text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 hover:text-blue-600 transition-colors duration-200 py-1.5 lg:py-3"
                   >
                     <span>{link.name}</span>
                     <IconArrowRight
@@ -320,19 +364,23 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
                 <div>
                   <h3
                     data-menu-col-title
-                    className="opacity-0 text-[10px] md:text-xs font-[family-name:var(--font-syne)] font-bold uppercase tracking-[0.15em] text-gray-900 mb-4 md:mb-5 pb-2 border-b border-gray-200"
+                    className="opacity-0  font-[family-name:var(--font-syne)] font-bold uppercase tracking-[0.15em] text-gray-900 mb-4 md:mb-5 pb-2 border-b border-gray-200"
                   >
                     Services
                   </h3>
-                  <ul className="space-y-2.5 md:space-y-3">
+                  <ul className="space-y-3 md:space-y-3.5">
                     {services.map((item) => (
-                      <li key={item} data-menu-item className="opacity-0">
-                        <a
-                          href="#"
-                          className="text-xs md:text-[13px] text-gray-500 hover:text-gray-900 transition-colors duration-200 leading-snug"
+                      <li key={item.name} data-menu-item className="opacity-0">
+                        <Link
+                          href="/"
+                          className="flex items-center gap-2 text-sm md:text-base text-gray-500 hover:text-blue-600 transition-colors duration-200 leading-snug group"
                         >
-                          {item}
-                        </a>
+                          <item.icon
+                            size={16}
+                            className="shrink-0 text-gray-400 group-hover:text-blue-500 transition-colors duration-200"
+                          />
+                          {item.name}
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -342,18 +390,25 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
                 <div>
                   <h3
                     data-menu-col-title
-                    className="opacity-0 text-[10px] md:text-xs font-[family-name:var(--font-syne)] font-bold uppercase tracking-[0.15em] text-gray-900 mb-4 md:mb-5 pb-2 border-b border-gray-200"
+                    className="opacity-0 font-[family-name:var(--font-syne)] font-bold uppercase tracking-[0.15em] text-gray-900 mb-4 md:mb-5 pb-2 border-b border-gray-200"
                   >
                     Products
                   </h3>
-                  <ul className="space-y-2.5 md:space-y-3">
+                  <ul className="space-y-3 md:space-y-3.5">
                     {products.map((item) => (
-                      <li key={item} data-menu-item className="opacity-0">
+                      <li key={item.name} data-menu-item className="opacity-0">
                         <a
                           href="#"
-                          className="text-xs md:text-[13px] text-gray-500 hover:text-gray-900 transition-colors duration-200 leading-snug"
+                          className="flex items-center gap-2.5 text-sm md:text-base text-gray-500 hover:text-blue-600 transition-colors duration-200 leading-snug group"
                         >
-                          {item}
+                          <Image
+                            src={item.icon}
+                            alt={item.name}
+                            width={22}
+                            height={22}
+                            className="size-5 md:size-[22px] rounded object-contain shrink-0"
+                          />
+                          <span className="font-medium">{item.name}</span>
                         </a>
                       </li>
                     ))}
@@ -364,19 +419,23 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
                 <div>
                   <h3
                     data-menu-col-title
-                    className="opacity-0 text-[10px] md:text-xs font-[family-name:var(--font-syne)] font-bold uppercase tracking-[0.15em] text-gray-900 mb-4 md:mb-5 pb-2 border-b border-gray-200"
+                    className="opacity-0   font-[family-name:var(--font-syne)] font-bold uppercase tracking-[0.15em] text-gray-900 mb-4 md:mb-5 pb-2 border-b border-gray-200"
                   >
                     Industries
                   </h3>
-                  <ul className="space-y-2.5 md:space-y-3">
+                  <ul className="space-y-3 md:space-y-3.5">
                     {industries.map((item) => (
-                      <li key={item} data-menu-item className="opacity-0">
-                        <a
+                      <li key={item.name} data-menu-item className="opacity-0">
+                        <Link
                           href="#"
-                          className="text-xs md:text-[13px] text-gray-500 hover:text-gray-900 transition-colors duration-200 leading-snug"
+                          className="flex items-center gap-2 text-sm md:text-base text-gray-500 hover:text-blue-600 transition-colors duration-200 leading-snug group"
                         >
-                          {item}
-                        </a>
+                          <item.icon
+                            size={16}
+                            className="shrink-0 text-gray-400 group-hover:text-blue-500 transition-colors duration-200"
+                          />
+                          {item.name}
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -386,19 +445,19 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
                 <div>
                   <h3
                     data-menu-col-title
-                    className="opacity-0 text-[10px] md:text-xs font-[family-name:var(--font-syne)] font-bold uppercase tracking-[0.15em] text-gray-900 mb-4 md:mb-5 pb-2 border-b border-gray-200"
+                    className="opacity-0  font-[family-name:var(--font-syne)] font-bold uppercase tracking-[0.15em] text-gray-900 mb-4 md:mb-5 pb-2 border-b border-gray-200"
                   >
                     Explore
                   </h3>
-                  <ul className="space-y-2.5 md:space-y-3">
+                  <ul className="space-y-3 md:space-y-3.5">
                     {explore.map((item) => (
                       <li key={item} data-menu-item className="opacity-0">
-                        <a
+                        <Link
                           href="#"
-                          className="text-xs md:text-[13px] text-gray-500 hover:text-gray-900 transition-colors duration-200 leading-snug"
+                          className="text-sm md:text-base text-gray-500 hover:text-blue-600 transition-colors duration-200 leading-snug"
                         >
                           {item}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -413,7 +472,7 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
           data-menu-partners
           className="opacity-0 mx-5 md:mx-10 lg:mx-14 rounded-2xl bg-gradient-to-r from-blue-50/80 via-indigo-50/60 to-violet-50/80 border border-gray-100 px-6 py-4 md:py-5 shrink-0"
         >
-          <p className="text-[10px] md:text-xs font-[family-name:var(--font-syne)] font-bold uppercase tracking-[0.15em] text-gray-400 mb-3 text-center">
+          <p className="text-xs font-[family-name:var(--font-syne)] font-bold uppercase tracking-[0.15em] text-gray-400 mb-3 text-center">
             Trusted Technology Partners
           </p>
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8 lg:gap-10">
@@ -424,7 +483,7 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
                   alt={p.name}
                   width={80}
                   height={40}
-                  className="h-6 md:h-7 w-auto object-contain transition-all duration-300 hover:scale-110"
+                  className="h-7 md:h-8 w-auto object-contain transition-all duration-300 hover:scale-110"
                   unoptimized
                 />
               </div>
@@ -439,7 +498,7 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
         >
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             {/* Contact row */}
-            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-5 text-xs text-gray-600 font-medium">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-5 text-[13px] text-gray-600 font-medium">
               <a
                 href="mailto:info.xiomtech@gmail.com"
                 className="flex items-center gap-1.5 hover:text-blue-600 transition-colors duration-200"
@@ -470,7 +529,7 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
               href="https://wa.me/8801822830775"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 bg-blue-600 text-white px-5 py-2.5 rounded-full font-semibold text-xs hover:bg-blue-700 transition-colors duration-300"
+              className="group inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-blue-700 transition-colors duration-300"
             >
               Start a Project
               <IconArrowRight
@@ -484,7 +543,9 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mt-4">
             {/* Country flags */}
             <div className="flex items-center gap-4">
-              <span className="text-xs font-semibold text-gray-500">Serving</span>
+              <span className="text-xs font-semibold text-gray-500">
+                Serving
+              </span>
               {countries.map((c) => (
                 <span key={c.name} className="inline-flex items-center gap-1">
                   <Image
@@ -495,10 +556,14 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
                     className="rounded-sm"
                     unoptimized
                   />
-                  <span className="text-[11px] font-medium text-gray-600">{c.name}</span>
+                  <span className="text-xs font-medium text-gray-600">
+                    {c.name}
+                  </span>
                 </span>
               ))}
-              <span className="text-xs font-semibold text-gray-500">& beyond</span>
+              <span className="text-xs font-semibold text-gray-500">
+                & beyond
+              </span>
             </div>
 
             {/* Copyright */}

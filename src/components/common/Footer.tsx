@@ -129,7 +129,7 @@ const Footer = () => {
             trigger: "[data-footer-globe]",
             start: "top 85%",
           },
-        }
+        },
       );
 
       // Country cards stagger
@@ -146,7 +146,7 @@ const Footer = () => {
             trigger: "[data-footer-country]",
             start: "top 85%",
           },
-        }
+        },
       );
 
       // Link columns
@@ -163,7 +163,7 @@ const Footer = () => {
             trigger: "[data-footer-col]",
             start: "top 90%",
           },
-        }
+        },
       );
 
       // Partner strip
@@ -180,10 +180,10 @@ const Footer = () => {
             trigger: "[data-footer-partner]",
             start: "top 92%",
           },
-        }
+        },
       );
 
-      // Big text
+      // Big text — at the very bottom, so use a generous trigger
       gsap.fromTo(
         "[data-footer-bigtext]",
         { y: 40, opacity: 0 },
@@ -194,9 +194,10 @@ const Footer = () => {
           ease: "power3.out",
           scrollTrigger: {
             trigger: "[data-footer-bigtext]",
-            start: "top 95%",
+            start: "top bottom", // fires as soon as it enters viewport
+            end: "bottom bottom", // safety: resolves even at page end
           },
-        }
+        },
       );
     }, footerRef);
 
@@ -204,7 +205,11 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer ref={footerRef} data-dark-section className="relative mt-20 overflow-hidden">
+    <footer
+      ref={footerRef}
+      data-dark-section
+      className="relative mt-20 overflow-hidden"
+    >
       {/* ─── Globe Video + Country Cards ─── */}
       <div
         data-footer-globe

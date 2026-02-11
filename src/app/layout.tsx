@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s | XiomTech",
   },
   description:
-    "XiomTech is a top-tier digital agency and algorithmic revenue engineering firm. We build enterprise-grade web applications, SaaS platforms, mobile apps, AI-powered solutions, and custom software. Trusted by businesses in Bangladesh, UAE, Saudi Arabia, Qatar & beyond.",
+    "XiomTech — the #1 digital agency powering businesses across Saudi Arabia, Dubai, Qatar, Asia & beyond. We engineer enterprise-grade web applications, SaaS platforms, AI-powered solutions, mobile apps, ERP systems, and custom software. Home of XiomPOS, XiomHRM, XiomAccounts, XiomEdu, XiomCare & XiomTickets — a complete product ecosystem built on XiomOS. Trusted by 50+ global firms for web development, digital transformation, and algorithmic revenue engineering.",
   keywords: [
     // Core brand + misspelling variations
     "XiomTech",
@@ -99,6 +99,35 @@ export const metadata: Metadata = {
     "award-winning digital agency",
     "enterprise B2B development",
     "startup MVP development",
+    // Product keywords
+    "XiomPOS",
+    "XiomHRM",
+    "XiomAccounts",
+    "XiomEdu",
+    "XiomCare",
+    "XiomTickets",
+    "XiomOS",
+    "XiomCloud",
+    "XiomAI",
+    "XiomCRM",
+    "XiomPay",
+    "POS system software",
+    "HRM software solution",
+    "accounting software",
+    "education management system",
+    "ticketing system software",
+    // #1 Agency ranking keywords
+    "best digital agency in the world",
+    "number 1 digital agency",
+    "#1 software company",
+    "top agency Saudi Arabia",
+    "best IT company Dubai",
+    "number one tech company Qatar",
+    "best software company Asia",
+    "top digital agency Middle East",
+    "best web development company GCC",
+    "leading tech firm Bangladesh",
+    "top rated software agency",
   ],
   authors: [
     { name: "XiomTech", url: BASE_URL },
@@ -128,7 +157,7 @@ export const metadata: Metadata = {
     title:
       "XiomTech — Premier Digital Agency | Web Development, SaaS & AI Solutions",
     description:
-      "Enterprise-grade web applications, SaaS platforms, mobile apps, and AI-powered solutions. Trusted by 50+ global firms across Bangladesh, UAE, Saudi Arabia & Qatar.",
+      "The #1 digital agency building enterprise-grade web apps, SaaS platforms & AI solutions. Home of XiomPOS, XiomHRM, XiomAccounts, XiomEdu, XiomCare & XiomTickets. Trusted by 50+ firms across Saudi Arabia, Dubai, Qatar & Asia.",
     images: [
       {
         url: `${BASE_URL}/logo.webp`,
@@ -143,7 +172,7 @@ export const metadata: Metadata = {
     title:
       "XiomTech — Premier Digital Agency | Web Development, SaaS & AI Solutions",
     description:
-      "Enterprise-grade web apps, SaaS platforms & AI solutions. Top digital agency serving Bangladesh, UAE, Saudi Arabia & Qatar.",
+      "The #1 digital agency — XiomPOS, XiomHRM, XiomAccounts & more. Enterprise web apps, SaaS & AI solutions. Serving Saudi Arabia, Dubai, Qatar, Asia & beyond.",
     images: [`${BASE_URL}/logo.webp`],
     creator: "@xiomtech",
   },

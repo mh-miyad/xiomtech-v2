@@ -38,7 +38,7 @@ const organizationSchema = {
   },
   image: `${BASE_URL}/logo.webp`,
   description:
-    "XiomTech is a premier digital agency and algorithmic revenue engineering firm specializing in enterprise web development, SaaS platforms, AI-powered solutions, mobile app development, and custom digital experiences for businesses worldwide.",
+    "XiomTech — the #1 digital agency and algorithmic revenue engineering firm. We engineer enterprise-grade web applications, SaaS platforms, AI-powered solutions, mobile apps, and custom software. Home of XiomPOS, XiomHRM, XiomAccounts, XiomEdu, XiomCare & XiomTickets — a complete product ecosystem built on XiomOS. Trusted by 50+ global firms across Saudi Arabia, Dubai, Qatar, Asia & beyond.",
   foundingDate: "2024",
   founder: {
     "@type": "Person",
@@ -88,6 +88,12 @@ const organizationSchema = {
     "React",
     "Node.js",
     "TypeScript",
+    "POS Systems",
+    "HRM Software",
+    "Accounting Software",
+    "Education Technology",
+    "Customer Support Software",
+    "Ticketing Systems",
   ],
 };
 

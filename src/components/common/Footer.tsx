@@ -1,25 +1,41 @@
 "use client";
 import {
-  IconMail,
-  IconBrandWhatsapp,
+  IconBrandDribbble,
   IconBrandFacebook,
   IconBrandInstagram,
   IconBrandLinkedin,
+  IconBrandWhatsapp,
   IconBrandX,
-  IconBrandDribbble,
+  IconMail,
 } from "@tabler/icons-react";
-import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const countries = [
-  { name: "Bangladesh", flag: "https://flagcdn.com/w40/bd.png", address: "Dhaka, Bangladesh" },
-  { name: "UAE", flag: "https://flagcdn.com/w40/ae.png", address: "Dubai, UAE" },
-  { name: "Saudi Arabia", flag: "https://flagcdn.com/w40/sa.png", address: "Riyadh, KSA" },
-  { name: "Qatar", flag: "https://flagcdn.com/w40/qa.png", address: "Doha, Qatar" },
+  {
+    name: "Bangladesh",
+    flag: "https://flagcdn.com/w40/bd.png",
+    address: "Dhaka, Bangladesh",
+  },
+  {
+    name: "UAE",
+    flag: "https://flagcdn.com/w40/ae.png",
+    address: "Dubai, UAE",
+  },
+  {
+    name: "Saudi Arabia",
+    flag: "https://flagcdn.com/w40/sa.png",
+    address: "Riyadh, KSA",
+  },
+  {
+    name: "Qatar",
+    flag: "https://flagcdn.com/w40/qa.png",
+    address: "Doha, Qatar",
+  },
 ];
 
 const footerLinks = {
@@ -44,7 +60,13 @@ const footerLinks = {
   },
   resources: {
     title: "Resources",
-    items: ["Case Studies", "Documentation", "Partner Program", "Privacy Policy", "Terms of Service"],
+    items: [
+      "Case Studies",
+      "Documentation",
+      "Partner Program",
+      "Privacy Policy",
+      "Terms of Service",
+    ],
   },
 };
 
@@ -66,7 +88,7 @@ const partners = [
   },
   {
     name: "Vercel",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg",
+    src: "/vercel.svg",
     label: "Hosting Partner",
   },
   {
@@ -107,7 +129,7 @@ const Footer = () => {
             trigger: "[data-footer-globe]",
             start: "top 85%",
           },
-        },
+        }
       );
 
       // Country cards stagger
@@ -124,7 +146,7 @@ const Footer = () => {
             trigger: "[data-footer-country]",
             start: "top 85%",
           },
-        },
+        }
       );
 
       // Link columns
@@ -141,7 +163,7 @@ const Footer = () => {
             trigger: "[data-footer-col]",
             start: "top 90%",
           },
-        },
+        }
       );
 
       // Partner strip
@@ -158,7 +180,7 @@ const Footer = () => {
             trigger: "[data-footer-partner]",
             start: "top 92%",
           },
-        },
+        }
       );
 
       // Big text
@@ -174,7 +196,7 @@ const Footer = () => {
             trigger: "[data-footer-bigtext]",
             start: "top 95%",
           },
-        },
+        }
       );
     }, footerRef);
 
@@ -184,7 +206,10 @@ const Footer = () => {
   return (
     <footer ref={footerRef} className="relative mt-20 overflow-hidden">
       {/* ─── Globe Video + Country Cards ─── */}
-      <div data-footer-globe className="relative w-full h-[420px] md:h-[500px] lg:h-[580px] bg-gray-950 overflow-hidden">
+      <div
+        data-footer-globe
+        className="relative w-full h-[420px] md:h-[500px] lg:h-[580px] bg-black overflow-hidden"
+      >
         {/* Video background */}
         <video
           autoPlay
@@ -206,15 +231,14 @@ const Footer = () => {
               <div
                 key={c.name}
                 data-footer-country
-                className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl px-4 py-4 text-center"
+                className="bg-black/5 backdrop-blur-sm border border-white/20 rounded-xl px-4 py-4 text-center"
               >
                 <Image
                   src={c.flag}
                   alt={c.name}
-                  width={32}
-                  height={20}
-                  className="mx-auto mb-2 rounded-sm"
-                  unoptimized
+                  width={52}
+                  height={50}
+                  className="mx-auto mb-2 "
                 />
                 <p className="text-white font-bold text-sm font-[family-name:var(--font-syne)]">
                   {c.name}
@@ -316,7 +340,7 @@ const Footer = () => {
                   alt={p.name}
                   width={80}
                   height={40}
-                  className="h-7 md:h-8 w-auto object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity duration-300"
+                  className="h-7 md:h-8 w-auto object-contain transition-opacity duration-300"
                   unoptimized
                 />
                 <span className="text-[10px] text-white/40 font-medium uppercase tracking-wider">
@@ -331,13 +355,19 @@ const Footer = () => {
       {/* ─── Copyright Bar ─── */}
       <div className="bg-gray-950 border-t border-white/10">
         <div className="px-5 md:px-10 lg:px-16 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <a href="#" className="text-white/40 text-xs hover:text-white/70 transition-colors duration-200 font-medium">
+          <a
+            href="#"
+            className="text-white/40 text-xs hover:text-white/70 transition-colors duration-200 font-medium"
+          >
             Terms & Conditions
           </a>
           <p className="text-white/40 text-xs font-medium text-center">
             &copy; {new Date().getFullYear()} XiomTech. All Rights Reserved.
           </p>
-          <a href="#" className="text-white/40 text-xs hover:text-white/70 transition-colors duration-200 font-medium">
+          <a
+            href="#"
+            className="text-white/40 text-xs hover:text-white/70 transition-colors duration-200 font-medium"
+          >
             Privacy Policy
           </a>
         </div>
@@ -349,9 +379,7 @@ const Footer = () => {
           data-footer-bigtext
           className="relative flex items-center justify-center h-[120px] md:h-[180px] lg:h-[240px]"
         >
-          <span
-            className="text-[80px] md:text-[140px] lg:text-[200px] font-black font-[family-name:var(--font-syne)] uppercase leading-none select-none bg-gradient-to-b from-white/20 via-white/8 to-transparent bg-clip-text text-transparent"
-          >
+          <span className="text-[80px] md:text-[70px] lg:text-[100px] xl:text-[140px] 2xl:text-[200px] font-black font-[family-name:var(--font-syne)] uppercase leading-none select-none text-white">
             XiomTech
           </span>
           {/* Reflection glow */}

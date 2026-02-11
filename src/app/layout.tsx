@@ -2,6 +2,7 @@ import SmoothScroll from "@/components/common/SmoothScroll";
 import type { Metadata } from "next";
 import { Inter, Syne } from "next/font/google";
 
+import Footer from "@/components/common/Footer";
 import Navbar from "@/components/common/Navbar";
 import "./globals.css";
 
@@ -48,6 +49,7 @@ export default function RootLayout({
         <SmoothScroll>
           <Navbar />
           {children}
+          <Footer />
         </SmoothScroll>
       </body>
     </html>

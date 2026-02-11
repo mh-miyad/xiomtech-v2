@@ -70,7 +70,7 @@ export default function ContactCTA() {
           stagger: 0.08,
           ease: "power3.out",
           scrollTrigger: { trigger: sectionRef.current, start: "top 75%" },
-        }
+        },
       );
       gsap.fromTo(
         "[data-contact-form]",
@@ -81,7 +81,7 @@ export default function ContactCTA() {
           duration: 0.8,
           ease: "power3.out",
           scrollTrigger: { trigger: sectionRef.current, start: "top 75%" },
-        }
+        },
       );
       gsap.fromTo(
         "[data-contact-banner]",
@@ -92,7 +92,7 @@ export default function ContactCTA() {
           duration: 0.7,
           ease: "power3.out",
           scrollTrigger: { trigger: "[data-contact-banner]", start: "top 90%" },
-        }
+        },
       );
       gsap.fromTo(
         "[data-contact-newsletter] > *",
@@ -107,17 +107,23 @@ export default function ContactCTA() {
             trigger: "[data-contact-newsletter]",
             start: "top 90%",
           },
-        }
+        },
       );
     }, sectionRef);
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} className="px-4 md:px-8 lg:px-16 pt-8 md:pt-12 pb-6">
+    <section
+      ref={sectionRef}
+      className="px-4 md:px-8 lg:px-16 pt-8 md:pt-12 pb-6"
+    >
       <div className="max-w-5xl mx-auto space-y-4 md:space-y-5">
         {/* ── Main Card ── */}
-        <div data-dark-section className="bg-black rounded-2xl overflow-hidden relative">
+        <div
+          data-dark-section
+          className="bg-black rounded-2xl overflow-hidden relative"
+        >
           {/* Blue ambient glows */}
           <div className="absolute bottom-0 left-0 w-56 md:w-96 h-56 md:h-96 bg-blue-600/30 rounded-full blur-[100px] md:blur-[140px] -translate-x-1/4 translate-y-1/4 pointer-events-none" />
           <div className="absolute top-0 right-0 w-56 md:w-96 h-56 md:h-96 bg-sky-500/25 rounded-full blur-[100px] md:blur-[140px] translate-x-1/4 -translate-y-1/4 pointer-events-none" />
@@ -159,16 +165,20 @@ export default function ContactCTA() {
                   <div className="absolute inset-0 bg-linear-to-br from-blue-600/50 via-transparent to-sky-500/40 pointer-events-none z-10" />
                   <Image
                     src="/profile-image-png.png"
-                    alt="Founder"
+                    alt="Mahamudul Hasan Miyad - Founder & CTO of XiomTech Digital Agency"
                     width={400}
                     height={400}
+                    sizes="(max-width: 1024px) 288px, 176px"
+                    loading="lazy"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <h3 className="text-white font-bold text-lg lg:text-base font-[family-name:var(--font-syne)]">
                   Mahamudul Hasan Miyad
                 </h3>
-                <p className="text-white/45 text-sm lg:text-xs mt-0.5">Founder & CTO</p>
+                <p className="text-white/45 text-sm lg:text-xs mt-0.5">
+                  Founder & CTO
+                </p>
 
                 <div className="flex flex-col gap-2 lg:gap-1.5 mt-3">
                   <a
@@ -177,7 +187,11 @@ export default function ContactCTA() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-sm lg:text-xs text-white/55 hover:text-green-400 transition-colors duration-200"
                   >
-                    <IconBrandWhatsapp size={18} stroke={1.5} className="lg:size-[15px]" />
+                    <IconBrandWhatsapp
+                      size={18}
+                      stroke={1.5}
+                      className="lg:size-[15px]"
+                    />
                     +880 1822-830775
                   </a>
                   <a
@@ -283,9 +297,11 @@ export default function ContactCTA() {
                 <Image
                   key={i}
                   src={src}
-                  alt={`Team member ${i + 1}`}
+                  alt={`XiomTech team member ${i + 1}`}
                   width={36}
                   height={36}
+                  sizes="36px"
+                  loading="lazy"
                   className="size-7 md:size-9 rounded-full border-2 border-white object-cover"
                   unoptimized
                 />
@@ -297,7 +313,10 @@ export default function ContactCTA() {
           </div>
 
           {/* Scrolling text */}
-          <Marquee className="relative z-10 flex-1 [--duration:22s] [--gap:2rem] md:[--gap:3rem]" repeat={4}>
+          <Marquee
+            className="relative z-10 flex-1 [--duration:22s] [--gap:2rem] md:[--gap:3rem]"
+            repeat={4}
+          >
             <span className="text-xs md:text-sm font-medium text-gray-600 whitespace-nowrap">
               {marqueeText.split(" ").map((word, i) => {
                 const isBold = [
@@ -323,10 +342,14 @@ export default function ContactCTA() {
       </div>
 
       {/* ── Newsletter Section ── */}
-      <div data-contact-newsletter className="max-w-3xl mx-auto text-center mt-12 md:mt-16 mb-8 md:mb-10 px-4">
+      <div
+        data-contact-newsletter
+        className="max-w-3xl mx-auto text-center mt-12 md:mt-16 mb-8 md:mb-10 px-4"
+      >
         <p className="text-sm md:text-lg text-gray-500 leading-relaxed max-w-2xl mx-auto">
-          Say goodbye to outdated enterprise software and welcome the smoother one.
-          We lead you from design to product innovation to shape your path from idea to success
+          Say goodbye to outdated enterprise software and welcome the smoother
+          one. We lead you from design to product innovation to shape your path
+          from idea to success
         </p>
 
         {/* Social icons */}
@@ -346,7 +369,11 @@ export default function ContactCTA() {
         {/* Email subscribe */}
         <div className="flex items-center gap-2.5 md:gap-3 mt-6 md:mt-8 max-w-md mx-auto">
           <div className="flex-1 flex items-center gap-2.5 border border-gray-200 rounded-full px-4 py-2.5 md:py-3 bg-white">
-            <IconMail size={17} stroke={1.5} className="text-gray-400 shrink-0" />
+            <IconMail
+              size={17}
+              stroke={1.5}
+              className="text-gray-400 shrink-0"
+            />
             <input
               type="email"
               placeholder="Your email here"

@@ -96,9 +96,10 @@ const HeroSection = () => {
       >
         <Image
           src="/hero-left.avif"
-          alt="Our work showcase"
+          alt="XiomTech web development and SaaS project showcase"
           width={1000}
           height={1000}
+          sizes="(max-width: 1024px) 0vw, (max-width: 1280px) 220px, (max-width: 1536px) 320px, 450px"
           className="-mt-28"
           priority
         />
@@ -111,9 +112,10 @@ const HeroSection = () => {
       >
         <Image
           src="/left-hero.avif"
-          alt="Our work showcase"
+          alt="XiomTech mobile app development and digital solutions portfolio"
           width={1000}
           height={1000}
+          sizes="(max-width: 1024px) 0vw, (max-width: 1280px) 220px, (max-width: 1536px) 320px, 450px"
           className="-mt-14"
           priority
         />
@@ -269,6 +271,8 @@ const HeroSection = () => {
                 alt={logo.alt}
                 width={120}
                 height={30}
+                sizes="120px"
+                loading="lazy"
                 className="h-7 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
               />
             ))}

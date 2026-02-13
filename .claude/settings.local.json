@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:xiomtech.vercel.app)",
-      "Bash(findstr:*)"
+      "Bash(findstr:*)",
+      "Bash(bun pm ls:*)"
     ]
   }
 }

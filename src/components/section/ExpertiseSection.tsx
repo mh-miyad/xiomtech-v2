@@ -503,9 +503,14 @@ function useOnScreen(options: IntersectionObserverInit) {
 export default function ExpertiseSection() {
   const [headerRef, isHeaderVisible] = useOnScreen({ threshold: 0.1 });
   const [gridRef, isGridVisible] = useOnScreen({ threshold: 0.1 });
+  const [activeCard, setActiveCard] = useState<string | null>(null);
+
+  const toggleCard = (id: string) => {
+    setActiveCard((prev) => (prev === id ? null : id));
+  };
 
   return (
-    <section className="relative w-full min-h-screen font-sans">
+    <section data-dark-section className="relative w-full min-h-screen font-sans">
       {/* ── 1. Sticky Video Background ── 
           This container sticks to the top of the viewport as you scroll through the section.
       */}
@@ -549,7 +554,7 @@ export default function ExpertiseSection() {
             </span>
           </h2>
           <p className="max-w-2xl mx-auto text-lg text-white/80 leading-relaxed font-light">
-            Hover over the cards below to see how we transform complex
+            Tap or hover over the cards below to see how we transform complex
             challenges into elegant digital solutions.
           </p>
         </div>
@@ -559,93 +564,118 @@ export default function ExpertiseSection() {
           ref={gridRef}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6"
         >
-          {expertiseItems.map((item, index) => (
-            <div
-              key={item.id}
-              className={`group relative h-[550px] w-full bg-white transition-all duration-700 ease-out transform ${
-                isGridVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-24"
-              }`}
-              style={{ transitionDelay: `${index * 150}ms` }}
-            >
-              {/* ── Layer A: Background Image (Revealed on Hover) ── */}
-              <div className="absolute inset-0 z-0 bg-gray-900 overflow-hidden">
-                <img
-                  src={item.image}
-                  alt={item.imageAlt}
-                  className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-in-out"
-                />
-                {/* Gradient Overlay for Text Readability when Image is shown */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              </div>
+          {expertiseItems.map((item, index) => {
+            const isActive = activeCard === item.id;
 
-              {/* ── Layer B: The "White Box" (Visible Default) ── */}
-              <div className="absolute inset-0 z-10 bg-white p-10 flex flex-col justify-between transition-all duration-500 ease-in-out group-hover:opacity-0 group-hover:translate-y-4 group-hover:pointer-events-none border-none">
-                {/* Decorative Icon or Number */}
-                <div className="w-12 h-12 border border-blue-100 flex items-center justify-center text-blue-600 font-light text-xl">
-                  0{index + 1}
+            return (
+              <div
+                key={item.id}
+                onClick={() => toggleCard(item.id)}
+                className={`group relative h-[550px] w-full bg-white transition-all duration-700 ease-out transform cursor-pointer ${
+                  isGridVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-24"
+                }`}
+                style={{ transitionDelay: `${index * 150}ms` }}
+              >
+                {/* ── Layer A: Background Image (Revealed on Hover/Tap) ── */}
+                <div className="absolute inset-0 z-0 bg-gray-900 overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.imageAlt}
+                    className={`w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:opacity-100 group-hover:scale-105 ${
+                      isActive ? "opacity-100 scale-105" : "opacity-60"
+                    }`}
+                  />
+                  {/* Gradient Overlay for Text Readability when Image is shown */}
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent transition-opacity duration-500 group-hover:opacity-100 ${
+                      isActive ? "opacity-100" : "opacity-0"
+                    }`}
+                  />
                 </div>
 
-                <div>
-                  <h3 className="text-3xl font-light text-gray-900 mb-6 leading-tight tracking-tight">
-                    {item.title}
-                  </h3>
-                  <div className="w-12 h-[1px] bg-gray-300 mb-6" />
-                  <p className="text-gray-500 leading-7 font-light text-sm line-clamp-4">
-                    {item.description}
-                  </p>
+                {/* ── Layer B: The "White Box" (Visible Default) ── */}
+                <div
+                  className={`absolute inset-0 z-10 bg-white p-10 flex flex-col justify-between transition-all duration-500 ease-in-out group-hover:opacity-0 group-hover:translate-y-4 group-hover:pointer-events-none border-none ${
+                    isActive
+                      ? "opacity-0 translate-y-4 pointer-events-none"
+                      : ""
+                  }`}
+                >
+                  {/* Decorative Icon or Number */}
+                  <div className="w-12 h-12 border border-blue-100 flex items-center justify-center text-blue-600 font-light text-xl">
+                    0{index + 1}
+                  </div>
+
+                  <div>
+                    <h3 className="text-3xl font-light text-gray-900 mb-6 leading-tight tracking-tight">
+                      {item.title}
+                    </h3>
+                    <div className="w-12 h-[1px] bg-gray-300 mb-6" />
+                    <p className="text-gray-500 leading-7 font-light text-sm line-clamp-4">
+                      {item.description}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center text-gray-900 font-medium text-xs tracking-[0.2em] uppercase group-hover:text-blue-400 transition-colors">
+                    Tap to explore
+                    <svg
+                      className="w-4 h-4 ml-3"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="1"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      ></path>
+                    </svg>
+                  </div>
                 </div>
 
-                <div className="flex items-center text-gray-900 font-medium text-xs tracking-[0.2em] uppercase group-hover:text-blue-400 transition-colors">
-                  Explore
-                  <svg
-                    className="w-4 h-4 ml-3"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+                {/* ── Layer C: Hover/Tap Content (Visible on Hover or Active) ── */}
+                <div
+                  className={`absolute inset-0 z-20 p-10 flex flex-col justify-end transition-all duration-500 delay-100 group-hover:opacity-100 ${
+                    isActive
+                      ? "opacity-100 pointer-events-auto"
+                      : "opacity-0 pointer-events-none"
+                  }`}
+                >
+                  <div
+                    className={`transform transition-transform duration-500 ease-out group-hover:translate-y-0 ${
+                      isActive ? "translate-y-0" : "translate-y-8"
+                    }`}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="1"
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    ></path>
-                  </svg>
-                </div>
-              </div>
+                    <span className="text-blue-400 text-xs font-bold tracking-widest uppercase mb-2 block">
+                      0{index + 1} / Service
+                    </span>
+                    <h3 className="text-2xl font-bold text-white mb-4 drop-shadow-md">
+                      {item.title}
+                    </h3>
+                    <div className="w-full h-[1px] bg-white/20 mb-4" />
+                    <p className="text-white/90 text-sm leading-relaxed mb-6 drop-shadow-sm font-light">
+                      {renderDescription(item.description, item.highlights)}
+                    </p>
 
-              {/* ── Layer C: Hover Content (Visible on Hover) ── 
-                  This sits on top to show text over the image
-              */}
-              <div className="absolute inset-0 z-20 p-10 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100 pointer-events-none">
-                <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                  <span className="text-blue-400 text-xs font-bold tracking-widest uppercase mb-2 block">
-                    0{index + 1} / Service
-                  </span>
-                  <h3 className="text-2xl font-bold text-white mb-4 drop-shadow-md">
-                    {item.title}
-                  </h3>
-                  <div className="w-full h-[1px] bg-white/20 mb-4" />
-                  <p className="text-white/90 text-sm leading-relaxed mb-6 drop-shadow-sm font-light">
-                    {renderDescription(item.description, item.highlights)}
-                  </p>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2">
-                    {item.highlights.slice(0, 3).map((tag, i) => (
-                      <span
-                        key={i}
-                        className="px-3 py-1 bg-white/10 backdrop-blur-md border border-white/10 text-[10px] uppercase tracking-wider text-white"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2">
+                      {item.highlights.slice(0, 3).map((tag, i) => (
+                        <span
+                          key={i}
+                          className="px-3 py-1 bg-white/10 backdrop-blur-md border border-white/10 text-[10px] uppercase tracking-wider text-white"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

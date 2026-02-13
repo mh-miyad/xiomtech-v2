@@ -9,8 +9,8 @@ export default function Home() {
   return (
     <main>
       <HeroSection />
-      <EcosystemSection />
       <ExpertiseSection />
+      <EcosystemSection />
       <TechStackSection />
       <FAQSection />
       <ContactCTA />

@@ -418,7 +418,7 @@ const expertiseItems = [
   {
     id: "marketing",
     title: "Digital Marketing & SEO",
-    image: "/img/seo-marketing.webp",
+    image: "/img/seo.png",
     imageAlt: "Digital Marketing and SEO services",
     caption:
       "Data-driven strategies to boost visibility, traffic, and ROI across all channels.",
@@ -525,7 +525,7 @@ export default function ExpertiseSection() {
           />
         </video>
         {/* Decorative gradient at bottom to blend with next section if needed */}
-        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black/80 to-transparent z-10" />
+        <div className="absolute bottom-0 left-0 w-full h-32 bg-linear-to-t from-black/80 to-transparent z-10" />
       </div>
 
       {/* ── 2. Scrollable Content Overlay ── */}
@@ -544,7 +544,7 @@ export default function ExpertiseSection() {
           </span>
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight drop-shadow-lg">
             Digital Mastery.{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-sky-400">
               Delivered.
             </span>
           </h2>

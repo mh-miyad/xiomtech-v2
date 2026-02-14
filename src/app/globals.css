@@ -10,7 +10,8 @@
   --color-primary: var(--primary);
   --color-accent: var(--accent);
   --font-sans: var(--font-inter, system-ui, -apple-system, sans-serif);
-  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee: marquee 25s infinite linear;
+  --animate-marquee-reverse: marquee-reverse 25s infinite linear;
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -64,7 +65,17 @@
     }
 
     to {
-      transform: translateX(calc(-100% - var(--gap)));
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes marquee-reverse {
+    from {
+      transform: translateX(-50%);
+    }
+
+    to {
+      transform: translateX(0);
     }
   }
 

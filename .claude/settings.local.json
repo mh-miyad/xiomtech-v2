@@ -3,7 +3,8 @@
     "allow": [
       "WebFetch(domain:xiomtech.vercel.app)",
       "Bash(findstr:*)",
-      "Bash(bun pm ls:*)"
+      "Bash(bun pm ls:*)",
+      "Bash(bun add:*)"
     ]
   }
 }

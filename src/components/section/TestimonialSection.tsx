@@ -2,6 +2,7 @@
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -14,8 +15,7 @@ const testimonials = [
       "XiomTech completely transformed our digital presence. The website they built isn't just beautiful — it generates 3x more leads than our previous one.",
     name: "Sarah Chen",
     role: "CEO, Innovate Labs",
-    initials: "SC",
-    color: "#3B82F6",
+    avatar: "https://i.pravatar.cc/96?img=32",
     rating: 5,
   },
   {
@@ -24,8 +24,7 @@ const testimonials = [
       "Their AI integration into our workflow saved us 200+ hours per month. The team's technical depth is unmatched — they delivered what three other agencies couldn't.",
     name: "Marcus Rivera",
     role: "CTO, NexGen Finance",
-    initials: "MR",
-    color: "#8B5CF6",
+    avatar: "https://i.pravatar.cc/96?img=12",
     rating: 5,
   },
   {
@@ -34,8 +33,7 @@ const testimonials = [
       "From concept to launch in 8 weeks. The e-commerce platform they built handles 10k+ daily transactions without breaking a sweat. Truly enterprise-grade.",
     name: "Aisha Al-Rashid",
     role: "Founder, Luxe Market",
-    initials: "AR",
-    color: "#06B6D4",
+    avatar: "https://i.pravatar.cc/96?img=25",
     rating: 5,
   },
   {
@@ -44,8 +42,7 @@ const testimonials = [
       "We needed a design system that could scale across 12 products. XiomTech delivered a system so elegant, our entire dev team's velocity doubled overnight.",
     name: "David Okonkwo",
     role: "VP Engineering, CloudScale",
-    initials: "DO",
-    color: "#F59E0B",
+    avatar: "https://i.pravatar.cc/96?img=53",
     rating: 5,
   },
   {
@@ -54,8 +51,7 @@ const testimonials = [
       "The mobile app they built became the #1 rated app in our category within 3 months. Their obsession with UX details is what sets them apart from everyone else.",
     name: "Yuki Tanaka",
     role: "Product Director, HealthBridge",
-    initials: "YT",
-    color: "#10B981",
+    avatar: "https://i.pravatar.cc/96?img=44",
     rating: 5,
   },
 ];
@@ -236,13 +232,15 @@ export default function TestimonialSection() {
                   className="relative flex items-center gap-4 mt-10 pt-6"
                   style={{ borderTop: "1px solid rgba(0,0,0,0.06)" }}
                 >
-                  {/* Avatar with initials */}
-                  <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center text-white text-sm font-bold"
-                    style={{ backgroundColor: t.color }}
-                  >
-                    {t.initials}
-                  </div>
+                  {/* Avatar */}
+                  <Image
+                    src={t.avatar}
+                    alt={t.name}
+                    width={48}
+                    height={48}
+                    className="w-12 h-12 rounded-full object-cover"
+                    unoptimized
+                  />
                   <div>
                     <p className="text-gray-900 font-semibold text-sm">
                       {t.name}

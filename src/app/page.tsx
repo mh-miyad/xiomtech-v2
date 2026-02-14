@@ -1,3 +1,4 @@
+import BlogSection from "@/components/section/BlogSection";
 import ContactCTA from "@/components/section/ContactCTA";
 import EcosystemSection from "@/components/section/EcosystemSection";
 import ExpertiseSection from "@/components/section/ExpertiseSection";
@@ -18,6 +19,7 @@ export default function Home() {
       <EcosystemSection />
       <TestimonialSection />
       <TechStackSection />
+      <BlogSection />
       <FAQSection />
       <ContactCTA />
     </main>

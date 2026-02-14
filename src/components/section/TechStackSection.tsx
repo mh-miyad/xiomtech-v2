@@ -225,58 +225,22 @@ function TechCard({
   logo: string;
   index: number;
 }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  const handleEnter = () => {
-    if (!cardRef.current) return;
-    gsap.to(cardRef.current, {
-      y: -6,
-      scale: 1.04,
-      boxShadow: "0 16px 40px -8px rgba(37,99,235,0.15)",
-      duration: 0.35,
-      ease: "power2.out",
-    });
-  };
-
-  const handleLeave = () => {
-    if (!cardRef.current) return;
-    gsap.to(cardRef.current, {
-      y: 0,
-      scale: 1,
-      boxShadow: "0 1px 3px 0 rgba(0,0,0,0.05)",
-      duration: 0.4,
-      ease: "power3.out",
-    });
-  };
-
   return (
     <figure
-      ref={cardRef}
       data-tech-card
-      className="group relative flex flex-col items-center justify-center gap-3 p-6 md:p-8 bg-white border border-gray-100 transition-colors duration-300 hover:border-blue-200 will-change-transform cursor-default"
-      style={{
-        boxShadow: "0 1px 3px 0 rgba(0,0,0,0.05)",
-        animationDelay: `${index * 60}ms`,
-      }}
-      onMouseEnter={handleEnter}
-      onMouseLeave={handleLeave}
+      className="flex flex-col items-center justify-center gap-3 p-6 md:p-8 bg-white border border-gray-100 cursor-default"
+      style={{ animationDelay: `${index * 60}ms` }}
     >
-      {/* Blue top-line on hover */}
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-linear-to-r from-blue-500 to-blue-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-400 origin-left" />
-
       <div className="relative w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
         <Image
           src={logo}
           alt={name}
           width={48}
           height={48}
-          className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
+          className="w-full h-full object-contain"
           unoptimized
         />
       </div>
-      {/* <figcaption className="text-xs md:text-sm font-medium text-gray-600 group-hover:text-gray-900 transition-colors duration-300 text-center">
-        {name}
-      </figcaption> */}
     </figure>
   );
 }

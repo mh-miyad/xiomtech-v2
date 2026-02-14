@@ -1,5 +1,6 @@
 import Footer from "@/components/common/Footer";
 import JsonLd from "@/components/common/JsonLd";
+import LoadingScreen from "@/components/common/LoadingScreen";
 import Navbar from "@/components/common/Navbar";
 import SmoothScroll from "@/components/common/SmoothScroll";
 import type { Metadata } from "next";
@@ -217,6 +218,7 @@ export default function RootLayout({
         <JsonLd />
       </head>
       <body className={`${syne.variable} ${inter.variable} antialiased`}>
+        <LoadingScreen />
         <SmoothScroll>
           <Navbar />
           {children}

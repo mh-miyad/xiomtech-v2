@@ -199,3 +199,9 @@ body {
     @apply cursor-pointer active:scale-95 ease-linear transition-all duration-150
   }
 }
+
+/* Loading screen shimmer */
+@keyframes loader-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

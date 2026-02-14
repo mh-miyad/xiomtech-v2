@@ -16,7 +16,7 @@ const services = [
     description:
       "We create stunning, high-performance websites that captivate your audience and drive results. From corporate sites to complex web applications, our solutions are built with cutting-edge technology and designed for seamless user experiences.",
     tags: ["Next.js", "React", "Tailwind CSS", "WordPress"],
-    image: "/img/service-web.webp",
+    image: "/product/p-2.png",
   },
   {
     id: "digital",
@@ -25,7 +25,7 @@ const services = [
     description:
       "Data-driven marketing strategies that amplify your brand presence and deliver measurable ROI. We combine creative storytelling with analytical precision to reach your ideal audience across all digital touchpoints.",
     tags: ["SEO", "PPC", "Social Media", "Content Strategy"],
-    image: "/img/seo.png",
+    image: "/product/p-4.png",
   },
   {
     id: "mobile",
@@ -34,7 +34,7 @@ const services = [
     description:
       "Native and cross-platform mobile applications that deliver exceptional user experiences. We transform your ideas into powerful, intuitive apps that your users will love and your business will depend on.",
     tags: ["React Native", "Flutter", "iOS", "Android"],
-    image: "/img/mobile-app.webp",
+    image: "/product/m-1.png",
   },
   {
     id: "uiux",
@@ -43,7 +43,7 @@ const services = [
     description:
       "Human-centered design that bridges the gap between beauty and functionality. Every pixel serves a purpose, every interaction tells a story, and every design decision is backed by research and user empathy.",
     tags: ["Figma", "Prototyping", "User Research", "Design Systems"],
-    image: "/img/service-design.webp",
+    image: "/product/p-6.png",
   },
   {
     id: "ai",
@@ -90,7 +90,7 @@ export default function ServiceSection() {
             trigger: titleRef.current,
             start: "top 85%",
           },
-        }
+        },
       );
 
       /* ── Main pinned scroll-driven timeline ── */
@@ -103,10 +103,7 @@ export default function ServiceSection() {
           scrub: 0.5,
           onUpdate: (self) => {
             /* Update counter number */
-            const idx = Math.min(
-              Math.floor(self.progress * total),
-              total - 1
-            );
+            const idx = Math.min(Math.floor(self.progress * total), total - 1);
             if (counterRef.current) {
               counterRef.current.textContent = services[idx].number;
             }
@@ -141,7 +138,7 @@ export default function ServiceSection() {
             duration: 0.55,
             ease: "power3.inOut",
           },
-          "<0.05"
+          "<0.05",
         );
 
         /* Fade in next text */
@@ -149,7 +146,7 @@ export default function ServiceSection() {
           nextText,
           { opacity: 0, y: 40 },
           { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" },
-          "<0.15"
+          "<0.15",
         );
 
         /* Breathing space between transitions */
@@ -261,8 +258,7 @@ export default function ServiceSection() {
                   className="absolute inset-0"
                   style={{
                     zIndex: i + 1,
-                    clipPath:
-                      i === 0 ? "inset(0% 0 0 0)" : "inset(100% 0 0 0)",
+                    clipPath: i === 0 ? "inset(0% 0 0 0)" : "inset(100% 0 0 0)",
                   }}
                 >
                   <Image

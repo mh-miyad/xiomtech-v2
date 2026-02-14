@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
     default:
-      "XiomTech — Premier Digital Agency | Web Development, SaaS & AI Solutions",
+      "XiomTech — Global Digital Agency | Web Development, SaaS & AI Solutions",
     template: "%s | XiomTech",
   },
   description:
@@ -155,7 +155,7 @@ export const metadata: Metadata = {
     url: BASE_URL,
     siteName: "XiomTech",
     title:
-      "XiomTech — Premier Digital Agency | Web Development, SaaS & AI Solutions",
+      "XiomTech —  Global Digital Agency | Web Development, SaaS & AI Solutions",
     description:
       "The #1 digital agency building enterprise-grade web apps, SaaS platforms & AI solutions. Home of XiomPOS, XiomHRM, XiomAccounts, XiomEdu, XiomCare & XiomTickets. Trusted by 50+ firms across Saudi Arabia, Dubai, Qatar & Asia.",
     images: [
@@ -163,14 +163,14 @@ export const metadata: Metadata = {
         url: `${BASE_URL}/logo.webp`,
         width: 512,
         height: 512,
-        alt: "XiomTech - Premier Digital Agency Logo",
+        alt: "XiomTech -  Global Digital Agency Logo",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title:
-      "XiomTech — Premier Digital Agency | Web Development, SaaS & AI Solutions",
+      "XiomTech —  Global Digital Agency | Web Development, SaaS & AI Solutions",
     description:
       "The #1 digital agency — XiomPOS, XiomHRM, XiomAccounts & more. Enterprise web apps, SaaS & AI solutions. Serving Saudi Arabia, Dubai, Qatar, Asia & beyond.",
     images: [`${BASE_URL}/logo.webp`],

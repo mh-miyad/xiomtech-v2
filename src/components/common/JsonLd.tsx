@@ -55,7 +55,19 @@ const organizationSchema = {
       contactType: "customer service",
       email: "info.xiomtech@gmail.com",
       availableLanguage: ["English", "Bengali", "Arabic"],
-      areaServed: ["BD", "AE", "SA", "QA", "US", "GB", "ID", "TR", "EG", "NG", "OM"],
+      areaServed: [
+        "BD",
+        "AE",
+        "SA",
+        "QA",
+        "US",
+        "GB",
+        "ID",
+        "TR",
+        "EG",
+        "NG",
+        "OM",
+      ],
     },
   ],
   sameAs: [
@@ -110,7 +122,7 @@ const websiteSchema = {
   url: BASE_URL,
   name: "XiomTech",
   description:
-    "Premier digital agency delivering enterprise-grade web development, SaaS platforms, AI solutions, and custom software.",
+    "Global  digital agency delivering enterprise-grade web development, SaaS platforms, AI solutions, and custom software.",
   publisher: { "@id": `${BASE_URL}/#organization` },
   potentialAction: {
     "@type": "SearchAction",

@@ -3,7 +3,6 @@ import {
   IconApi,
   IconArrowRight,
   IconBrain,
-  IconBrandDribbble,
   IconBrandFacebook,
   IconBrandInstagram,
   IconBrandLinkedin,
@@ -26,7 +25,7 @@ import {
   IconTruck,
   IconUsersGroup,
   IconWorld,
-  IconX,
+  IconX
 } from "@tabler/icons-react";
 import gsap from "gsap";
 import Image from "next/image";
@@ -101,11 +100,11 @@ const explore = [
 ];
 
 const socials = [
-  { icon: IconBrandFacebook, href: "#", label: "Facebook" },
-  { icon: IconBrandInstagram, href: "#", label: "Instagram" },
-  { icon: IconBrandLinkedin, href: "#", label: "LinkedIn" },
-  { icon: IconBrandX, href: "#", label: "X" },
-  { icon: IconBrandDribbble, href: "#", label: "Dribbble" },
+  { icon: IconBrandFacebook, href: "https://www.facebook.com/xiomtech", label: "Facebook" },
+  { icon: IconBrandInstagram, href: "https://www.instagram.com/xiomtech", label: "Instagram" },
+  { icon: IconBrandLinkedin, href: "https://www.linkedin.com/company/xiomtech", label: "LinkedIn" },
+  { icon: IconBrandX, href: "https://x.com/xiomtech", label: "X" },
+
 ];
 
 const partners = [

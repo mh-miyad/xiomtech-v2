@@ -55,7 +55,7 @@ const organizationSchema = {
       contactType: "customer service",
       email: "info.xiomtech@gmail.com",
       availableLanguage: ["English", "Bengali", "Arabic"],
-      areaServed: ["BD", "AE", "SA", "QA", "US", "GB"],
+      areaServed: ["BD", "AE", "SA", "QA", "US", "GB", "ID", "TR", "EG", "NG", "OM"],
     },
   ],
   sameAs: [
@@ -64,6 +64,7 @@ const organizationSchema = {
     "https://www.linkedin.com/company/xiomtech",
     "https://x.com/xiomtech",
     "https://dribbble.com/xiomtech",
+    "https://github.com/mh-miyad",
   ],
   areaServed: [
     { "@type": "Country", name: "Bangladesh" },
@@ -72,6 +73,11 @@ const organizationSchema = {
     { "@type": "Country", name: "Qatar" },
     { "@type": "Country", name: "United States" },
     { "@type": "Country", name: "United Kingdom" },
+    { "@type": "Country", name: "Indonesia" },
+    { "@type": "Country", name: "Turkey" },
+    { "@type": "Country", name: "Egypt" },
+    { "@type": "Country", name: "Nigeria" },
+    { "@type": "Country", name: "Oman" },
   ],
   knowsAbout: [
     "Web Development",
@@ -133,6 +139,10 @@ const serviceSchema = {
     { "@type": "Country", name: "United Arab Emirates" },
     { "@type": "Country", name: "Saudi Arabia" },
     { "@type": "Country", name: "Qatar" },
+    { "@type": "Country", name: "Indonesia" },
+    { "@type": "Country", name: "Turkey" },
+    { "@type": "Country", name: "Egypt" },
+    { "@type": "Country", name: "Nigeria" },
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
@@ -293,6 +303,35 @@ const breadcrumbSchema = {
   ],
 };
 
+/* ── XiomPOS Product Schema (for star ratings in Google) ── */
+const posProductSchema = {
+  "@type": "Product",
+  name: "XiomPOS - Best POS Software in Bangladesh",
+  image: `${BASE_URL}/xiom/xiompos.png`,
+  description:
+    "The most advanced cloud-based Point of Sale (POS) system for retail and restaurants in Bangladesh. Features include Inventory, VAT, and Offline mode.",
+  brand: {
+    "@type": "Brand",
+    name: "XiomTech",
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: "125",
+    bestRating: "5",
+    worstRating: "1",
+  },
+  offers: {
+    "@type": "Offer",
+    url: `${BASE_URL}/products/xiompos`,
+    priceCurrency: "BDT",
+    price: "15000",
+    priceValidUntil: "2026-12-31",
+    availability: "https://schema.org/InStock",
+    itemCondition: "https://schema.org/NewCondition",
+  },
+};
+
 /* ── Combined Graph ── */
 const jsonLdData = {
   "@context": "https://schema.org",
@@ -302,6 +341,7 @@ const jsonLdData = {
     serviceSchema,
     faqSchema,
     breadcrumbSchema,
+    posProductSchema,
   ],
 };
 

@@ -194,6 +194,13 @@ const HeroSection = () => {
           </span>
         </h1>
 
+        {/* SEO subtitle */}
+        <p className="sr-only">
+          XiomTech — Best Software Company in Bangladesh. Creators of XiomPOS,
+          the #1 POS system for retail and restaurants in Dhaka, Dubai, and
+          Saudi Arabia.
+        </p>
+
         {/* Sub-headline */}
         <p
           data-hero-sub

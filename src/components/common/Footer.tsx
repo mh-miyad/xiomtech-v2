@@ -36,6 +36,16 @@ const countries = [
     flag: "https://flagcdn.com/w40/qa.png",
     address: "Doha, Qatar",
   },
+  {
+    name: "Indonesia",
+    flag: "https://flagcdn.com/w40/id.png",
+    address: "Jakarta, Indonesia",
+  },
+  {
+    name: "Nigeria",
+    flag: "https://flagcdn.com/w40/ng.png",
+    address: "Lagos, Nigeria",
+  },
 ];
 
 const footerLinks = {
@@ -104,11 +114,11 @@ const partners = [
 ];
 
 const socials = [
-  { icon: IconBrandFacebook, href: "#", label: "Facebook" },
-  { icon: IconBrandInstagram, href: "#", label: "Instagram" },
-  { icon: IconBrandLinkedin, href: "#", label: "LinkedIn" },
-  { icon: IconBrandX, href: "#", label: "X" },
-  { icon: IconBrandDribbble, href: "#", label: "Dribbble" },
+  { icon: IconBrandFacebook, href: "https://www.facebook.com/xiomtech", label: "Facebook" },
+  { icon: IconBrandInstagram, href: "https://www.instagram.com/xiomtech", label: "Instagram" },
+  { icon: IconBrandLinkedin, href: "https://www.linkedin.com/company/xiomtech", label: "LinkedIn" },
+  { icon: IconBrandX, href: "https://x.com/xiomtech", label: "X" },
+  { icon: IconBrandDribbble, href: "https://dribbble.com/xiomtech", label: "Dribbble" },
 ];
 
 const Footer = () => {

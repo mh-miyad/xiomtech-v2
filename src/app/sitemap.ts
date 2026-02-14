@@ -13,13 +13,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1.0,
     },
-    // Add new pages here as the site grows:
-    // { url: `${BASE_URL}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    // { url: `${BASE_URL}/services`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
-    // { url: `${BASE_URL}/portfolio`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
-    // { url: `${BASE_URL}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    // { url: `${BASE_URL}/blog`, lastModified: now, changeFrequency: "daily", priority: 0.8 },
+    {
+      url: `${BASE_URL}/best-pos-software-in-bangladesh`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
   ];
 
-  return staticPages;
+  /* ── Dynamic country solution pages ── */
+  const countries = [
+    "bangladesh",
+    "uae",
+    "saudi-arabia",
+    "qatar",
+    "indonesia",
+    "turkey",
+    "egypt",
+    "nigeria",
+    "oman",
+  ];
+
+  const countryPages: MetadataRoute.Sitemap = countries.map((country) => ({
+    url: `${BASE_URL}/solutions/${country}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
+  return [...staticPages, ...countryPages];
 }

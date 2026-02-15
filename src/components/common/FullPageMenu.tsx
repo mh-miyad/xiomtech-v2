@@ -25,7 +25,7 @@ import {
   IconTruck,
   IconUsersGroup,
   IconWorld,
-  IconX
+  IconX,
 } from "@tabler/icons-react";
 import gsap from "gsap";
 import Image from "next/image";
@@ -100,11 +100,22 @@ const explore = [
 ];
 
 const socials = [
-  { icon: IconBrandFacebook, href: "https://www.facebook.com/xiomtech", label: "Facebook" },
-  { icon: IconBrandInstagram, href: "https://www.instagram.com/xiomtech", label: "Instagram" },
-  { icon: IconBrandLinkedin, href: "https://www.linkedin.com/company/xiomtech", label: "LinkedIn" },
+  {
+    icon: IconBrandFacebook,
+    href: "https://www.facebook.com/xiomtech",
+    label: "Facebook",
+  },
+  {
+    icon: IconBrandInstagram,
+    href: "https://www.instagram.com/xiomtech",
+    label: "Instagram",
+  },
+  {
+    icon: IconBrandLinkedin,
+    href: "https://www.linkedin.com/company/xiomtech",
+    label: "LinkedIn",
+  },
   { icon: IconBrandX, href: "https://x.com/xiomtech", label: "X" },
-
 ];
 
 const partners = [
@@ -179,61 +190,61 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
           opacity: 1,
           duration: 0.7,
           ease: "power3.inOut",
-        }
+        },
       )
       .fromTo(
         "[data-menu-close]",
         { rotate: -90, opacity: 0, scale: 0.5 },
         { rotate: 0, opacity: 1, scale: 1, duration: 0.4 },
-        "-=0.2"
+        "-=0.2",
       )
       .fromTo(
         "[data-menu-logo]",
         { y: -20, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.5 },
-        "-=0.3"
+        "-=0.3",
       )
       .fromTo(
         "[data-menu-social]",
         { y: -15, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.4, stagger: 0.05 },
-        "-=0.3"
+        "-=0.3",
       )
       .fromTo(
         "[data-menu-main-link]",
         { x: -40, opacity: 0 },
         { x: 0, opacity: 1, duration: 0.5, stagger: 0.06 },
-        "-=0.3"
+        "-=0.3",
       )
       .fromTo(
         "[data-menu-col-title]",
         { y: 25, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.45, stagger: 0.06 },
-        "-=0.4"
+        "-=0.4",
       )
       .fromTo(
         "[data-menu-item]",
         { y: 15, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.35, stagger: 0.015 },
-        "-=0.3"
+        "-=0.3",
       )
       .fromTo(
         "[data-menu-partners]",
         { y: 20, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.5 },
-        "-=0.2"
+        "-=0.2",
       )
       .fromTo(
         "[data-menu-partner-logo]",
         { scale: 0.8, opacity: 0 },
         { scale: 1, opacity: 1, duration: 0.3, stagger: 0.04 },
-        "-=0.3"
+        "-=0.3",
       )
       .fromTo(
         "[data-menu-footer]",
         { y: 20, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.5 },
-        "-=0.2"
+        "-=0.2",
       );
   }, []);
 
@@ -254,7 +265,7 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
 
     tl.to(
       "[data-menu-item], [data-menu-col-title], [data-menu-main-link], [data-menu-partner-logo], [data-menu-partners], [data-menu-footer], [data-menu-logo], [data-menu-social], [data-menu-close]",
-      { opacity: 0, y: -10, duration: 0.2, stagger: 0.008 }
+      { opacity: 0, y: -10, duration: 0.2, stagger: 0.008 },
     ).to(
       menu,
       {
@@ -264,7 +275,7 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
         duration: 0.5,
         ease: "power3.inOut",
       },
-      "-=0.05"
+      "-=0.05",
     );
   }, []);
 
@@ -300,7 +311,7 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
       <div
         ref={menuRef}
         data-lenis-prevent
-        className="absolute inset-3 md:inset-5 lg:inset-8 bg-white/90 backdrop-blur-2xl rounded-3xl overflow-y-auto origin-center opacity-0 scale-0 flex flex-col shadow-2xl"
+        className="absolute inset-3 md:inset-5 lg:inset-8 bg-white backdrop-blur-2xl rounded-3xl overflow-y-auto origin-center opacity-0 scale-0 flex flex-col shadow-2xl"
       >
         {/* ── Top bar ── */}
         <div className="flex items-center justify-between px-5 md:px-10 lg:px-14 pt-5 md:pt-7 shrink-0">

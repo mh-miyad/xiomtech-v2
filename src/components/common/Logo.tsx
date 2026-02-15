@@ -1,5 +1,6 @@
 import { Smooch_Sans } from "next/font/google";
 import Image from "next/image";
+import Link from "next/link";
 
 const arimo = Smooch_Sans({
   weight: ["400", "500", "700", "200", "300", "600", "800"],
@@ -12,7 +13,7 @@ interface LogoProps {
 
 const Logo = ({ inverted }: LogoProps) => {
   return (
-    <div className="flex items-center">
+    <Link href={"/"} className="flex items-center">
       <Image
         src={"/logo.webp"}
         alt="Xiomtech Logo Icon"
@@ -27,7 +28,7 @@ const Logo = ({ inverted }: LogoProps) => {
       >
         XiomTech
       </span>
-    </div>
+    </Link>
   );
 };
 

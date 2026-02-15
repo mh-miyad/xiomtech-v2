@@ -137,7 +137,7 @@ const HeroSection = () => {
             ))}
           </div>
           <span className="text-xs font-medium text-[#1a1a1a]">
-            Leading Software Development Agency
+            Leading Software Development Company
           </span>
         </div>
 

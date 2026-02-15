@@ -165,7 +165,7 @@ export default function ContactCTA() {
                   <div className="absolute inset-0 bg-linear-to-br from-blue-600/50 via-transparent to-sky-500/40 pointer-events-none z-10" />
                   <Image
                     src="/profile-image-png.png"
-                    alt="Mahamudul Hasan Miyad - Founder & CTO of XiomTech Digital Agency"
+                    alt="Mahamudul Hasan Miyad - Founder & CTO of XiomTech Software Development Company "
                     width={400}
                     height={400}
                     sizes="(max-width: 1024px) 288px, 176px"

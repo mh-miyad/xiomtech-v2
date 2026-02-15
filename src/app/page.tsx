@@ -13,10 +13,10 @@ export default function Home() {
   return (
     <main>
       <HeroSection />
-      <ExpertiseSection />
-      <ServiceSection />
-      <ProjectShowcase />
       <EcosystemSection />
+      <ProjectShowcase />
+      <ServiceSection />
+      <ExpertiseSection />
       <TestimonialSection />
       <TechStackSection />
       <BlogSection />

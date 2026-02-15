@@ -452,7 +452,7 @@ function renderDescription(text: string, highlights: string[]) {
       parts.push({
         bold: remaining.slice(
           earliestIndex,
-          earliestIndex + earliestHighlight.length
+          earliestIndex + earliestHighlight.length,
         ),
       });
       remaining = remaining.slice(earliestIndex + earliestHighlight.length);
@@ -505,12 +505,24 @@ export default function ExpertiseSection() {
   const [gridRef, isGridVisible] = useOnScreen({ threshold: 0.1 });
 
   return (
-    <section data-dark-section className="relative w-full min-h-screen font-sans">
+    <section
+      data-dark-section
+      className="relative w-full min-h-screen font-sans mb-10"
+    >
       {/* ── Sticky Video Background ── */}
       <div className="sticky top-0 left-0 w-full h-screen overflow-hidden -z-10">
         <div className="absolute inset-0 bg-black/40 z-10" />
-        <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover">
-          <source src="https://sscc-alpha.vercel.app/videoplayback.mp4" type="video/mp4" />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source
+            src="https://sscc-alpha.vercel.app/videoplayback.mp4"
+            type="video/mp4"
+          />
         </video>
         <div className="absolute bottom-0 left-0 w-full h-32 bg-linear-to-t from-black/80 to-transparent z-10" />
       </div>
@@ -521,7 +533,9 @@ export default function ExpertiseSection() {
         <div
           ref={headerRef}
           className={`text-center mb-20 transition-all duration-1000 ease-out transform ${
-            isHeaderVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+            isHeaderVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-12"
           }`}
         >
           <span className="inline-block px-4 py-1.5 rounded-none border border-white/30 bg-white/10 backdrop-blur-md text-white/90 text-xs font-semibold tracking-widest uppercase mb-6">
@@ -534,7 +548,8 @@ export default function ExpertiseSection() {
             </span>
           </h2>
           <p className="max-w-2xl mx-auto text-lg text-white/80 leading-relaxed font-light">
-            Explore how we transform complex challenges into elegant digital solutions.
+            Explore how we transform complex challenges into elegant digital
+            solutions.
           </p>
         </div>
 
@@ -547,69 +562,46 @@ export default function ExpertiseSection() {
             <div
               key={item.id}
               className={`group relative h-[550px] w-full transition-all duration-700 ease-out transform ${
-                isGridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-24"
+                isGridVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-24"
               }`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
-              {/* ── Layer A: Background Image ── */}
-              {/* Mobile: always visible | Desktop: revealed on hover */}
-              <div className="absolute inset-0 z-0 bg-gray-900 overflow-hidden">
-                <img
-                  src={item.image}
-                  alt={item.imageAlt}
-                  className="w-full h-full object-cover transition-all duration-700 ease-in-out opacity-100 scale-105 md:opacity-60 md:scale-100 md:group-hover:opacity-100 md:group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500" />
-              </div>
-
               {/* ── Layer B: White Box (desktop only, hidden on hover) ── */}
-              <div className="absolute inset-0 z-10 bg-white p-10 hidden md:flex flex-col justify-between transition-all duration-500 ease-in-out md:group-hover:opacity-0 md:group-hover:translate-y-4 md:group-hover:pointer-events-none">
+              <div className="absolute cursor-pointer inset-0 z-10 backdrop-blur-sm bg-black/10 border-blue-700   p-10 hidden md:flex flex-col justify-between transition-all duration-500 ease-in-out  md:group-hover:translate-y-4 ">
                 <div className="w-12 h-12 border border-blue-100 flex items-center justify-center text-blue-600 font-light text-xl">
                   0{index + 1}
                 </div>
                 <div>
-                  <h3 className="text-3xl font-light text-gray-900 mb-6 leading-tight tracking-tight">
+                  <h3 className="text-3xl font-light text-white mb-6 leading-tight tracking-tight">
                     {item.title}
                   </h3>
                   <div className="w-12 h-[1px] bg-gray-300 mb-6" />
-                  <p className="text-gray-500 leading-7 font-light text-sm line-clamp-4">
+                  <p className="text-gray-100 leading-7 font-light text-sm line-clamp-4">
                     {item.description}
                   </p>
                 </div>
-                <div className="flex items-center text-gray-900 font-medium text-xs tracking-[0.2em] uppercase group-hover:text-blue-400 transition-colors">
+                <div className="flex items-center text-gray-100 border max-w-fit px-5 py-3  font-medium text-xs tracking-[0.2em] uppercase group-hover:text-blue-400 transition-colors">
                   Hover to explore
-                  <svg className="w-4 h-4 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  <svg
+                    className="w-4 h-4 ml-3"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
                   </svg>
                 </div>
               </div>
 
               {/* ── Layer C: Content overlay ── */}
               {/* Mobile: always visible | Desktop: revealed on hover */}
-              <div className="absolute inset-0 z-20 p-8 md:p-10 flex flex-col justify-end opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 delay-100">
-                <div className="translate-y-0 md:translate-y-8 md:group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                  <span className="text-blue-400 text-xs font-bold tracking-widest uppercase mb-2 block">
-                    0{index + 1} / Service
-                  </span>
-                  <h3 className="text-2xl font-bold text-white mb-4 drop-shadow-md">
-                    {item.title}
-                  </h3>
-                  <div className="w-full h-[1px] bg-white/20 mb-4" />
-                  <p className="text-white/90 text-sm leading-relaxed mb-6 drop-shadow-sm font-light">
-                    {renderDescription(item.description, item.highlights)}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {item.highlights.slice(0, 3).map((tag, i) => (
-                      <span
-                        key={i}
-                        className="px-3 py-1 bg-white/10 backdrop-blur-md border border-white/10 text-[10px] uppercase tracking-wider text-white"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
             </div>
           ))}
         </div>

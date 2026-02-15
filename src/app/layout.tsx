@@ -26,16 +26,16 @@ export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
     default:
-      "XiomTech — Global Digital Agency | Web Development, SaaS & AI Solutions",
+      "XiomTech — Global Software Development Company  | Enterprise IT , SaaS & AI Solutions",
     template: "%s | XiomTech",
   },
   description:
-    "XiomTech — the #1 digital agency powering businesses across Saudi Arabia, Dubai, Qatar, Asia & beyond. We engineer enterprise-grade web applications, SaaS platforms, AI-powered solutions, mobile apps, ERP systems, and custom software. Home of XiomPOS, XiomHRM, XiomAccounts, XiomEdu, XiomCare & XiomTickets — a complete product ecosystem built on XiomOS. Trusted by 50+ global firms for web development, digital transformation, and algorithmic revenue engineering.",
+    "XiomTech — the #1 Software Development Company  powering businesses across Saudi Arabia, Dubai, Qatar, Asia & beyond. We engineer enterprise-grade web applications, SaaS platforms, AI-powered solutions, mobile apps, ERP systems, and custom software. Home of XiomPOS, XiomHRM, XiomAccounts, XiomEdu, XiomCare & XiomTickets — a complete product ecosystem built on XiomOS. Trusted by 50+ global firms for web development, digital transformation, and algorithmic revenue engineering.",
   keywords: [
     // Core brand + misspelling variations
     "XiomTech",
     "Xiom Tech",
-    "xiomtech digital agency",
+    "xiomtech Software Development Company ",
     "xiom",
     "xiom tech",
     "axiom tech",
@@ -86,18 +86,18 @@ export const metadata: Metadata = {
     "fintech development",
     "edtech solutions",
     // Geographic keywords
-    "digital agency Bangladesh",
+    "Software Development Company  Bangladesh",
     "software company Dhaka",
     "web development Dubai",
     "IT company UAE",
     "software development Saudi Arabia",
     "tech company Qatar",
-    "best digital agency South Asia",
+    "best Software Development Company  South Asia",
     // Authority keywords
     "algorithmic revenue engineering",
     "entity SEO agency",
     "top software development firm",
-    "award-winning digital agency",
+    "award-winning Software Development Company ",
     "enterprise B2B development",
     "startup MVP development",
     // Product keywords
@@ -118,14 +118,14 @@ export const metadata: Metadata = {
     "education management system",
     "ticketing system software",
     // #1 Agency ranking keywords
-    "best digital agency in the world",
-    "number 1 digital agency",
+    "best Software Development Company  in the world",
+    "number 1 Software Development Company ",
     "#1 software company",
     "top agency Saudi Arabia",
     "best IT company Dubai",
     "number one tech company Qatar",
     "best software company Asia",
-    "top digital agency Middle East",
+    "top Software Development Company  Middle East",
     "best web development company GCC",
     "leading tech firm Bangladesh",
     "top rated software agency",
@@ -156,24 +156,24 @@ export const metadata: Metadata = {
     url: BASE_URL,
     siteName: "XiomTech",
     title:
-      "XiomTech —  Global Digital Agency | Web Development, SaaS & AI Solutions",
+      "XiomTech —  Global Software Development Company  | Web Development, SaaS & AI Solutions",
     description:
-      "The #1 digital agency building enterprise-grade web apps, SaaS platforms & AI solutions. Home of XiomPOS, XiomHRM, XiomAccounts, XiomEdu, XiomCare & XiomTickets. Trusted by 50+ firms across Saudi Arabia, Dubai, Qatar & Asia.",
+      "The #1 Software Development Company  building enterprise-grade web apps, SaaS platforms & AI solutions. Home of XiomPOS, XiomHRM, XiomAccounts, XiomEdu, XiomCare & XiomTickets. Trusted by 50+ firms across Saudi Arabia, Dubai, Qatar & Asia.",
     images: [
       {
         url: `${BASE_URL}/logo.webp`,
         width: 512,
         height: 512,
-        alt: "XiomTech -  Global Digital Agency Logo",
+        alt: "XiomTech -  Global Software Development Company  Logo",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title:
-      "XiomTech —  Global Digital Agency | Web Development, SaaS & AI Solutions",
+      "XiomTech —  Global Software Development Company  | Web Development, SaaS & AI Solutions",
     description:
-      "The #1 digital agency — XiomPOS, XiomHRM, XiomAccounts & more. Enterprise web apps, SaaS & AI solutions. Serving Saudi Arabia, Dubai, Qatar, Asia & beyond.",
+      "The #1 Software Development Company  — XiomPOS, XiomHRM, XiomAccounts & more. Enterprise web apps, SaaS & AI solutions. Serving Saudi Arabia, Dubai, Qatar, Asia & beyond.",
     images: [`${BASE_URL}/logo.webp`],
     creator: "@xiomtech",
   },

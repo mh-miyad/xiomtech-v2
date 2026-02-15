@@ -8,7 +8,7 @@
 
 ## 1. What Is This Project?
 
-XiomTech v2 is the **second-generation corporate website** for **XiomTech**, a digital agency specializing in web development, SaaS platforms, ERP systems, POS solutions, and UI/UX design. The site is being rebuilt from scratch using a modern React/Next.js stack with premium animations and a polished, agency-style design language.
+XiomTech v2 is the **second-generation corporate website** for **XiomTech**, a Software Development Company specializing in web development, SaaS platforms, ERP systems, POS solutions, and UI/UX design. The site is being rebuilt from scratch using a modern React/Next.js stack with premium animations and a polished, agency-style design language.
 
 ---
 

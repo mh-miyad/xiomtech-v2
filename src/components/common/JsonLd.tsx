@@ -38,7 +38,7 @@ const organizationSchema = {
   },
   image: `${BASE_URL}/logo.webp`,
   description:
-    "XiomTech — the #1 digital agency and algorithmic revenue engineering firm. We engineer enterprise-grade web applications, SaaS platforms, AI-powered solutions, mobile apps, and custom software. Home of XiomPOS, XiomHRM, XiomAccounts, XiomEdu, XiomCare & XiomTickets — a complete product ecosystem built on XiomOS. Trusted by 50+ global firms across Saudi Arabia, Dubai, Qatar, Asia & beyond.",
+    "XiomTech — the #1 Software Development Company  and algorithmic revenue engineering firm. We engineer enterprise-grade web applications, SaaS platforms, AI-powered solutions, mobile apps, and custom software. Home of XiomPOS, XiomHRM, XiomAccounts, XiomEdu, XiomCare & XiomTickets — a complete product ecosystem built on XiomOS. Trusted by 50+ global firms across Saudi Arabia, Dubai, Qatar, Asia & beyond.",
   foundingDate: "2024",
   founder: {
     "@type": "Person",
@@ -122,7 +122,7 @@ const websiteSchema = {
   url: BASE_URL,
   name: "XiomTech",
   description:
-    "Global  digital agency delivering enterprise-grade web development, SaaS platforms, AI solutions, and custom software.",
+    "Global  Software Development Company  delivering enterprise-grade web development, SaaS platforms, AI solutions, and custom software.",
   publisher: { "@id": `${BASE_URL}/#organization` },
   potentialAction: {
     "@type": "SearchAction",
@@ -138,14 +138,14 @@ const websiteSchema = {
 const serviceSchema = {
   "@type": "ProfessionalService",
   "@id": `${BASE_URL}/#service`,
-  name: "XiomTech Digital Agency",
+  name: "XiomTech Software Development Company ",
   image: `${BASE_URL}/logo.webp`,
   url: BASE_URL,
   telephone: "+880-1822-830775",
   email: "info.xiomtech@gmail.com",
   priceRange: "$$$",
   description:
-    "Full-stack digital agency offering web development, SaaS platforms, mobile apps, AI integrations, and UI/UX design. Trusted by businesses in Bangladesh, UAE, Saudi Arabia, Qatar, and beyond.",
+    "Full-stack Software Development Company  offering web development, SaaS platforms, mobile apps, AI integrations, and UI/UX design. Trusted by businesses in Bangladesh, UAE, Saudi Arabia, Qatar, and beyond.",
   areaServed: [
     { "@type": "Country", name: "Bangladesh" },
     { "@type": "Country", name: "United Arab Emirates" },

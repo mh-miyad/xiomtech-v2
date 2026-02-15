@@ -10,6 +10,7 @@ const countryData: Record<
     flag: string;
     currency: string;
     highlights: string[];
+    localContext: string;
   }
 > = {
   bangladesh: {
@@ -22,6 +23,8 @@ const countryData: Record<
       "Full Bengali language interface",
       "Offline mode for low-connectivity areas",
     ],
+    localContext:
+      "Our solutions are built for the Bangladeshi market from the ground up. XiomPOS supports Mushak 6.3 VAT challan generation required by the National Board of Revenue (NBR), and integrates directly with bKash, Nagad, and Rocket mobile payment gateways — the dominant payment channels for retail and restaurant businesses in Dhaka, Chittagong, and across the country. We also support NBR e-filing and automated VAT return preparation to keep your business fully compliant.",
   },
   uae: {
     displayName: "United Arab Emirates",
@@ -29,10 +32,12 @@ const countryData: Record<
     flag: "🇦🇪",
     currency: "AED",
     highlights: [
-      "VAT-ready billing & compliance",
+      "FTA VAT-compliant billing & invoicing",
       "Arabic & English bilingual support",
-      "Cloud-first infrastructure on AWS Middle East",
+      "Cloud-first infrastructure on AWS Middle East (Bahrain)",
     ],
+    localContext:
+      "XiomTech solutions are purpose-built for the UAE market. We ensure full compliance with the Federal Tax Authority (FTA) 5% VAT regulations, including Tax Registration Number (TRN) validation on every invoice. Our POS and ERP systems integrate with popular Dubai payment gateways like Network International and Telr, and support Arabic/English bilingual interfaces critical for businesses operating in Dubai, Abu Dhabi, Sharjah, and across the Emirates. Infrastructure runs on AWS Middle East (Bahrain) for ultra-low latency and DIFC/ADGM data residency compliance.",
   },
   "saudi-arabia": {
     displayName: "Saudi Arabia",
@@ -40,10 +45,12 @@ const countryData: Record<
     flag: "🇸🇦",
     currency: "SAR",
     highlights: [
-      "ZATCA e-invoicing compliant",
+      "ZATCA Phase 2 e-invoicing compliant",
       "Arabic RTL interface support",
-      "Enterprise-grade ERP & POS solutions",
+      "Saudi Vision 2030 digital transformation alignment",
     ],
+    localContext:
+      "XiomTech is fully aligned with Saudi Arabia's digital transformation agenda under Vision 2030. Our POS and ERP systems are ZATCA Phase 2 (Fatoorah) e-invoicing compliant, generating QR-coded tax invoices with UUID, cryptographic stamps, and XML reporting as mandated by the Zakat, Tax and Customs Authority. We integrate with SADAD for bill payments and support Mada debit card processing. All systems feature full Arabic RTL interfaces and are hosted on regional cloud infrastructure for compliance with Saudi data localization requirements.",
   },
   qatar: {
     displayName: "Qatar",
@@ -53,8 +60,10 @@ const countryData: Record<
     highlights: [
       "Custom ERP for hospitality & retail",
       "Multilingual support (Arabic/English)",
-      "Cloud solutions with regional compliance",
+      "QCB regulatory compliance",
     ],
+    localContext:
+      "Our enterprise solutions support Qatar's National Vision 2030 digital economy goals. XiomTech systems comply with Qatar Central Bank (QCB) payment regulations and integrate with NAPS (National Payment System) for seamless domestic transactions. We deliver tailored hospitality and retail ERP solutions for businesses in Doha and across Qatar, with Arabic/English bilingual interfaces and cloud hosting that meets Qatar Financial Centre (QFC) data compliance standards.",
   },
   indonesia: {
     displayName: "Indonesia",
@@ -64,8 +73,10 @@ const countryData: Record<
     highlights: [
       "Aplikasi Kasir (POS) for retail & F&B",
       "Bahasa Indonesia interface",
-      "Scalable cloud solutions for growing businesses",
+      "DJP e-Faktur tax integration",
     ],
+    localContext:
+      "XiomTech delivers solutions tailored for Indonesia's rapidly growing digital economy. Our POS systems (Aplikasi Kasir) integrate with DJP e-Faktur for automated tax invoice generation as required by the Direktorat Jenderal Pajak. We support popular Indonesian digital wallets including GoPay, OVO, DANA, and ShopeePay, and comply with OJK (Otoritas Jasa Keuangan) fintech regulations. Our systems feature full Bahasa Indonesia interfaces and are optimized for businesses across Jakarta, Surabaya, Bandung, and the wider Indonesian archipelago.",
   },
   turkey: {
     displayName: "Turkey",
@@ -73,10 +84,12 @@ const countryData: Record<
     flag: "🇹🇷",
     currency: "TRY",
     highlights: [
-      "E-commerce integration for export businesses",
+      "e-Fatura / e-Arşiv electronic invoicing",
       "Turkish language interface (Yazılım Çözümleri)",
       "Manufacturing & B2B software solutions",
     ],
+    localContext:
+      "XiomTech solutions are built to comply with Turkey's strict electronic invoicing requirements. Our ERP and POS systems support e-Fatura and e-Arşiv Fatura as mandated by the Turkish Revenue Administration (GİB — Gelir İdaresi Başkanlığı), including automated XML generation and GİB portal submission. We integrate with popular Turkish payment processors including iyzico and Papara, and provide full Turkish language interfaces. Our solutions serve manufacturing, export, and B2B businesses across Istanbul, Ankara, and İzmir.",
   },
   egypt: {
     displayName: "Egypt",
@@ -84,10 +97,12 @@ const countryData: Record<
     flag: "🇪🇬",
     currency: "EGP",
     highlights: [
-      "Arabic-first software solutions",
+      "ETA e-invoicing compliant",
       "Hospital management (XiomCare) for healthcare",
-      "Affordable pricing for SMEs",
+      "Fawry & Vodafone Cash integration",
     ],
+    localContext:
+      "XiomTech delivers digital solutions purpose-built for the Egyptian market. Our systems comply with the Egyptian Tax Authority (ETA) mandatory e-invoicing requirements, generating signed electronic invoices with the required QR codes and digital stamps. We integrate with Fawry — Egypt's leading electronic payment network — and Vodafone Cash for mobile payments, critical for reaching customers across Cairo, Alexandria, and rural Egypt. XiomCare, our hospital management platform, is especially tailored for Egyptian healthcare providers navigating ITIDA (Information Technology Industry Development Agency) digital compliance.",
   },
   nigeria: {
     displayName: "Nigeria",
@@ -95,10 +110,12 @@ const countryData: Record<
     flag: "🇳🇬",
     currency: "NGN",
     highlights: [
-      "Hospital management software (XiomCare)",
-      "School management (XiomEdu) for education sector",
+      "FIRS tax compliance ready",
+      "Paystack & Flutterwave payment integration",
       "Reliable offline-capable POS system",
     ],
+    localContext:
+      "XiomTech solutions are designed to thrive in Nigeria's dynamic business environment. Our POS and accounting systems support FIRS (Federal Inland Revenue Service) tax compliance, including automated VAT calculations and withholding tax reports. We integrate natively with Paystack and Flutterwave — Nigeria's leading payment processors — and support offline-first architecture critical for businesses in Lagos, Abuja, and across Nigeria where internet connectivity can be intermittent. XiomEdu serves the growing Nigerian edtech sector, and XiomCare powers hospital management within the CBN (Central Bank of Nigeria) fintech regulatory framework.",
   },
   oman: {
     displayName: "Oman",
@@ -106,10 +123,12 @@ const countryData: Record<
     flag: "🇴🇲",
     currency: "OMR",
     highlights: [
-      "VAT-compliant business solutions",
-      "Arabic & English bilingual software",
+      "Oman Tax Authority VAT compliance",
+      "thawani & OmanNet payment integration",
       "Enterprise ERP & custom development",
     ],
+    localContext:
+      "XiomTech delivers enterprise solutions tailored for the Omani market. Our POS and ERP systems are fully compliant with the Oman Tax Authority's VAT regulations, including automated 5% VAT calculation and tax return preparation. We integrate with thawani and OmanNet payment gateways for seamless domestic transactions, and provide Arabic/English bilingual interfaces. Our solutions serve businesses across Muscat and throughout Oman, with cloud hosting that meets Information Technology Authority (ITA) Oman data compliance and digital governance requirements.",
   },
 };
 
@@ -195,6 +214,16 @@ export default async function CountryPage({ params }: Props) {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Local Market Expertise */}
+      <div className="max-w-3xl mx-auto mb-16">
+        <h2 className="text-2xl font-bold text-gray-900 mb-6 font-[family-name:var(--font-syne)] text-center">
+          Our Expertise in the {data.displayName} Market
+        </h2>
+        <p className="text-gray-600 leading-relaxed text-base">
+          {data.localContext}
+        </p>
       </div>
 
       {/* Products */}

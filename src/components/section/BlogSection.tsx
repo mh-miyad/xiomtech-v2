@@ -63,7 +63,7 @@ export default function BlogSection() {
       {/* Header */}
       <div
         data-blog-header
-        className="px-5 md:px-8 lg:px-16 mb-12 md:mb-16 max-w-7xl mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-6"
+        className="px-5 md:px-8 lg:px-16 mb-12 md:mb-16  mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-6"
       >
         <div>
           <span className="inline-block text-[11px] font-semibold text-blue-600 border border-blue-500/30 rounded-full px-4 py-1.5 tracking-wide mb-5">

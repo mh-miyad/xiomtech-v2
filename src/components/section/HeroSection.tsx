@@ -194,20 +194,14 @@ const HeroSection = () => {
           </span>
         </h1>
 
-        {/* SEO subtitle */}
-        <p className="sr-only">
-          XiomTech — Best Software Company in Bangladesh. Creators of XiomPOS,
-          the #1 POS system for retail and restaurants in Dhaka, Dubai, and
-          Saudi Arabia.
-        </p>
-
         {/* Sub-headline */}
         <p
           data-hero-sub
           className="mt-4 md:mt-7 text-base sm:text-lg text-gray-700 max-w-xl leading-relaxed opacity-0"
         >
-          Transforming ideas into high-performance SaaS platforms and custom
-          digital experiences for businesses across the globe.
+          XiomTech — the leading software company from Bangladesh, engineering
+          enterprise-grade SaaS platforms, POS systems, and custom digital
+          products for businesses across Dubai, Saudi Arabia, and beyond.
         </p>
 
         {/* CTA buttons */}

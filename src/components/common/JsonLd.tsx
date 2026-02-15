@@ -24,7 +24,7 @@ const organizationSchema = {
     "XioTech",
     "XimTech",
     "Xiom Digital",
-    "Xiom Agency",
+
     "Xiom Software",
     "XiomTech BD",
     "XiomTech Bangladesh",
@@ -227,7 +227,7 @@ const serviceSchema = {
               "@type": "Service",
               name: "UI/UX Design",
               description:
-                "Pixel-perfect, user-centered interface design that converts visitors into customers.",
+                "Enterprise-grade UI/UX design systems for scalable SaaS products, backed by data-driven usability research and conversion optimization.",
             },
           },
           {
@@ -236,7 +236,7 @@ const serviceSchema = {
               "@type": "Service",
               name: "Cloud Architecture & DevOps",
               description:
-                "Scalable cloud infrastructure on AWS, Google Cloud, and Vercel with CI/CD pipelines and containerized deployments.",
+                "Scalable cloud infrastructure on AWS, Google Cloud, and Vercel with CI/CD pipelines, containerized deployments, and 99.9% uptime SLA.",
             },
           },
         ],

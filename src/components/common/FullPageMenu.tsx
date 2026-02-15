@@ -32,6 +32,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ComponentType, SVGProps } from "react";
 import { useCallback, useEffect, useRef } from "react";
+import { ShimmerButton } from "../ui/shimmer-button";
 import Logo from "./Logo";
 
 /* ── Types ── */
@@ -323,15 +324,16 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
             {/* Social icons */}
             <div className="hidden md:flex items-center gap-2">
               {socials.map((s) => (
-                <a
+                <Link
                   key={s.label}
                   href={s.href}
+                  target="_blank"
                   data-menu-social
                   className="opacity-0 size-10 flex items-center justify-center rounded-full border border-gray-200 text-gray-500 hover:text-blue-600 hover:border-blue-300 transition-colors duration-200"
                   aria-label={s.label}
                 >
                   <s.icon size={18} stroke={1.5} />
-                </a>
+                </Link>
               ))}
             </div>
 
@@ -340,7 +342,7 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
               data-menu-close
               type="button"
               onClick={onClose}
-              className="opacity-0 size-11 md:size-12 flex items-center justify-center rounded-full bg-gray-100 hover:bg-red-50 hover:text-red-500 text-gray-700 transition-colors duration-200"
+              className="opacity-0 size-11 md:size-12 flex items-center justify-center rounded-full border-2 hover:bg-red-50 text-red-500  transition-colors duration-200"
               aria-label="Close menu"
             >
               <IconX size={22} stroke={1.5} />
@@ -539,18 +541,20 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
             </div>
 
             {/* CTA */}
-            <a
-              href="https://wa.me/8801822830775"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-blue-700 transition-colors duration-300"
-            >
-              Start a Project
-              <IconArrowRight
-                size={16}
-                className="group-hover:translate-x-1 transition-transform duration-300"
-              />
-            </a>
+            <ShimmerButton variant="primary">
+              <Link
+                href="https://wa.me/8801822830775"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center  gap-1 justify-center py-1"
+              >
+                Start a Project
+                <IconArrowRight
+                  size={16}
+                  className="group-hover:translate-x-1 transition-transform duration-300"
+                />
+              </Link>
+            </ShimmerButton>
           </div>
 
           {/* Flags + locations + copyright row */}
@@ -561,7 +565,10 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
                 Serving
               </span>
               {countries.map((c) => (
-                <span key={c.name} className="inline-flex items-center gap-1">
+                <span
+                  key={c.name}
+                  className="inline-flex flex-wrap items-center gap-1"
+                >
                   <Image
                     src={c.flag}
                     alt={c.name}

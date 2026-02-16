@@ -8,7 +8,19 @@ import { useEffect, useRef } from "react";
 gsap.registerPlugin(ScrollTrigger);
 
 /* ── Terms Sections ── */
-const sections = [
+
+type TermsContent = {
+  text: string;
+  subtitle?: string;
+  list?: string[];
+};
+
+type TermsSection = {
+  title: string;
+  content: TermsContent[];
+};
+
+const sections: TermsSection[] = [
   {
     title: "1. Acceptance of Terms",
     content: [
@@ -209,7 +221,7 @@ export default function TermsOfServicePage() {
             trigger: "[data-terms-section]",
             start: "top 85%",
           },
-        }
+        },
       );
     }, sectionRef);
 
@@ -253,7 +265,7 @@ export default function TermsOfServicePage() {
               </h2>
               <div className="space-y-4">
                 {section.content.map((block, i) => (
-                  <div key={i}>
+                  <div key={Number(i)}>
                     {block?.subtitle && (
                       <h3 className="text-sm font-bold text-gray-800 mb-1.5">
                         {block.subtitle}
@@ -266,7 +278,7 @@ export default function TermsOfServicePage() {
                       <ul className="mt-2.5 space-y-1.5">
                         {block.list.map((item, j) => (
                           <li
-                            key={j}
+                            key={Number(i) + Number(j)}
                             className="flex items-start gap-2.5 text-sm text-gray-500"
                           >
                             <span className="size-1.5 rounded-full bg-blue-600 mt-1.5 shrink-0" />

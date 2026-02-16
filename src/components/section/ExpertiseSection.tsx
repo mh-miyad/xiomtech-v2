@@ -368,7 +368,9 @@ export default function ExpertiseSection() {
           ))}
         </div>
         <div className="flex justify-center w-full items-center  mt-10">
-          <ShimmerButton variant="outline">Learn More </ShimmerButton>
+          <ShimmerButton variant="outline" className="px-5">
+            Learn More{" "}
+          </ShimmerButton>
         </div>
       </div>
     </section>

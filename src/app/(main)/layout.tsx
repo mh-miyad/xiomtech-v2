@@ -1,7 +1,10 @@
-import JsonLd from "@/components/common/JsonLd";
+import Footer from "@/components/common/Footer";
+import LoadingScreen from "@/components/common/LoadingScreen";
+import Navbar from "@/components/common/Navbar";
+import SmoothScroll from "@/components/common/SmoothScroll";
 import type { Metadata } from "next";
 import { Inter, Syne } from "next/font/google";
-import "./globals.css";
+
 
 const syne = Syne({
   variable: "--font-syne",
@@ -131,37 +134,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        {/* DNS Prefetch & Preconnect for faster external resource loading */}
-        <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
-        <link
-          rel="preconnect"
-          href="https://cdn.jsdelivr.net"
-          crossOrigin="anonymous"
-        />
-        <link rel="dns-prefetch" href="https://flagcdn.com" />
-        <link
-          rel="preconnect"
-          href="https://flagcdn.com"
-          crossOrigin="anonymous"
-        />
-        <link rel="dns-prefetch" href="https://i.pravatar.cc" />
-        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-
-        {/* Structured Data (JSON-LD) */}
-        <JsonLd />
-      </head>
-      <body className={`${syne.variable} ${inter.variable} antialiased`}>
-      
+    <>
+      <div className={`${syne.variable} ${inter.variable} antialiased`}>
+        <LoadingScreen />
+        <SmoothScroll>
+          <Navbar />
           {children}
-   
-      </body>
-    </html>
+          <Footer />
+        </SmoothScroll>
+      </div>
+    </>
   );
 }

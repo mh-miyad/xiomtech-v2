@@ -3,6 +3,7 @@ import { DirectionProvider } from "@/components/ui/direction";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import type { Metadata } from "next";
 import { Inter, Noto_Sans_Arabic, Syne } from "next/font/google";
+import { Toaster } from "sonner";
 import "./globals.css";
 const syne = Syne({
   variable: "--font-syne",
@@ -163,7 +164,10 @@ export default function RootLayout({
       </head>
       <body className={`${syne.variable} ${inter.variable} antialiased`}>
         <DirectionProvider dir="ltr">
-          <TooltipProvider>{children}</TooltipProvider>
+          <TooltipProvider>
+            {children}
+            <Toaster />
+          </TooltipProvider>
         </DirectionProvider>
       </body>
     </html>

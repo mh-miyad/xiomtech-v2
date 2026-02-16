@@ -6,7 +6,8 @@
       "Bash(bun pm ls:*)",
       "Bash(bun add:*)",
       "Bash(npx shadcn@latest add:*)",
-      "Bash(node -e:*)"
+      "Bash(node -e:*)",
+      "Bash(ls:*)"
     ]
   }
 }

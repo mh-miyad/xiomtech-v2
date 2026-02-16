@@ -1,7 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { createBlogPostAction } from "@/app/actions/blog";
 import BlogEditor from "@/components/common/Blogeditor";
 import { Button } from "@/components/ui/button";
 import {
@@ -21,7 +20,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { type AdminBlogPost, saveAdminPost, slugify } from "@/lib/blog-store";
+import { type AdminBlogPost, slugify } from "@/lib/blog-store";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { toast } from "sonner";
 
 const CATEGORIES = [
   "SaaS",
@@ -68,7 +70,7 @@ const initialForm: FormState = {
 export default function CreateBlogPage() {
   const router = useRouter();
   const [form, setForm] = useState<FormState>(initialForm);
-
+  const [isPending, setIsPending] = useState(false);
   const update = (field: keyof FormState, value: string) => {
     setForm((f) => ({ ...f, [field]: value }));
   };
@@ -82,9 +84,9 @@ export default function CreateBlogPage() {
     }));
   };
 
-  const savePost = (status: "draft" | "published") => {
+  const savePost = async (status: "draft" | "published") => {
     if (!form.title.trim()) return;
-
+    setIsPending(true);
     const now = new Date();
     const post: AdminBlogPost = {
       id: Date.now().toString(),
@@ -112,9 +114,15 @@ export default function CreateBlogPage() {
       createdAt: now.toISOString(),
       updatedAt: now.toISOString(),
     };
+    const result = await createBlogPostAction(post);
+    setIsPending(false); // Stop Loading
 
-    saveAdminPost(post);
-    router.push("/admin/blog");
+    if (result.success) {
+      toast(result.message);
+      router.push("/admin/blog");
+    } else {
+      toast(result.error);
+    }
   };
 
   return (
@@ -179,9 +187,7 @@ export default function CreateBlogPage() {
 
               <div className="space-y-2">
                 <Label>Content</Label>
-                <BlogEditor
-                  onChange={(html) => update("content", html)}
-                />
+                <BlogEditor onChange={(html) => update("content", html)} />
               </div>
             </CardContent>
           </Card>

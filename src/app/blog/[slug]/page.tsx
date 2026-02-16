@@ -1,3 +1,4 @@
+import ArticleSchema from "@/components/schema/ArticleSchema";
 import ContactCTA from "@/components/section/ContactCTA";
 import FAQSection from "@/components/section/FAQSection";
 import { blogPosts } from "@/data/blogs";
@@ -27,6 +28,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: post.excerpt,
       images: [{ url: post.image, width: 800, height: 500 }],
       type: "article",
+    },
+    alternates: {
+      canonical: `/blog/${post.slug}`,
     },
   };
 }
@@ -90,6 +94,13 @@ export default async function BlogPostPage({ params }: Props) {
   return (
     <main>
       {/* Hero header */}
+      <ArticleSchema
+        headline={post.title}
+        description={post.excerpt}
+        image={post.image}
+        datePublished={post.date}
+        author={{ name: post.author.name }}
+      />
       <div className="pt-28 pb-10 px-5 md:px-8 lg:px-16 max-w-[1440px] mx-auto">
         <Link
           href="/blog"

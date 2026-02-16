@@ -8,6 +8,13 @@ import ProjectShowcase from "@/components/section/ProjectShowcase";
 import ServiceSection from "@/components/section/ServiceSection";
 import TechStackSection from "@/components/section/TechStackSection";
 import TestimonialSection from "@/components/section/TestimonialSection";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function Home() {
   return (

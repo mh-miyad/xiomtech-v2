@@ -1,3 +1,4 @@
+import ProductSchema from "@/components/schema/ProductSchema";
 import {
   IconChartBar,
   IconDeviceMobile,
@@ -30,6 +31,9 @@ export const metadata: Metadata = {
     description:
       "XiomPOS — the #1 POS system in Bangladesh for Retail & Restaurants. VAT compliant, offline ready, Bangla interface.",
     type: "website",
+  },
+  alternates: {
+    canonical: "/best-pos-software-in-bangladesh",
   },
 };
 
@@ -75,6 +79,23 @@ const features = [
 export default function BestPosPage() {
   return (
     <main className="pt-28 pb-20 px-6">
+      <ProductSchema
+        name="XiomPOS - Best POS Software in Bangladesh"
+        description="XiomPOS is the #1 rated POS software in Bangladesh for Retail, Grocery, and Restaurants. VAT compliant, offline support, and easy inventory management."
+        image="https://xiomtech.vercel.app/xiom/xiompos.png"
+        rating={{
+          ratingValue: "4.9",
+          reviewCount: "150",
+          bestRating: "5",
+          worstRating: "1",
+        }}
+        offers={{
+          price: "15000",
+          priceCurrency: "BDT",
+          url: "https://xiomtech.vercel.app/products/xiompos",
+          availability: "https://schema.org/InStock",
+        }}
+      />
       {/* Hero */}
       <div className="max-w-4xl mx-auto text-center mb-16">
         <span className="inline-block text-sm font-semibold text-blue-600 bg-blue-50 border border-blue-200 rounded-full px-4 py-1.5 mb-6">

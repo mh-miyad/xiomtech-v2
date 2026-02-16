@@ -1,3 +1,4 @@
+import ServiceSchema from "@/components/schema/ServiceSchema";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -157,6 +158,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: `XiomTech helps ${data.adjective} companies scale with XiomPOS, custom ERP, and digital solutions.`,
       type: "website",
     },
+    alternates: {
+      canonical: `/solutions/${country}`,
+    },
   };
 }
 
@@ -183,6 +187,12 @@ export default async function CountryPage({ params }: Props) {
 
   return (
     <main className="pt-28 pb-20 px-6">
+      <ServiceSchema
+        name={`XiomTech Software Solutions - ${data.displayName}`}
+        description={`Enterprise software development, POS, and SaaS solutions tailored for the ${data.displayName} market. ${data.localContext}`}
+        url={`https://xiomtech.vercel.app/solutions/${country}`}
+        areaServed={[{ "@type": "Country", name: data.displayName }]}
+      />
       {/* Hero */}
       <div className="max-w-4xl mx-auto text-center mb-16">
         <span className="text-5xl mb-4 block">{data.flag}</span>

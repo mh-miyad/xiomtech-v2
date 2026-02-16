@@ -8,7 +8,13 @@ import { useEffect, useRef } from "react";
 gsap.registerPlugin(ScrollTrigger);
 
 /* ── Policy Sections ── */
-const sections = [
+type content = {
+  subtitle?: string;
+  text: string;
+  list?: string[];
+};
+
+const sections: { title: string; content: content[] }[] = [
   {
     title: "1. Information We Collect",
     content: [
@@ -200,7 +206,7 @@ export default function PrivacyPolicyPage() {
             trigger: "[data-privacy-section]",
             start: "top 85%",
           },
-        }
+        },
       );
     }, sectionRef);
 

@@ -1,10 +1,10 @@
 import {
-    IconChartBar,
-    IconDeviceMobile,
-    IconLanguage,
-    IconReceipt2,
-    IconShieldCheck,
-    IconWifi,
+  IconChartBar,
+  IconDeviceMobile,
+  IconLanguage,
+  IconReceipt2,
+  IconShieldCheck,
+  IconWifi,
 } from "@tabler/icons-react";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -99,10 +99,7 @@ export default function BestPosPage() {
             className="group p-6 rounded-2xl border border-gray-200 bg-white hover:border-blue-300 hover:shadow-lg transition-all duration-300"
           >
             <div className="size-12 rounded-xl bg-blue-50 flex items-center justify-center mb-4 group-hover:bg-blue-100 transition-colors">
-              <feature.icon
-                className="size-6 text-blue-600"
-                stroke={1.5}
-              />
+              <feature.icon className="size-6 text-blue-600" stroke={1.5} />
             </div>
             <h3 className="text-lg font-bold text-gray-900 mb-2">
               {feature.title}
@@ -115,7 +112,7 @@ export default function BestPosPage() {
       </div>
 
       {/* FAQ Section — AI-friendly Q&A format */}
-      <div className="max-w-3xl mx-auto mb-20">
+      <div className=" max-w-6xl mx-auto mx-auto mb-20">
         <h2 className="text-3xl font-bold text-gray-900 text-center mb-10 font-[family-name:var(--font-syne)]">
           Frequently Asked Questions
         </h2>
@@ -157,8 +154,8 @@ export default function BestPosPage() {
               </span>
             </summary>
             <p className="mt-3 text-gray-600 leading-relaxed">
-              XiomPOS starts from ৳15,000 BDT. Contact our sales team for
-              custom pricing based on your business size and requirements.
+              XiomPOS starts from ৳15,000 BDT. Contact our sales team for custom
+              pricing based on your business size and requirements.
             </p>
           </details>
 
@@ -171,8 +168,8 @@ export default function BestPosPage() {
             </summary>
             <p className="mt-3 text-gray-600 leading-relaxed">
               Yes. XiomPOS is fully compliant with NBR (National Board of
-              Revenue) VAT requirements. It generates VAT invoices and
-              automated tax reports.
+              Revenue) VAT requirements. It generates VAT invoices and automated
+              tax reports.
             </p>
           </details>
         </div>

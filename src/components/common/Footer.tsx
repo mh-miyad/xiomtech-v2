@@ -28,6 +28,7 @@ import {
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
+import Link from "next/link";
 import type { ComponentType, SVGProps } from "react";
 import { useEffect, useRef } from "react";
 
@@ -84,12 +85,12 @@ const industries: MenuItem[] = [
 ];
 
 const explore = [
-  "Case Studies",
-  "Blog & Insights",
-  "Careers",
-  "Testimonials",
-  "Events & Webinars",
-  "Partner Program",
+  { name: "Blog & Insights", href: "/blog" },
+  { name: "About Us", href: "/about" },
+  { name: "Pricing", href: "/pricing" },
+  { name: "FAQ", href: "/faq" },
+  { name: "Privacy Policy", href: "/privacy-policy" },
+  { name: "Terms of Service", href: "/terms-of-service" },
 ];
 
 const countries = [
@@ -339,14 +340,14 @@ const Footer = () => {
 
           <div className="flex flex-col items-start md:items-end gap-4">
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-5">
-              <a
+              <Link
                 href="mailto:info.xiomtech@gmail.com"
                 className="flex items-center gap-1.5 text-sm text-white/60 hover:text-white transition-colors duration-200"
               >
                 <IconMail size={16} stroke={1.5} />
                 <span>info.xiomtech@gmail.com</span>
-              </a>
-              <a
+              </Link>
+              <Link
                 href="https://wa.me/8801822830775"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -354,19 +355,19 @@ const Footer = () => {
               >
                 <IconBrandWhatsapp size={16} stroke={1.5} />
                 <span>+880 1822-830775</span>
-              </a>
-              <a
+              </Link>
+              <Link
                 href="tel:+8801822830775"
                 className="flex items-center gap-1.5 text-sm text-white/60 hover:text-white transition-colors duration-200"
               >
                 <IconPhone size={16} stroke={1.5} />
                 <span>+880 1822-830775</span>
-              </a>
+              </Link>
             </div>
 
             <div className="flex items-center gap-2">
               {socials.map((s) => (
-                <a
+                <Link
                   key={s.label}
                   href={s.href}
                   target="_blank"
@@ -375,7 +376,7 @@ const Footer = () => {
                   aria-label={s.label}
                 >
                   <s.icon size={17} stroke={1.5} />
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -391,7 +392,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {services.map((item) => (
                 <li key={item.name}>
-                  <a
+                  <Link
                     href="#"
                     className="flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors duration-200 leading-snug group"
                   >
@@ -400,7 +401,7 @@ const Footer = () => {
                       className="shrink-0 text-white/30 group-hover:text-blue-400 transition-colors duration-200"
                     />
                     {item.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -414,7 +415,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {products.map((item) => (
                 <li key={item.name}>
-                  <a
+                  <Link
                     href="#"
                     className="flex items-center gap-2.5 text-sm text-white/50 hover:text-white transition-colors duration-200 leading-snug group"
                   >
@@ -426,7 +427,7 @@ const Footer = () => {
                       className="size-5 rounded object-contain shrink-0"
                     />
                     <span className="font-medium">{item.name}</span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -440,7 +441,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {industries.map((item) => (
                 <li key={item.name}>
-                  <a
+                  <Link
                     href="#"
                     className="flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors duration-200 leading-snug group"
                   >
@@ -449,7 +450,7 @@ const Footer = () => {
                       className="shrink-0 text-white/30 group-hover:text-blue-400 transition-colors duration-200"
                     />
                     {item.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -462,13 +463,13 @@ const Footer = () => {
             </h4>
             <ul className="space-y-3">
               {explore.map((item) => (
-                <li key={item}>
-                  <a
-                    href="#"
+                <li key={item.name}>
+                  <Link
+                    href={item.href}
                     className="text-sm text-white/50 hover:text-white transition-colors duration-200 leading-snug"
                   >
-                    {item}
-                  </a>
+                    {item.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -508,21 +509,21 @@ const Footer = () => {
       {/* ─── Copyright Bar ─── */}
       <div className="bg-black border-t border-white/10">
         <div className="px-5 md:px-10 lg:px-16 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <a
-            href="#"
+          <Link
+            href="/terms-of-service"
             className="text-white/40 text-xs hover:text-white/70 transition-colors duration-200 font-medium"
           >
             Terms & Conditions
-          </a>
+          </Link>
           <p className="text-white/40 text-xs font-medium text-center">
             &copy; {new Date().getFullYear()} XiomTech. All Rights Reserved.
           </p>
-          <a
-            href="#"
+          <Link
+            href="/privacy-policy"
             className="text-white/40 text-xs hover:text-white/70 transition-colors duration-200 font-medium"
           >
             Privacy Policy
-          </a>
+          </Link>
         </div>
       </div>
 

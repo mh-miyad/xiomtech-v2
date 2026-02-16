@@ -51,11 +51,11 @@ type ProductItem = {
 };
 
 const mainNav = [
-  { name: "Home", href: "#" },
-  { name: "About Us", href: "#" },
-  { name: "Portfolio", href: "#" },
-  { name: "Resources", href: "#" },
-  { name: "Contact Us", href: "#" },
+  { name: "Home", href: "/" },
+  { name: "About Us", href: "/about" },
+  { name: "Pricing", href: "/pricing" },
+  { name: "FAQ", href: "/faq" },
+  { name: "Contact Us", href: "/contact" },
 ];
 
 const services: MenuItem[] = [
@@ -92,12 +92,12 @@ const industries: MenuItem[] = [
 ];
 
 const explore = [
-  "Case Studies",
-  "Blog & Insights",
-  "Careers",
-  "Testimonials",
-  "Events & Webinars",
-  "Partner Program",
+  { name: "Blog & Insights", href: "/blog" },
+  { name: "About Us", href: "/about" },
+  { name: "Pricing", href: "/pricing" },
+  { name: "FAQ", href: "/faq" },
+  { name: "Privacy Policy", href: "/privacy-policy" },
+  { name: "Terms of Service", href: "/terms-of-service" },
 ];
 
 const socials = [
@@ -357,9 +357,10 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
             <div className="lg:w-[22%] lg:border-r lg:border-gray-200/60 lg:pr-6">
               <nav className="flex flex-row flex-wrap lg:flex-col gap-3 lg:gap-1">
                 {mainNav.map((link) => (
-                  <a
+                  <Link
                     key={link.name}
                     href={link.href}
+                    onClick={onClose}
                     data-menu-main-link
                     className="opacity-0 group flex items-center gap-2 font-[family-name:var(--font-syne)] text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 hover:text-blue-600 transition-colors duration-200 py-1.5 lg:py-3"
                   >
@@ -368,7 +369,7 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
                       size={20}
                       className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 text-blue-600"
                     />
-                  </a>
+                  </Link>
                 ))}
               </nav>
             </div>
@@ -388,7 +389,8 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
                     {services.map((item) => (
                       <li key={item.name} data-menu-item className="opacity-0">
                         <Link
-                          href="/"
+                          href="#"
+                          onClick={onClose}
                           className="flex items-center gap-2 text-sm md:text-base text-gray-500 hover:text-blue-600 transition-colors duration-200 leading-snug group"
                         >
                           <item.icon
@@ -413,8 +415,9 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
                   <ul className="space-y-3 md:space-y-3.5">
                     {products.map((item) => (
                       <li key={item.name} data-menu-item className="opacity-0">
-                        <a
+                        <Link
                           href="#"
+                          onClick={onClose}
                           className="flex items-center gap-2.5 text-sm md:text-base text-gray-500 hover:text-blue-600 transition-colors duration-200 leading-snug group"
                         >
                           <Image
@@ -425,7 +428,7 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
                             className="size-5 md:size-[22px] rounded object-contain shrink-0"
                           />
                           <span className="font-medium">{item.name}</span>
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -444,6 +447,7 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
                       <li key={item.name} data-menu-item className="opacity-0">
                         <Link
                           href="#"
+                          onClick={onClose}
                           className="flex items-center gap-2 text-sm md:text-base text-gray-500 hover:text-blue-600 transition-colors duration-200 leading-snug group"
                         >
                           <item.icon
@@ -467,12 +471,13 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
                   </h3>
                   <ul className="space-y-3 md:space-y-3.5">
                     {explore.map((item) => (
-                      <li key={item} data-menu-item className="opacity-0">
+                      <li key={item.name} data-menu-item className="opacity-0">
                         <Link
-                          href="#"
+                          href={item.href}
+                          onClick={onClose}
                           className="text-sm md:text-base text-gray-500 hover:text-blue-600 transition-colors duration-200 leading-snug"
                         >
-                          {item}
+                          {item.name}
                         </Link>
                       </li>
                     ))}
@@ -515,14 +520,14 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             {/* Contact row */}
             <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-5 text-[13px] text-gray-600 font-medium">
-              <a
+              <Link
                 href="mailto:info.xiomtech@gmail.com"
                 className="flex items-center gap-1.5 hover:text-blue-600 transition-colors duration-200"
               >
                 <IconMail size={15} stroke={1.5} />
                 <span>info.xiomtech@gmail.com</span>
-              </a>
-              <a
+              </Link>
+              <Link
                 href="https://wa.me/8801822830775"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -530,14 +535,14 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
               >
                 <IconBrandWhatsapp size={15} stroke={1.5} />
                 <span>+880 1822-830775</span>
-              </a>
-              <a
+              </Link>
+              <Link
                 href="tel:+8801822830775"
                 className="flex items-center gap-1.5 hover:text-blue-600 transition-colors duration-200"
               >
                 <IconPhone size={15} stroke={1.5} />
                 <span>+880 1822-830775</span>
-              </a>
+              </Link>
             </div>
 
             {/* CTA */}
@@ -596,14 +601,16 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
           {/* Mobile social icons */}
           <div className="flex md:hidden items-center gap-3 mt-4">
             {socials.map((s) => (
-              <a
+              <Link
                 key={s.label}
                 href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="size-9 flex items-center justify-center rounded-full border border-gray-200 text-gray-500 hover:text-blue-600 hover:border-blue-300 transition-colors duration-200"
                 aria-label={s.label}
               >
                 <s.icon size={17} stroke={1.5} />
-              </a>
+              </Link>
             ))}
           </div>
         </div>

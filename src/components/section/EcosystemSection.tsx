@@ -132,7 +132,7 @@ const MobileConnector = () => (
 
 /* ── Desktop Horizontal Beam Bar ── */
 const HBar = () => (
-  <div className="flex items-center max-w-3xl mx-auto w-full">
+  <div className="flex items-center  max-w-3xl mx-auto  w-full">
     <GDot s={10} />
     <div className="relative flex-1 h-0.5 overflow-hidden mx-0.5">
       <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 via-blue-500/40 to-blue-400/10" />
@@ -203,7 +203,7 @@ const EcosystemSection = () => {
           duration: 0.8,
           ease: "power3.out",
           scrollTrigger: { trigger: "[data-eco-heading]", start: "top 85%" },
-        },
+        }
       );
 
       gsap.fromTo(
@@ -215,7 +215,7 @@ const EcosystemSection = () => {
           duration: 0.8,
           ease: "back.out(1.4)",
           scrollTrigger: { trigger: "[data-eco-hub]", start: "top 85%" },
-        },
+        }
       );
 
       gsap.fromTo(
@@ -228,7 +228,7 @@ const EcosystemSection = () => {
           stagger: 0.08,
           ease: "power3.out",
           scrollTrigger: { trigger: "[data-eco-card]", start: "top 92%" },
-        },
+        }
       );
 
       gsap.fromTo(
@@ -240,12 +240,12 @@ const EcosystemSection = () => {
           stagger: 0.02,
           ease: "back.out(2)",
           scrollTrigger: { trigger: "[data-eco-hub]", start: "top 85%" },
-        },
+        }
       );
 
       /* SVG beam draw-in */
       const drawLines = gsap.utils.toArray(
-        "[data-eco-draw]",
+        "[data-eco-draw]"
       ) as SVGLineElement[];
       drawLines.forEach((line) => {
         const len = line.getTotalLength();
@@ -270,7 +270,7 @@ const EcosystemSection = () => {
           duration: 0.6,
           ease: "power2.out",
           scrollTrigger: { trigger: "[data-eco-hub]", start: "top 85%" },
-        },
+        }
       );
 
       /* Hub pulse */
@@ -335,7 +335,7 @@ const EcosystemSection = () => {
         <p className="text-blue-400 text-sm font-semibold uppercase tracking-[0.2em] mb-3">
           The XiomTech Ecosystem
         </p>
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white font-[family-name:var(--font-syne)] max-w-3xl mx-auto">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white font-[family-name:var(--font-syne)]  max-w-6xl mx-auto mx-auto">
           Everything Connected.{" "}
           <span className="text-blue-400">Powered by XiomOS.</span>
         </h2>
@@ -372,7 +372,7 @@ const EcosystemSection = () => {
 
         {/* Top tree: 3 branches merge down */}
         <div className="py-1">
-          <div className="flex items-end justify-center gap-[28%] max-w-3xl mx-auto w-full">
+          <div className="flex items-end justify-center gap-[28%]  max-w-6xl mx-auto mx-auto w-full">
             <div className="flex flex-col items-center">
               <GDot s={8} />
               <VBeam h={48} />
@@ -410,7 +410,7 @@ const EcosystemSection = () => {
 
         {/* Bottom tree: 1 splits to 3 branches */}
         <div className="py-1">
-          <div className="flex items-start justify-center gap-[28%] max-w-3xl mx-auto w-full">
+          <div className="flex items-start justify-center gap-[28%]  max-w-6xl mx-auto mx-auto w-full">
             <div className="flex flex-col items-center">
               <VBeam h={48} />
               <GDot s={8} />

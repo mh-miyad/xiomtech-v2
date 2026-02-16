@@ -167,13 +167,14 @@ export default async function CountryPage({ params }: Props) {
   if (!data) {
     return (
       <main className="pt-28 pb-20 px-6 text-center">
-        <h1 className="text-3xl font-bold text-gray-900">
-          Country not found
-        </h1>
+        <h1 className="text-3xl font-bold text-gray-900">Country not found</h1>
         <p className="mt-4 text-gray-600">
           Please check the URL and try again.
         </p>
-        <Link href="/" className="text-blue-600 mt-6 inline-block hover:underline">
+        <Link
+          href="/"
+          className="text-blue-600 mt-6 inline-block hover:underline"
+        >
           ← Back to Home
         </Link>
       </main>
@@ -197,7 +198,7 @@ export default async function CountryPage({ params }: Props) {
       </div>
 
       {/* Highlights */}
-      <div className="max-w-3xl mx-auto mb-16">
+      <div className=" max-w-6xl mx-auto mx-auto mb-16">
         <h2 className="text-2xl font-bold text-gray-900 mb-8 font-[family-name:var(--font-syne)] text-center">
           Why businesses in {data.displayName} choose XiomTech
         </h2>
@@ -217,7 +218,7 @@ export default async function CountryPage({ params }: Props) {
       </div>
 
       {/* Local Market Expertise */}
-      <div className="max-w-3xl mx-auto mb-16">
+      <div className=" max-w-6xl mx-auto mx-auto mb-16">
         <h2 className="text-2xl font-bold text-gray-900 mb-6 font-[family-name:var(--font-syne)] text-center">
           Our Expertise in the {data.displayName} Market
         </h2>

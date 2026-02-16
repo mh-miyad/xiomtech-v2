@@ -116,7 +116,7 @@ function AccordionItem({
 
       <div ref={contentRef} className="overflow-hidden h-0">
         <div ref={innerRef} className="pb-6 opacity-0 -translate-y-2">
-          <p className="text-sm md:text-[15px] text-gray-500 leading-relaxed max-w-3xl">
+          <p className="text-sm md:text-[15px] text-gray-500 leading-relaxed  max-w-6xl mx-auto">
             {item.answer}
           </p>
         </div>
@@ -173,7 +173,7 @@ export default function FAQSection() {
 
   return (
     <section ref={sectionRef} className="px-4 md:px-8 lg:px-16 py-20">
-      <div className="max-w-3xl mx-auto">
+      <div className=" max-w-3xl  mx-auto">
         {/* Header */}
         <div data-faq-header className="text-center mb-14">
           <span className="inline-block text-[11px] font-semibold text-blue-600 border border-blue-500/30 rounded-full px-4 py-1.5 tracking-wide mb-5">

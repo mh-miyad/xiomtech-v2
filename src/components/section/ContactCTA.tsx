@@ -14,6 +14,7 @@ import {
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { Marquee } from "../ui/marquee";
 import { ShimmerButton } from "../ui/shimmer-button";
@@ -70,7 +71,7 @@ export default function ContactCTA() {
           stagger: 0.08,
           ease: "power3.out",
           scrollTrigger: { trigger: sectionRef.current, start: "top 75%" },
-        },
+        }
       );
       gsap.fromTo(
         "[data-contact-form]",
@@ -81,7 +82,7 @@ export default function ContactCTA() {
           duration: 0.8,
           ease: "power3.out",
           scrollTrigger: { trigger: sectionRef.current, start: "top 75%" },
-        },
+        }
       );
       gsap.fromTo(
         "[data-contact-banner]",
@@ -92,7 +93,7 @@ export default function ContactCTA() {
           duration: 0.7,
           ease: "power3.out",
           scrollTrigger: { trigger: "[data-contact-banner]", start: "top 90%" },
-        },
+        }
       );
       gsap.fromTo(
         "[data-contact-newsletter] > *",
@@ -107,7 +108,7 @@ export default function ContactCTA() {
             trigger: "[data-contact-newsletter]",
             start: "top 90%",
           },
-        },
+        }
       );
     }, sectionRef);
     return () => ctx.revert();
@@ -181,7 +182,7 @@ export default function ContactCTA() {
                 </p>
 
                 <div className="flex flex-col gap-2 lg:gap-1.5 mt-3">
-                  <a
+                  <Link
                     href="https://wa.me/8801822830775"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -193,13 +194,13 @@ export default function ContactCTA() {
                       className="lg:size-[15px]"
                     />
                     +880 1822-830775
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href="#"
                     className="text-sm lg:text-xs text-blue-400 font-semibold hover:text-blue-300 transition-colors duration-200"
                   >
                     Book a Call Directly
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -344,7 +345,7 @@ export default function ContactCTA() {
       {/* ── Newsletter Section ── */}
       <div
         data-contact-newsletter
-        className="max-w-3xl mx-auto text-center mt-12 md:mt-16 mb-8 md:mb-10 px-4"
+        className=" max-w-6xl mx-auto mx-auto text-center mt-12 md:mt-16 mb-8 md:mb-10 px-4"
       >
         <p className="text-sm md:text-lg text-gray-500 leading-relaxed max-w-2xl mx-auto">
           Say goodbye to outdated enterprise software and welcome the smoother
@@ -355,14 +356,14 @@ export default function ContactCTA() {
         {/* Social icons */}
         <div className="flex items-center justify-center gap-2.5 md:gap-3 mt-6 md:mt-8">
           {socials.map((s) => (
-            <a
+            <Link
               key={s.label}
               href="#"
               className="size-9 md:size-10 flex items-center justify-center rounded-full border border-gray-200 text-gray-500 hover:text-blue-600 hover:border-blue-300 transition-colors duration-200"
               aria-label={s.label}
             >
               <s.icon size={17} stroke={1.5} />
-            </a>
+            </Link>
           ))}
         </div>
 

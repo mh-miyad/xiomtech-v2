@@ -17,9 +17,35 @@ const services = [
     icon: (
       <svg viewBox="0 0 40 40" className="w-10 h-10">
         <circle cx="20" cy="20" r="3.5" fill="#61DAFB" />
-        <ellipse cx="20" cy="20" rx="16" ry="6" stroke="#61DAFB" strokeWidth="1.5" fill="none" />
-        <ellipse cx="20" cy="20" rx="16" ry="6" stroke="#61DAFB" strokeWidth="1.5" fill="none" transform="rotate(60 20 20)" />
-        <ellipse cx="20" cy="20" rx="16" ry="6" stroke="#61DAFB" strokeWidth="1.5" fill="none" transform="rotate(120 20 20)" />
+        <ellipse
+          cx="20"
+          cy="20"
+          rx="16"
+          ry="6"
+          stroke="#61DAFB"
+          strokeWidth="1.5"
+          fill="none"
+        />
+        <ellipse
+          cx="20"
+          cy="20"
+          rx="16"
+          ry="6"
+          stroke="#61DAFB"
+          strokeWidth="1.5"
+          fill="none"
+          transform="rotate(60 20 20)"
+        />
+        <ellipse
+          cx="20"
+          cy="20"
+          rx="16"
+          ry="6"
+          stroke="#61DAFB"
+          strokeWidth="1.5"
+          fill="none"
+          transform="rotate(120 20 20)"
+        />
       </svg>
     ),
   },
@@ -40,14 +66,43 @@ const services = [
             <stop offset="100%" stopColor="#06B6D4" />
           </linearGradient>
         </defs>
-        <path d="M20 4c-1.5 3-5 4-5 8a5 5 0 005 5 5 5 0 005-5c0-4-3.5-5-5-8z" fill="url(#ai-grad)" />
-        <path d="M20 4c1.5 3 5 4 5 8a5 5 0 01-5 5" fill="url(#ai-grad)" opacity="0.6" />
-        <circle cx="20" cy="25" r="8" stroke="url(#ai-grad)" strokeWidth="1.5" fill="none" />
-        <path d="M16 24h8M16 27h8M18 21h4" stroke="url(#ai-grad)" strokeWidth="1.2" strokeLinecap="round" />
+        <path
+          d="M20 4c-1.5 3-5 4-5 8a5 5 0 005 5 5 5 0 005-5c0-4-3.5-5-5-8z"
+          fill="url(#ai-grad)"
+        />
+        <path
+          d="M20 4c1.5 3 5 4 5 8a5 5 0 01-5 5"
+          fill="url(#ai-grad)"
+          opacity="0.6"
+        />
+        <circle
+          cx="20"
+          cy="25"
+          r="8"
+          stroke="url(#ai-grad)"
+          strokeWidth="1.5"
+          fill="none"
+        />
+        <path
+          d="M16 24h8M16 27h8M18 21h4"
+          stroke="url(#ai-grad)"
+          strokeWidth="1.2"
+          strokeLinecap="round"
+        />
         <circle cx="10" cy="8" r="1.5" fill="#8B5CF6" />
-        <path d="M10 5v6M7 8h6" stroke="#8B5CF6" strokeWidth="1" strokeLinecap="round" />
+        <path
+          d="M10 5v6M7 8h6"
+          stroke="#8B5CF6"
+          strokeWidth="1"
+          strokeLinecap="round"
+        />
         <circle cx="32" cy="12" r="1" fill="#06B6D4" />
-        <path d="M32 10v4M30 12h4" stroke="#06B6D4" strokeWidth="0.8" strokeLinecap="round" />
+        <path
+          d="M32 10v4M30 12h4"
+          stroke="#06B6D4"
+          strokeWidth="0.8"
+          strokeLinecap="round"
+        />
       </svg>
     ),
   },
@@ -69,8 +124,19 @@ const services = [
           </linearGradient>
         </defs>
         <path d="M10 12h20l-2 18H12L10 12z" fill="url(#shop-grad)" />
-        <path d="M15 12V9a5 5 0 0110 0v3" stroke="#5E8E3E" strokeWidth="2" fill="none" strokeLinecap="round" />
-        <path d="M18 20v4M22 20v4" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+        <path
+          d="M15 12V9a5 5 0 0110 0v3"
+          stroke="#5E8E3E"
+          strokeWidth="2"
+          fill="none"
+          strokeLinecap="round"
+        />
+        <path
+          d="M18 20v4M22 20v4"
+          stroke="white"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
       </svg>
     ),
   },
@@ -91,12 +157,43 @@ const services = [
             <stop offset="100%" stopColor="#0D47A1" />
           </linearGradient>
         </defs>
-        <rect x="11" y="4" width="18" height="32" rx="4" fill="url(#phone-grad)" />
+        <rect
+          x="11"
+          y="4"
+          width="18"
+          height="32"
+          rx="4"
+          fill="url(#phone-grad)"
+        />
         <rect x="13" y="8" width="14" height="20" rx="1" fill="white" />
         <circle cx="20" cy="33" r="1.5" fill="white" opacity="0.8" />
-        <rect x="17" y="5.5" width="6" height="1.5" rx="0.75" fill="white" opacity="0.5" />
-        <rect x="16" y="12" width="8" height="2" rx="1" fill="#42A5F5" opacity="0.4" />
-        <rect x="16" y="16" width="5" height="2" rx="1" fill="#0D47A1" opacity="0.3" />
+        <rect
+          x="17"
+          y="5.5"
+          width="6"
+          height="1.5"
+          rx="0.75"
+          fill="white"
+          opacity="0.5"
+        />
+        <rect
+          x="16"
+          y="12"
+          width="8"
+          height="2"
+          rx="1"
+          fill="#42A5F5"
+          opacity="0.4"
+        />
+        <rect
+          x="16"
+          y="16"
+          width="5"
+          height="2"
+          rx="1"
+          fill="#0D47A1"
+          opacity="0.3"
+        />
       </svg>
     ),
   },
@@ -115,7 +212,14 @@ const services = [
         <rect x="13" y="18" width="6" height="18" rx="1" fill="#EA4335" />
         <rect x="21" y="12" width="6" height="24" rx="1" fill="#FBBC04" />
         <rect x="29" y="6" width="6" height="30" rx="1" fill="#34A853" />
-        <path d="M8 22L16 16 24 10 32 4" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+        <path
+          d="M8 22L16 16 24 10 32 4"
+          stroke="#1a1a1a"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+        />
         <circle cx="32" cy="4" r="2" fill="#34A853" />
       </svg>
     ),
@@ -156,9 +260,24 @@ const services = [
             <stop offset="100%" stopColor="#FFB84D" />
           </linearGradient>
         </defs>
-        <path d="M30 22a6 6 0 00-5.7-6 8.5 8.5 0 00-16.3 3A6 6 0 008 31h22a6 6 0 000-12v3z" fill="url(#cloud-grad)" />
-        <path d="M16 26l4-5 4 5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-        <path d="M20 21v10" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+        <path
+          d="M30 22a6 6 0 00-5.7-6 8.5 8.5 0 00-16.3 3A6 6 0 008 31h22a6 6 0 000-12v3z"
+          fill="url(#cloud-grad)"
+        />
+        <path
+          d="M16 26l4-5 4 5"
+          stroke="white"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+        />
+        <path
+          d="M20 21v10"
+          stroke="white"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
       </svg>
     ),
   },
@@ -173,14 +292,34 @@ const services = [
     /* Globe — Google multi-color */
     icon: (
       <svg viewBox="0 0 40 40" className="w-10 h-10">
-        <circle cx="20" cy="20" r="14" fill="none" stroke="#4285F4" strokeWidth="1.5" />
-        <ellipse cx="20" cy="20" rx="8" ry="14" fill="none" stroke="#EA4335" strokeWidth="1.2" />
+        <circle
+          cx="20"
+          cy="20"
+          r="14"
+          fill="none"
+          stroke="#4285F4"
+          strokeWidth="1.5"
+        />
+        <ellipse
+          cx="20"
+          cy="20"
+          rx="8"
+          ry="14"
+          fill="none"
+          stroke="#EA4335"
+          strokeWidth="1.2"
+        />
         <path d="M6 20h28" stroke="#FBBC04" strokeWidth="1.2" />
         <path d="M8 13h24" stroke="#34A853" strokeWidth="1" opacity="0.7" />
         <path d="M8 27h24" stroke="#34A853" strokeWidth="1" opacity="0.7" />
         <circle cx="20" cy="20" r="3" fill="#4285F4" opacity="0.3" />
         <circle cx="28" cy="10" r="1.5" fill="#EA4335" />
-        <path d="M28 8v4M26 10h4" stroke="#EA4335" strokeWidth="0.8" strokeLinecap="round" />
+        <path
+          d="M28 8v4M26 10h4"
+          stroke="#EA4335"
+          strokeWidth="0.8"
+          strokeLinecap="round"
+        />
       </svg>
     ),
   },
@@ -239,7 +378,7 @@ export default function ServiceSection() {
       {/* ── Service Cards Grid ── */}
       <div
         ref={gridRef}
-        className="max-w-[1700px] mx-auto px-4 md:px-8 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5"
+        className=" max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5"
       >
         {services.map((service, index) => (
           <div

@@ -1,12 +1,10 @@
 "use client";
+import CTA from "@/components/common/CTA";
 import PageHeader from "@/components/common/PageHeader";
 import FaqSchema from "@/components/schema/FaqSchema";
-import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { IconChevronUp } from "@tabler/icons-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -332,7 +330,7 @@ export default function FAQClient() {
         {/* ── Category Tabs ── */}
         <div
           data-faq-tabs
-          className="max-w-[1700px] mx-auto flex flex-wrap items-center gap-2 mb-10"
+          className=" max-w-7xl mx-auto flex flex-wrap items-center gap-2 mb-10"
         >
           {categories.map((cat, i) => (
             <button
@@ -351,7 +349,7 @@ export default function FAQClient() {
         </div>
 
         {/* ── Accordion ── */}
-        <div data-faq-content className="max-w-[1700px] mx-auto">
+        <div data-faq-content className=" max-w-7xl mx-auto">
           <div className=" max-w-6xl mx-auto">
             {currentItems.map((item, index) => (
               <AccordionItem
@@ -365,29 +363,7 @@ export default function FAQClient() {
         </div>
 
         {/* ── CTA ── */}
-        <div className="max-w-[1700px] mx-auto mt-16 pt-10 border-t border-gray-100">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 font-[family-name:var(--font-syne)] mb-3">
-            Still have questions?
-          </h2>
-          <p className="text-sm text-gray-500 mb-6">
-            We&apos;re here to help. Reach out and we&apos;ll get back to you
-            within 24 hours.
-          </p>
-          <div className="flex items-center gap-3 flex-wrap">
-            <Link href="/contact">
-              <ShimmerButton variant="primary">
-                Contact Us
-                <ArrowRight size={15} />
-              </ShimmerButton>
-            </Link>
-            <Link href="/pricing">
-              <ShimmerButton variant="outline">
-                View Pricing
-                <ArrowRight size={15} />
-              </ShimmerButton>
-            </Link>
-          </div>
-        </div>
+        <CTA />
       </div>
     </main>
   );

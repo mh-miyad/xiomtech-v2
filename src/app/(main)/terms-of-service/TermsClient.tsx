@@ -243,7 +243,7 @@ export default function TermsClient() {
       />
 
       <div className="pb-20 px-5 md:px-8 lg:px-16 pt-14">
-        <div className="max-w-[1700px] mx-auto">
+        <div className=" max-w-7xl mx-auto">
           <p className="text-sm text-gray-500 mb-2">
             <strong>Last updated:</strong> April 2026
           </p>
@@ -260,7 +260,7 @@ export default function TermsClient() {
         </div>
 
         {/* ── Content ── */}
-        <div className="max-w-[1700px] mx-auto space-y-10">
+        <div className=" max-w-7xl mx-auto space-y-10">
           {sections.map((section) => (
             <div
               key={section.title}

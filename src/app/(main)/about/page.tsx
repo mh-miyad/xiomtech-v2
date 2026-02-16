@@ -1,6 +1,6 @@
 "use client";
+import CTA from "@/components/common/CTA";
 import PageHeader from "@/components/common/PageHeader";
-import { ShimmerButton } from "@/components/ui/shimmer-button";
 import {
   IconBrandAws,
   IconBrandDocker,
@@ -18,9 +18,7 @@ import {
 } from "@tabler/icons-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -103,7 +101,7 @@ export default function AboutPage() {
           stagger: 0.08,
           ease: "power3.out",
           scrollTrigger: { trigger: "[data-about-stat]", start: "top 85%" },
-        }
+        },
       );
 
       gsap.fromTo(
@@ -116,7 +114,7 @@ export default function AboutPage() {
           stagger: 0.1,
           ease: "power3.out",
           scrollTrigger: { trigger: "[data-about-story]", start: "top 80%" },
-        }
+        },
       );
 
       gsap.fromTo(
@@ -129,7 +127,7 @@ export default function AboutPage() {
           stagger: 0.1,
           ease: "power3.out",
           scrollTrigger: { trigger: "[data-about-value]", start: "top 85%" },
-        }
+        },
       );
 
       gsap.fromTo(
@@ -143,7 +141,7 @@ export default function AboutPage() {
           stagger: 0.06,
           ease: "power3.out",
           scrollTrigger: { trigger: "[data-about-tech]", start: "top 85%" },
-        }
+        },
       );
 
       gsap.fromTo(
@@ -159,7 +157,7 @@ export default function AboutPage() {
             trigger: "[data-about-timeline]",
             start: "top 85%",
           },
-        }
+        },
       );
 
       gsap.fromTo(
@@ -172,7 +170,7 @@ export default function AboutPage() {
           stagger: 0.15,
           ease: "power3.out",
           scrollTrigger: { trigger: "[data-about-founder]", start: "top 85%" },
-        }
+        },
       );
 
       gsap.fromTo(
@@ -185,7 +183,7 @@ export default function AboutPage() {
           stagger: 0.1,
           ease: "power3.out",
           scrollTrigger: { trigger: "[data-about-cta]", start: "top 85%" },
-        }
+        },
       );
     }, sectionRef);
 
@@ -198,7 +196,7 @@ export default function AboutPage() {
 
       <div className="pb-20 px-5 md:px-8 lg:px-16 pt-14">
         {/* ── Stats Bar ── */}
-        <div className="max-w-[1700px] mx-auto mb-20">
+        <div className=" max-w-7xl mx-auto mb-20">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {stats.map((stat) => (
               <div
@@ -218,7 +216,7 @@ export default function AboutPage() {
         </div>
 
         {/* ── Our Story ── */}
-        <div data-about-story className="max-w-[1700px] mx-auto mb-20">
+        <div data-about-story className=" max-w-7xl mx-auto mb-20">
           <span className="inline-block text-[11px] font-semibold text-blue-600 border border-blue-500/30 rounded-full px-4 py-1.5 tracking-wide mb-5">
             Our Story
           </span>
@@ -256,7 +254,7 @@ export default function AboutPage() {
         </div>
 
         {/* ── Founders ── */}
-        <div className="max-w-[1700px] mx-auto mb-20">
+        <div className=" max-w-7xl mx-auto mb-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5  max-w-6xl mx-auto">
             {[
               {
@@ -290,7 +288,7 @@ export default function AboutPage() {
         </div>
 
         {/* ── What We Build ── */}
-        <div className="max-w-[1700px] mx-auto mb-20">
+        <div className=" max-w-7xl mx-auto mb-20">
           <div className="mb-10">
             <span className="inline-block text-[11px] font-semibold text-blue-600 border border-blue-500/30 rounded-full px-4 py-1.5 tracking-wide mb-5">
               What We Build
@@ -327,7 +325,7 @@ export default function AboutPage() {
         </div>
 
         {/* ── How We Work ── */}
-        <div className="max-w-[1700px] mx-auto mb-20">
+        <div className=" max-w-7xl mx-auto mb-20">
           <div className="mb-10">
             <span className="inline-block text-[11px] font-semibold text-blue-600 border border-blue-500/30 rounded-full px-4 py-1.5 tracking-wide mb-5">
               How We Work
@@ -347,7 +345,7 @@ export default function AboutPage() {
         </div>
 
         {/* ── Technology Stack ── */}
-        <div className="max-w-[1700px] mx-auto mb-20">
+        <div className=" max-w-7xl mx-auto mb-20">
           <div className="mb-10">
             <span className="inline-block text-[11px] font-semibold text-blue-600 border border-blue-500/30 rounded-full px-4 py-1.5 tracking-wide mb-5">
               Our Technology Stack
@@ -377,7 +375,7 @@ export default function AboutPage() {
         </div>
 
         {/* ── Timeline ── */}
-        <div className="max-w-[1700px] mx-auto mb-20">
+        <div className=" max-w-7xl mx-auto mb-20">
           <div className="mb-10">
             <span className="inline-block text-[11px] font-semibold text-blue-600 border border-blue-500/30 rounded-full px-4 py-1.5 tracking-wide mb-5">
               Our Journey
@@ -411,7 +409,7 @@ export default function AboutPage() {
         </div>
 
         {/* ── Where We Operate ── */}
-        <div className="max-w-[1700px] mx-auto mb-20">
+        <div className=" max-w-7xl mx-auto mb-20">
           <div className="mb-10">
             <span className="inline-block text-[11px] font-semibold text-blue-600 border border-blue-500/30 rounded-full px-4 py-1.5 tracking-wide mb-5">
               Where We Operate
@@ -448,7 +446,7 @@ export default function AboutPage() {
         </div>
 
         {/* ── Values ── */}
-        <div className="max-w-[1700px] mx-auto mb-20">
+        <div className=" max-w-7xl mx-auto mb-20">
           <div className="mb-10">
             <span className="inline-block text-[11px] font-semibold text-blue-600 border border-blue-500/30 rounded-full px-4 py-1.5 tracking-wide mb-5">
               Our Values
@@ -483,32 +481,7 @@ export default function AboutPage() {
         </div>
 
         {/* ── CTA ── */}
-        <div
-          data-about-cta
-          className="max-w-[1700px] mx-auto pt-10 border-t border-gray-100"
-        >
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 font-[family-name:var(--font-syne)] mb-3">
-            Ready to work together?
-          </h2>
-          <p className="text-sm text-gray-500 mb-8 max-w-lg leading-relaxed">
-            Whether you are looking for a SaaS product to run your business or a
-            development partner to build something custom, we are ready to talk.
-          </p>
-          <div className="flex items-center gap-3 flex-wrap">
-            <Link href="/products">
-              <ShimmerButton variant="primary">
-                Explore Our Products
-                <ArrowRight size={15} />
-              </ShimmerButton>
-            </Link>
-            <Link href="/contact">
-              <ShimmerButton variant="outline">
-                Talk to Us
-                <ArrowRight size={15} />
-              </ShimmerButton>
-            </Link>
-          </div>
-        </div>
+        <CTA />
       </div>
     </main>
   );

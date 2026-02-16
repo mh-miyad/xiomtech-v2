@@ -99,7 +99,7 @@ export default function ContactPage() {
           duration: 0.7,
           ease: "power3.out",
           scrollTrigger: { trigger: "[data-contact-info]", start: "top 80%" },
-        }
+        },
       );
 
       gsap.fromTo(
@@ -114,7 +114,7 @@ export default function ContactPage() {
             trigger: "[data-contact-form-card]",
             start: "top 80%",
           },
-        }
+        },
       );
 
       gsap.fromTo(
@@ -127,7 +127,7 @@ export default function ContactPage() {
           stagger: 0.08,
           ease: "power3.out",
           scrollTrigger: { trigger: "[data-contact-faq]", start: "top 85%" },
-        }
+        },
       );
     }, sectionRef);
 
@@ -140,7 +140,7 @@ export default function ContactPage() {
 
       <div className="pb-20 px-5 md:px-8 lg:px-16 pt-14">
         {/* ── Main Grid: Info + Form ── */}
-        <div className="max-w-[1700px] mx-auto grid grid-cols-1 lg:grid-cols-5 gap-8 mb-20">
+        <div className=" max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-8 mb-20">
           {/* Left — Contact Info */}
           <div data-contact-info className="lg:col-span-2 space-y-6">
             {/* Direct Contact */}
@@ -364,7 +364,7 @@ export default function ContactPage() {
         </div>
 
         {/* ── FAQ ── */}
-        <div data-contact-faq className="max-w-[1700px] mx-auto">
+        <div data-contact-faq className=" max-w-7xl mx-auto">
           <div className="mb-10">
             <span className="inline-block text-[11px] font-semibold text-blue-600 border border-blue-500/30 rounded-full px-4 py-1.5 tracking-wide mb-5">
               Common Questions

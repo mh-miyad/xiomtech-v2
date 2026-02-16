@@ -456,7 +456,7 @@ export default function PricingClient() {
 
       <div className="pb-20 px-5 md:px-8 lg:px-16 pt-14">
         {/* ── Toggle & Intro ── */}
-        <div className="max-w-[1700px] mx-auto mb-12">
+        <div className=" max-w-7xl mx-auto mb-12">
           <p className="text-base md:text-lg text-gray-500 max-w-2xl leading-relaxed mb-2">
             Every XiomTech product comes with a free tier and transparent paid
             plans. No hidden fees. No per-module charges. Cancel anytime.
@@ -504,7 +504,7 @@ export default function PricingClient() {
         </div>
 
         {/* ── Product Pricing Sections ── */}
-        <div className="max-w-[1700px] mx-auto space-y-16">
+        <div className=" max-w-7xl mx-auto space-y-16">
           {products.map((product) => (
             <div key={product.name} data-pricing-product>
               {/* Product header */}
@@ -588,7 +588,7 @@ export default function PricingClient() {
         </div>
 
         {/* ── International Pricing ── */}
-        <div className="max-w-[1700px] mx-auto mt-16 p-6 bg-gray-50 rounded-xl border border-gray-100">
+        <div className=" max-w-7xl mx-auto mt-16 p-6 bg-gray-50 rounded-xl border border-gray-100">
           <h3 className="text-lg font-bold text-gray-900 font-[family-name:var(--font-syne)] mb-2">
             Looking for international (USD) pricing?
           </h3>
@@ -606,7 +606,7 @@ export default function PricingClient() {
         </div>
 
         {/* ── All Paid Plans Include ── */}
-        <div className="max-w-[1700px] mx-auto mt-16">
+        <div className=" max-w-7xl mx-auto mt-16">
           <div className="mb-8">
             <span className="inline-block text-[11px] font-semibold text-blue-600 border border-blue-500/30 rounded-full px-4 py-1.5 tracking-wide mb-5">
               Included in All Paid Plans
@@ -630,7 +630,7 @@ export default function PricingClient() {
         </div>
 
         {/* ── Pricing FAQ ── */}
-        <div className="max-w-[1700px] mx-auto mt-16">
+        <div className=" max-w-7xl mx-auto mt-16">
           <div className="mb-10">
             <span className="inline-block text-[11px] font-semibold text-blue-600 border border-blue-500/30 rounded-full px-4 py-1.5 tracking-wide mb-5">
               Common Questions
@@ -683,7 +683,7 @@ export default function PricingClient() {
         </div>
 
         {/* ── Bottom CTA ── */}
-        <div className="max-w-[1700px] mx-auto mt-16 pt-10 border-t border-gray-100">
+        <div className=" max-w-7xl mx-auto mt-16 pt-10 border-t border-gray-100">
           <div className="flex items-center gap-3 flex-wrap">
             <Link href="/faq">
               <ShimmerButton variant="outline">

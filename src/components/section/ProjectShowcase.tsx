@@ -36,7 +36,7 @@ const tags = [
   "XiomHRM",
   "He Is Back",
   "XiomEdu",
-  "Mobile Apps",
+  "Mobx",
   "XiomCare",
 ];
 
@@ -45,7 +45,9 @@ function MarqueeStrip({ reverse = false }: { reverse?: boolean }) {
   return (
     <div className="overflow-hidden py-5">
       <div
-        className={`flex items-center gap-6 whitespace-nowrap ${reverse ? "animate-marquee-reverse" : "animate-marquee"}`}
+        className={`flex items-center gap-6 whitespace-nowrap ${
+          reverse ? "animate-marquee-reverse" : "animate-marquee"
+        }`}
         style={{ width: "max-content" }}
       >
         {items.map((tag, i) => (

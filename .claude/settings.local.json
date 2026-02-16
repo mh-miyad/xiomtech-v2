@@ -4,7 +4,9 @@
       "WebFetch(domain:xiomtech.vercel.app)",
       "Bash(findstr:*)",
       "Bash(bun pm ls:*)",
-      "Bash(bun add:*)"
+      "Bash(bun add:*)",
+      "Bash(npx shadcn@latest add:*)",
+      "Bash(node -e:*)"
     ]
   }
 }

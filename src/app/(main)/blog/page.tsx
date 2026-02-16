@@ -1,3 +1,4 @@
+import PageHeader from "@/components/common/PageHeader";
 import { blogPosts } from "@/data/blogs";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -14,21 +15,15 @@ export default function BlogPage() {
   const rest = blogPosts.slice(1);
 
   return (
-    <main className="pt-28 pb-20 px-5 md:px-8 lg:px-16">
+    <main>
+      <PageHeader
+        title="Blog & News"
+        description="Thoughts on engineering, design, and building products that scale across borders."
+        breadcrumbs={[{ label: "Blog" }]}
+      />
+
+      <div className="pt-14 md:pt-20 pb-20 px-5 md:px-8 lg:px-16">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="mb-14 md:mb-20">
-          <span className="inline-block text-[11px] font-semibold text-blue-600 border border-blue-500/30 rounded-full px-4 py-1.5 tracking-wide mb-5">
-            Our Blog
-          </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 font-[family-name:var(--font-syne)] leading-tight">
-            Insights & Articles
-          </h1>
-          <p className="mt-4 text-base md:text-lg text-gray-500 max-w-xl leading-relaxed">
-            Thoughts on engineering, design, and building products that scale
-            across borders.
-          </p>
-        </div>
 
         {/* Featured Post */}
         <Link
@@ -138,6 +133,7 @@ export default function BlogPage() {
             </Link>
           ))}
         </div>
+      </div>
       </div>
     </main>
   );

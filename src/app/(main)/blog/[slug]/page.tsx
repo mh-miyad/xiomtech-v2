@@ -2,6 +2,7 @@ import ArticleSchema from "@/components/schema/ArticleSchema";
 import ContactCTA from "@/components/section/ContactCTA";
 import FAQSection from "@/components/section/FAQSection";
 import { blogPosts } from "@/data/blogs";
+import { ChevronRight } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -93,7 +94,6 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <main>
-      {/* Hero header */}
       <ArticleSchema
         headline={post.title}
         description={post.excerpt}
@@ -101,65 +101,80 @@ export default async function BlogPostPage({ params }: Props) {
         datePublished={post.date}
         author={{ name: post.author.name }}
       />
-      <div className="pt-28 pb-10 px-5 md:px-8 lg:px-16 max-w-[1440px] mx-auto">
-        <Link
-          href="/blog"
-          className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-gray-900 transition-colors mb-8"
-        >
-          <svg
-            className="size-4"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="1.5"
-              d="M19 12H5m0 0l7 7m-7-7l7-7"
+
+      {/* Dark Hero Header */}
+      <section className="relative bg-gray-950 pt-32 pb-16 md:pt-40 md:pb-20 px-5 md:px-8 lg:px-16 overflow-hidden">
+        {/* Background pattern */}
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+          }}
+        />
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-gray-950 to-transparent" />
+
+        <div className="relative max-w-360 mx-auto">
+          {/* Breadcrumbs */}
+          <nav className="flex items-center gap-1.5 text-sm mb-8">
+            <Link
+              href="/"
+              className="text-gray-400 hover:text-white transition-colors"
+            >
+              Home
+            </Link>
+            <ChevronRight className="size-3.5 text-gray-600" />
+            <Link
+              href="/blog"
+              className="text-gray-400 hover:text-white transition-colors"
+            >
+              Blog
+            </Link>
+            <ChevronRight className="size-3.5 text-gray-600" />
+            <span className="text-white font-medium truncate max-w-75">
+              {post.title}
+            </span>
+          </nav>
+
+          <div className="flex items-center gap-3 mb-5">
+            <span className="text-[11px] sm:text-sm font-semibold text-blue-400 uppercase tracking-wider">
+              {post.category}
+            </span>
+            <span className="w-1.5 h-1.5 rounded-full bg-gray-600" />
+            <span className="text-[11px] sm:text-sm text-gray-400">
+              {post.readTime}
+            </span>
+            <span className="w-1.5 h-1.5 rounded-full bg-gray-600" />
+            <span className="text-[11px] sm:text-sm text-gray-400">
+              {post.date}
+            </span>
+          </div>
+
+          <h1 className="text-base sm:text-xl md:text-3xl  font-bold text-white font-(family-name:--font-syne) leading-tight max-w-4xl">
+            {post.title}
+          </h1>
+
+          <div className="mt-6 flex items-center gap-4">
+            <Image
+              src={post.author.avatar}
+              alt={post.author.name}
+              width={44}
+              height={44}
+              className="rounded-full"
+              unoptimized
             />
-          </svg>
-          Back to blog
-        </Link>
-
-        <div className="flex items-center gap-3 mb-5">
-          <span className="text-[11px] sm:text-base font-semibold text-blue-600 uppercase tracking-wider">
-            {post.category}
-          </span>
-          <span className="w-2 h-2 rounded-full bg-gray-300" />
-          <span className="text-[11px] sm:text-base text-gray-400">
-            {post.readTime}
-          </span>
-          <span className="w-2 h-2 rounded-full bg-gray-300" />
-          <span className="text-[11px] sm:text-base text-gray-400">
-            {post.date}
-          </span>
-        </div>
-
-        <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 font-[family-name:var(--font-syne)] leading-tight max-w-[1440px] ">
-          {post.title}
-        </h1>
-
-        <div className="mt-6 flex items-center gap-4">
-          <Image
-            src={post.author.avatar}
-            alt={post.author.name}
-            width={44}
-            height={44}
-            className="rounded-full"
-            unoptimized
-          />
-          <div>
-            <p className="text-sm font-semibold text-gray-900">
-              {post.author.name}
-            </p>
-            <p className="text-xs text-gray-400">Author</p>
+            <div>
+              <p className="text-sm font-semibold text-white">
+                {post.author.name}
+              </p>
+              <p className="text-xs text-gray-400">Author</p>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Full-width Image */}
-      <div className="max-w-[1440px]  mx-auto px-5 md:px-8 lg:px-16 mb-12 md:mb-16">
+      <div className="max-w-360 mt-10 mx-auto px-5 md:px-8 lg:px-16 -mt-1 mb-12 md:mb-16">
         <div className="relative w-full aspect-[21/9] overflow-hidden">
           <Image
             src={post.image}
@@ -173,7 +188,7 @@ export default async function BlogPostPage({ params }: Props) {
       </div>
 
       {/* Content + Sidebar */}
-      <div className="max-w-[1440px]  mx-auto px-5 md:px-8 lg:px-16 pb-16">
+      <div className="max-w-360  mx-auto px-5 md:px-8 lg:px-16 pb-16">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
           {/* Main Content */}
           <article className="flex-1 min-w-0">

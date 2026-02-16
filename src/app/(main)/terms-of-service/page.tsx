@@ -1,5 +1,5 @@
-import TermsClient from "@/app/terms-of-service/TermsClient";
 import type { Metadata } from "next";
+import TermsClient from "./TermsClient";
 
 export const metadata: Metadata = {
   title: "Terms of Service | XiomTech",

@@ -1,5 +1,5 @@
-import PricingClient from "@/app/pricing/PricingClient";
 import type { Metadata } from "next";
+import PricingClient from "./PricingClient";
 
 export const metadata: Metadata = {
   title: "Pricing | XiomTech - Transparent & Affordable",

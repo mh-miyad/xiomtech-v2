@@ -1,5 +1,5 @@
-import FAQClient from "@/app/faq/FaqClient";
 import type { Metadata } from "next";
+import FAQClient from "./FaqClient";
 
 export const metadata: Metadata = {
   title: "Frequently Asked Questions | XiomTech",

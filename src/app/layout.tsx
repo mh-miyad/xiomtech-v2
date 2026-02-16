@@ -1,8 +1,9 @@
 import JsonLd from "@/components/common/JsonLd";
+import { DirectionProvider } from "@/components/ui/direction";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import type { Metadata } from "next";
-import { Inter, Syne } from "next/font/google";
+import { Inter, Noto_Sans_Arabic, Syne } from "next/font/google";
 import "./globals.css";
-
 const syne = Syne({
   variable: "--font-syne",
   subsets: ["latin"],
@@ -15,8 +16,11 @@ const inter = Inter({
   subsets: ["latin"],
   display: "swap",
 });
-
-const BASE_URL = "https://xiomtech.vercel.app/";
+const fontSans = Noto_Sans_Arabic({
+  subsets: ["arabic"],
+  variable: "--font-sans",
+});
+const BASE_URL = "https://xiomtech.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -131,7 +135,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" dir="ltr" className={fontSans.variable}>
       <head>
         {/* DNS Prefetch & Preconnect for faster external resource loading */}
         <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
@@ -158,9 +162,9 @@ export default function RootLayout({
         <JsonLd />
       </head>
       <body className={`${syne.variable} ${inter.variable} antialiased`}>
-      
-          {children}
-   
+        <DirectionProvider dir="ltr">
+          <TooltipProvider>{children}</TooltipProvider>
+        </DirectionProvider>
       </body>
     </html>
   );

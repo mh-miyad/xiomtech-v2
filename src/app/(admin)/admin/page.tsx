@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { FileText, PenSquare, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,18 +10,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { type AdminBlogPost, getAdminPosts } from "@/lib/blog-store";
+import { useBlogs } from "@/hooks/use-blogs";
 
 export default function AdminDashboard() {
-  const [posts, setPosts] = useState<AdminBlogPost[]>([]);
+  const { data: posts = [], isLoading } = useBlogs();
 
-  useEffect(() => {
-    setPosts(getAdminPosts());
-  }, []);
-
-  const published = posts.filter((p) => p.status === "published").length;
-  const drafts = posts.filter((p) => p.status === "draft").length;
-
+  const published = posts.filter((p: any) => p.status === "published").length;
+  const drafts = posts.filter((p: any) => p.status === "draft").length;
   const recentPosts = posts.slice(0, 5);
 
   return (
@@ -47,7 +41,9 @@ export default function AdminDashboard() {
             <FileText className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{posts.length}</div>
+            <div className="text-2xl font-bold">
+              {isLoading ? "—" : posts.length}
+            </div>
           </CardContent>
         </Card>
 
@@ -57,7 +53,9 @@ export default function AdminDashboard() {
             <Send className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{published}</div>
+            <div className="text-2xl font-bold">
+              {isLoading ? "—" : published}
+            </div>
           </CardContent>
         </Card>
 
@@ -67,7 +65,9 @@ export default function AdminDashboard() {
             <PenSquare className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{drafts}</div>
+            <div className="text-2xl font-bold">
+              {isLoading ? "—" : drafts}
+            </div>
           </CardContent>
         </Card>
       </div>
@@ -79,13 +79,17 @@ export default function AdminDashboard() {
           <CardDescription>Your latest blog posts</CardDescription>
         </CardHeader>
         <CardContent>
-          {recentPosts.length === 0 ? (
+          {isLoading ? (
+            <p className="text-sm text-muted-foreground py-4 text-center">
+              Loading...
+            </p>
+          ) : recentPosts.length === 0 ? (
             <p className="text-sm text-muted-foreground py-4 text-center">
               No posts yet. Create your first post!
             </p>
           ) : (
             <div className="space-y-3">
-              {recentPosts.map((post) => (
+              {recentPosts.map((post: any) => (
                 <div
                   key={post.id}
                   className="flex items-center justify-between rounded-md border border-border p-3"
@@ -95,7 +99,8 @@ export default function AdminDashboard() {
                       {post.title}
                     </p>
                     <p className="text-xs text-muted-foreground">
-                      {post.date} &middot; {post.category}
+                      {new Date(post.createdAt).toLocaleDateString()} &middot;{" "}
+                      {post.category}
                     </p>
                   </div>
                   <span

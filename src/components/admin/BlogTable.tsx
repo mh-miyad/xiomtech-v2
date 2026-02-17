@@ -41,25 +41,19 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-// Action
-import { deleteBlogPostAction } from "@/app/actions/blog"; //
+import { useDeleteBlog } from "@/hooks/use-blogs";
 
 export default function BlogTable({ initialData }: { initialData: any[] }) {
-  const [data, setData] = useState(initialData);
   const [sorting, setSorting] = useState<SortingState>([]);
   const [globalFilter, setGlobalFilter] = useState("");
   const [deleteId, setDeleteId] = useState<number | null>(null);
+  const deleteMutation = useDeleteBlog();
 
-  const handleDelete = async () => {
+  const handleDelete = () => {
     if (!deleteId) return;
-
-    const result = await deleteBlogPostAction(deleteId);
-    if (result.success) {
-      setData(data.filter((post) => post.id !== deleteId));
-      setDeleteId(null);
-    } else {
-      alert("Failed to delete");
-    }
+    deleteMutation.mutate(deleteId, {
+      onSuccess: () => setDeleteId(null),
+    });
   };
 
   const columns = [
@@ -114,7 +108,7 @@ export default function BlogTable({ initialData }: { initialData: any[] }) {
   ];
 
   const table = useReactTable({
-    data,
+    data: initialData,
     columns,
     state: { sorting, globalFilter },
     onSortingChange: setSorting,

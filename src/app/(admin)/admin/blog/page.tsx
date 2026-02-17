@@ -1,17 +1,22 @@
+"use client";
+
 import BlogTable from "@/components/admin/BlogTable";
-import { db } from "@/database/db_index";
-import { blogs } from "@/database/schema";
-import { desc } from "drizzle-orm";
-// We will create this next
+import { useBlogs } from "@/hooks/use-blogs";
 
-export default async function BlogListPage() {
-  // 1. Fetch data on the server
-  const allBlogs = await db.select().from(blogs).orderBy(desc(blogs.createdAt));
+export default function BlogListPage() {
+  const { data, isLoading } = useBlogs();
 
-  // 2. Pass it to the Client Component
+  if (isLoading) {
+    return (
+      <div className="p-6 flex items-center justify-center py-20">
+        <p className="text-muted-foreground">Loading posts...</p>
+      </div>
+    );
+  }
+
   return (
     <div className="p-6">
-      <BlogTable initialData={allBlogs} />
+      <BlogTable initialData={data ?? []} />
     </div>
   );
 }

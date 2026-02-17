@@ -1,6 +1,5 @@
 "use client";
 
-import { createBlogPostAction } from "@/app/actions/blog";
 import BlogEditor from "@/components/common/Blogeditor";
 import { Button } from "@/components/ui/button";
 import {
@@ -20,10 +19,18 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { type AdminBlogPost, slugify } from "@/lib/blog-store";
+import { useCreateBlog } from "@/hooks/use-blogs";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
+
+function slugify(title: string): string {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-");
+}
 
 const CATEGORIES = [
   "SaaS",
@@ -70,7 +77,8 @@ const initialForm: FormState = {
 export default function CreateBlogPage() {
   const router = useRouter();
   const [form, setForm] = useState<FormState>(initialForm);
-  const [isPending, setIsPending] = useState(false);
+  const createBlog = useCreateBlog();
+
   const update = (field: keyof FormState, value: string) => {
     setForm((f) => ({ ...f, [field]: value }));
   };
@@ -84,45 +92,36 @@ export default function CreateBlogPage() {
     }));
   };
 
-  const savePost = async (status: "draft" | "published") => {
+  const savePost = (status: "draft" | "published") => {
     if (!form.title.trim()) return;
-    setIsPending(true);
-    const now = new Date();
-    const post: AdminBlogPost = {
-      id: Date.now().toString(),
-      title: form.title,
-      slug: form.slug || slugify(form.title),
-      excerpt: form.excerpt,
-      image: form.featuredImage,
-      category: form.category || "Other",
-      date: now.toLocaleDateString("en-US", {
-        month: "short",
-        day: "numeric",
-        year: "numeric",
-      }),
-      readTime: form.readTime || "5 min read",
-      author: {
-        name: form.authorName || "Admin",
-        avatar: form.authorAvatar,
-      },
-      content: form.content,
-      status,
-      metaTitle: form.metaTitle || form.title,
-      metaDescription: form.metaDescription || form.excerpt,
-      metaKeywords: form.metaKeywords,
-      featuredImageAlt: form.featuredImageAlt,
-      createdAt: now.toISOString(),
-      updatedAt: now.toISOString(),
-    };
-    const result = await createBlogPostAction(post);
-    setIsPending(false); // Stop Loading
 
-    if (result.success) {
-      toast(result.message);
-      router.push("/admin/blog");
-    } else {
-      toast(result.error);
-    }
+    createBlog.mutate(
+      {
+        title: form.title,
+        slug: form.slug || slugify(form.title),
+        excerpt: form.excerpt,
+        featuredImage: form.featuredImage,
+        featuredImageAlt: form.featuredImageAlt,
+        category: form.category || "Other",
+        metaTitle: form.metaTitle || form.title,
+        metaDescription: form.metaDescription || form.excerpt,
+        metaKeywords: form.metaKeywords,
+        authorName: form.authorName || "Admin",
+        authorAvatar: form.authorAvatar,
+        readTime: form.readTime || "5 min read",
+        content: form.content,
+        status,
+      },
+      {
+        onSuccess: () => {
+          toast("Blog published successfully!");
+          router.push("/admin/blog");
+        },
+        onError: (err) => {
+          toast(err.message);
+        },
+      },
+    );
   };
 
   return (

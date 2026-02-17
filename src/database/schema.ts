@@ -22,6 +22,9 @@ export const blogs = pgTable("blogs", {
 
   readTime: varchar("read_time", { length: 50 }).default("5 min read"),
 
+  // Post status
+  status: varchar("status", { length: 20 }).default("published").notNull(),
+
   // The Tiptap HTML content
   content: text("content").notNull(),
 

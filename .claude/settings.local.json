@@ -7,7 +7,8 @@
       "Bash(bun add:*)",
       "Bash(npx shadcn@latest add:*)",
       "Bash(node -e:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(bun drizzle-kit push:*)"
     ]
   }
 }

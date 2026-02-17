@@ -21,12 +21,16 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  type AdminBlogPost,
-  getAdminPostById,
-  saveAdminPost,
-  slugify,
-} from "@/lib/blog-store";
+import { useBlog, useUpdateBlog } from "@/hooks/use-blogs";
+import { toast } from "sonner";
+
+function slugify(title: string): string {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-");
+}
 
 const CATEGORIES = [
   "SaaS",
@@ -59,40 +63,44 @@ export default function EditBlogPage() {
   const params = useParams();
   const id = params.id as string;
 
-  const [post, setPost] = useState<AdminBlogPost | null>(null);
+  const { data: post, isLoading, isError } = useBlog(id);
+  const updateBlog = useUpdateBlog();
   const [form, setForm] = useState<FormState | null>(null);
 
+  // Populate form when post data arrives
   useEffect(() => {
-    const existing = getAdminPostById(id);
-    if (!existing) {
-      router.push("/admin/blog");
-      return;
-    }
-    setPost(existing);
+    if (!post) return;
     setForm({
-      title: existing.title,
-      slug: existing.slug,
-      excerpt: existing.excerpt,
-      featuredImage: existing.image,
-      featuredImageAlt: existing.featuredImageAlt || "",
-      category: existing.category,
-      metaTitle: existing.metaTitle || "",
-      metaDescription: existing.metaDescription || "",
-      metaKeywords: existing.metaKeywords || "",
-      authorName: existing.author.name,
-      authorAvatar: existing.author.avatar,
-      readTime: existing.readTime,
-      content: existing.content || "",
+      title: post.title,
+      slug: post.slug,
+      excerpt: post.excerpt || "",
+      featuredImage: post.featuredImage || "",
+      featuredImageAlt: post.featuredImageAlt || "",
+      category: post.category || "",
+      metaTitle: post.metaTitle || "",
+      metaDescription: post.metaDescription || "",
+      metaKeywords: post.metaKeywords || "",
+      authorName: post.authorName || "",
+      authorAvatar: post.authorAvatar || "",
+      readTime: post.readTime || "",
+      content: post.content || "",
     });
-  }, [id, router]);
+  }, [post]);
 
-  if (!form || !post) {
+  if (isLoading) {
     return (
       <div className="flex items-center justify-center py-20">
         <p className="text-muted-foreground">Loading...</p>
       </div>
     );
   }
+
+  if (isError || !post) {
+    router.push("/admin/blog");
+    return null;
+  }
+
+  if (!form) return null;
 
   const update = (field: keyof FormState, value: string) => {
     setForm((f) => (f ? { ...f, [field]: value } : f));
@@ -114,31 +122,34 @@ export default function EditBlogPage() {
   const savePost = (status: "draft" | "published") => {
     if (!form.title.trim()) return;
 
-    const now = new Date();
-    const updated: AdminBlogPost = {
-      ...post,
-      title: form.title,
-      slug: form.slug || slugify(form.title),
-      excerpt: form.excerpt,
-      image: form.featuredImage,
-      category: form.category || "Other",
-      date: post.date,
-      readTime: form.readTime || "5 min read",
-      author: {
-        name: form.authorName || "Admin",
-        avatar: form.authorAvatar,
+    updateBlog.mutate(
+      {
+        id: post.id,
+        title: form.title,
+        slug: form.slug || slugify(form.title),
+        excerpt: form.excerpt,
+        featuredImage: form.featuredImage,
+        featuredImageAlt: form.featuredImageAlt,
+        category: form.category || "Other",
+        metaTitle: form.metaTitle || form.title,
+        metaDescription: form.metaDescription || form.excerpt,
+        metaKeywords: form.metaKeywords,
+        authorName: form.authorName || "Admin",
+        authorAvatar: form.authorAvatar,
+        readTime: form.readTime || "5 min read",
+        content: form.content,
+        status,
       },
-      content: form.content,
-      status,
-      metaTitle: form.metaTitle || form.title,
-      metaDescription: form.metaDescription || form.excerpt,
-      metaKeywords: form.metaKeywords,
-      featuredImageAlt: form.featuredImageAlt,
-      updatedAt: now.toISOString(),
-    };
-
-    saveAdminPost(updated);
-    router.push("/admin/blog");
+      {
+        onSuccess: () => {
+          toast("Post updated successfully!");
+          router.push("/admin/blog");
+        },
+        onError: (err) => {
+          toast(err.message);
+        },
+      },
+    );
   };
 
   return (
@@ -149,10 +160,17 @@ export default function EditBlogPage() {
           Edit Post
         </h1>
         <div className="flex gap-2">
-          <Button variant="outline" onClick={() => savePost("draft")}>
+          <Button
+            variant="outline"
+            onClick={() => savePost("draft")}
+            disabled={updateBlog.isPending}
+          >
             Save as Draft
           </Button>
-          <Button onClick={() => savePost("published")}>
+          <Button
+            onClick={() => savePost("published")}
+            disabled={updateBlog.isPending}
+          >
             Update & Publish
           </Button>
         </div>

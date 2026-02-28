@@ -8,7 +8,10 @@
       "Bash(npx shadcn@latest add:*)",
       "Bash(node -e:*)",
       "Bash(ls:*)",
-      "Bash(bun drizzle-kit push:*)"
+      "Bash(bun drizzle-kit push:*)",
+      "Skill(agent-browser)",
+      "Skill(agent-browser:*)",
+      "Bash(curl -sI --max-time 15 https://www.xiomtech.net/)"
     ]
   }
 }

@@ -11,7 +11,8 @@
       "Bash(bun drizzle-kit push:*)",
       "Skill(agent-browser)",
       "Skill(agent-browser:*)",
-      "Bash(curl -sI --max-time 15 https://www.xiomtech.net/)"
+      "Bash(curl -sI --max-time 15 https://www.xiomtech.net/)",
+      "Bash(wc -l \"d:/XenomTech/xiomtech-v2/src/app/\\(main\\)/about/page.tsx\" \"d:/XenomTech/xiomtech-v2/src/app/\\(main\\)/contact/page.tsx\")"
     ]
   }
 }

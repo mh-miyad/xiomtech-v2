@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "Blog — Insights on Engineering, Design & Digital Products",
   description:
     "Read the latest articles from XiomTech on SaaS development, AI, enterprise UX, and building products that scale across borders.",
+  alternates: {
+    canonical: "/blog",
+  },
 };
 
 export default function BlogPage() {

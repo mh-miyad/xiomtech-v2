@@ -1,14 +1,16 @@
-import BlogSection from "@/components/section/BlogSection";
-import ContactCTA from "@/components/section/ContactCTA";
-import EcosystemSection from "@/components/section/EcosystemSection";
-import ExpertiseSection from "@/components/section/ExpertiseSection";
-import FAQSection from "@/components/section/FAQSection";
 import HeroSection from "@/components/section/HeroSection";
-import ProjectShowcase from "@/components/section/ProjectShowcase";
-import ServiceSection from "@/components/section/ServiceSection";
-import TechStackSection from "@/components/section/TechStackSection";
-import TestimonialSection from "@/components/section/TestimonialSection";
+import dynamic from "next/dynamic";
 import type { Metadata } from "next";
+
+const EcosystemSection = dynamic(() => import("@/components/section/EcosystemSection"));
+const ProjectShowcase = dynamic(() => import("@/components/section/ProjectShowcase"));
+const ServiceSection = dynamic(() => import("@/components/section/ServiceSection"));
+const ExpertiseSection = dynamic(() => import("@/components/section/ExpertiseSection"));
+const TestimonialSection = dynamic(() => import("@/components/section/TestimonialSection"));
+const TechStackSection = dynamic(() => import("@/components/section/TechStackSection"));
+const BlogSection = dynamic(() => import("@/components/section/BlogSection"));
+const FAQSection = dynamic(() => import("@/components/section/FAQSection"));
+const ContactCTA = dynamic(() => import("@/components/section/ContactCTA"));
 
 export const metadata: Metadata = {
   alternates: {

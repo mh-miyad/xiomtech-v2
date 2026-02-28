@@ -162,6 +162,11 @@ export default function RootLayout({
           name="google-site-verification"
           content="0AkLvANSBGwJFuLf127XCwjbxDmH8QtI5qFhRI41CC0"
         />
+        {/* Preload critical above-fold icons */}
+        <link rel="preload" href="/icons/figma.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/icons/react.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/icons/nextjs.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/icons/openai.svg" as="image" type="image/svg+xml" />
 
         {/* Structured Data (JSON-LD) */}
         <JsonLd />

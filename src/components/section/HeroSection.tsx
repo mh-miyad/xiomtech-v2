@@ -22,50 +22,32 @@ const HeroSection = () => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         defaults: { ease: "power4.out", duration: 0.9 },
-        delay: 0.7,
+        delay: 0.1,
       });
 
       // Phase 1: Center content flows in as one cohesive unit
-      tl.fromTo(
-        "[data-hero-rating]",
-        { y: 40, opacity: 0, scale: 0.95 },
-        { y: 0, opacity: 1, scale: 1, duration: 0.7 },
-      )
-        .fromTo(
+      tl.from("[data-hero-rating]", { y: 40, opacity: 0, scale: 0.95, duration: 0.7 })
+        .from(
           "[data-hero-headline] > *",
-          { y: 70, opacity: 0 },
-          { y: 0, opacity: 1, duration: 1, stagger: 0.12 },
+          { y: 70, opacity: 0, duration: 1, stagger: 0.12 },
           "-=0.35",
         )
-        .fromTo(
-          "[data-hero-sub]",
-          { y: 30, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.8 },
-          "-=0.5",
-        )
-        .fromTo(
-          "[data-hero-cta]",
-          { y: 25, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.8 },
-          "-=0.45",
-        )
-        .fromTo(
+        .from("[data-hero-sub]", { y: 30, opacity: 0, duration: 0.8 }, "-=0.5")
+        .from("[data-hero-cta]", { y: 25, opacity: 0, duration: 0.8 }, "-=0.45")
+        .from(
           "[data-hero-proof]",
-          { y: 20, opacity: 0, scale: 0.97 },
-          { y: 0, opacity: 1, scale: 1, duration: 0.7 },
+          { y: 20, opacity: 0, scale: 0.97, duration: 0.7 },
           "-=0.35",
         );
 
       // Phase 2: Side images glide in together, timed to overlap with end of text
-      tl.fromTo(
+      tl.from(
         '[data-hero-bar="left"]',
-        { x: -100, opacity: 0 },
-        { x: 0, opacity: 1, duration: 1.4, ease: "power3.out" },
+        { x: -100, opacity: 0, duration: 1.4, ease: "power3.out" },
         "-=1.2",
-      ).fromTo(
+      ).from(
         '[data-hero-bar="right"]',
-        { x: 100, opacity: 0 },
-        { x: 0, opacity: 1, duration: 1.4, ease: "power3.out" },
+        { x: 100, opacity: 0, duration: 1.4, ease: "power3.out" },
         "<0.08",
       );
 
@@ -92,7 +74,7 @@ const HeroSection = () => {
       {/* Left floating image */}
       <div
         data-hero-bar="left"
-        className="hidden lg:block absolute lg:top-[5%] left-0 lg:w-[220px] xl:w-[320px] 2xl:w-[450px] opacity-0"
+        className="hidden lg:block absolute lg:top-[5%] left-0 lg:w-[220px] xl:w-[320px] 2xl:w-[450px]"
       >
         <Image
           src="/hero-left.avif"
@@ -101,23 +83,23 @@ const HeroSection = () => {
           height={1000}
           sizes="(max-width: 1024px) 0vw, (max-width: 1280px) 220px, (max-width: 1536px) 320px, 450px"
           className="-mt-28"
-          priority
+          loading="lazy"
         />
       </div>
 
       {/* Right floating image */}
       <div
         data-hero-bar="right"
-        className="hidden lg:block absolute lg:top-[10%] right-0 lg:w-[220px] xl:w-[320px] 2xl:w-[450px] opacity-0"
+        className="hidden lg:block absolute lg:top-[10%] right-0 lg:w-[220px] xl:w-[320px] 2xl:w-[450px]"
       >
         <Image
           src="/left-hero.avif"
           alt="XiomTech mobile app development and digital solutions portfolio"
           width={1000}
           height={1000}
-          sizes="(max-width: 1024px) 0vw, (max-width: 1280px) 220px, (max-width: 1536px) 320px, 450px"
+          sizes="(max-width: 1024px) 0vw, (max-width: 1536px) 320px, 450px"
           className="-mt-14"
-          priority
+          loading="lazy"
         />
       </div>
 
@@ -126,7 +108,7 @@ const HeroSection = () => {
         {/* Rating badge */}
         <div
           data-hero-rating
-          className="flex items-center gap-2.5 rounded-full border border-gray-200 bg-white/80 backdrop-blur-sm px-5 py-2.5 mb-8 opacity-0"
+          className="flex items-center gap-2.5 rounded-full border border-gray-200 bg-white/80 backdrop-blur-sm px-5 py-2.5 mb-8"
         >
           <div className="flex gap-0.5">
             {Array.from({ length: 5 }).map((_, i) => (
@@ -197,7 +179,7 @@ const HeroSection = () => {
         {/* Sub-headline */}
         <p
           data-hero-sub
-          className="mt-4 md:mt-7 text-base sm:text-lg text-gray-700 max-w-xl leading-relaxed opacity-0"
+          className="mt-4 md:mt-7 text-base sm:text-lg text-gray-700 max-w-xl leading-relaxed"
         >
           XiomTech — the leading software company from Bangladesh, engineering
           enterprise-grade SaaS platforms, POS systems, and custom digital
@@ -205,7 +187,7 @@ const HeroSection = () => {
         </p>
 
         {/* CTA buttons */}
-        <div data-hero-cta className="mt-9 flex flex-row gap-5 opacity-0">
+        <div data-hero-cta className="mt-9 flex flex-row gap-5">
           <ShimmerButton variant="primary">
             Book a Consultation
             <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -216,7 +198,7 @@ const HeroSection = () => {
         {/* Social proof - countries */}
         <div
           data-hero-proof
-          className="mt-10 text-xs px-5 py-2 flex items-center gap-3 bg-gray-50 border border-gray-200 rounded-full md:px-6 md:py-3 opacity-0"
+          className="mt-10 text-xs px-5 py-2 flex items-center gap-3 bg-gray-50 border border-gray-200 rounded-full md:px-6 md:py-3"
         >
           <span className=" font-medium text-gray-500">Serving clients in</span>
           <span className="flex items-center gap-1.5 ">

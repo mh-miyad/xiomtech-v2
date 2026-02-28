@@ -158,6 +158,10 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
+        <meta
+          name="google-site-verification"
+          content="0AkLvANSBGwJFuLf127XCwjbxDmH8QtI5qFhRI41CC0"
+        />
 
         {/* Structured Data (JSON-LD) */}
         <JsonLd />

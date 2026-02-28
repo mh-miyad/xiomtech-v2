@@ -82,7 +82,7 @@ export default function BestPosPage() {
       <ProductSchema
         name="XiomPOS - Best POS Software in Bangladesh"
         description="XiomPOS is the #1 rated POS software in Bangladesh for Retail, Grocery, and Restaurants. VAT compliant, offline support, and easy inventory management."
-        image="https://xiomtech.vercel.app/xiom/xiompos.png"
+        image="https://www.xiomtech.net/xiom/xiompos.png"
         rating={{
           ratingValue: "4.9",
           reviewCount: "150",
@@ -92,7 +92,7 @@ export default function BestPosPage() {
         offers={{
           price: "15000",
           priceCurrency: "BDT",
-          url: "https://xiomtech.vercel.app/products/xiompos",
+          url: "https://www.xiomtech.net/products/xiompos",
           availability: "https://schema.org/InStock",
         }}
       />

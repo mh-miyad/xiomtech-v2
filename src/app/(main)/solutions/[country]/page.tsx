@@ -190,7 +190,7 @@ export default async function CountryPage({ params }: Props) {
       <ServiceSchema
         name={`XiomTech Software Solutions - ${data.displayName}`}
         description={`Enterprise software development, POS, and SaaS solutions tailored for the ${data.displayName} market. ${data.localContext}`}
-        url={`https://xiomtech.vercel.app/solutions/${country}`}
+        url={`https://www.xiomtech.net/solutions/${country}`}
         areaServed={[{ "@type": "Country", name: data.displayName }]}
       />
       {/* Hero */}

@@ -444,11 +444,11 @@ export default function PricingClient() {
           key={product.name}
           name={product.name}
           description={product.tagline}
-          image="https://xiomtech.vercel.app/logo.webp"
+          image="https://www.xiomtech.net/logo.webp"
           offers={product.plans.map((plan) => ({
             price: plan.monthlyPrice.replace(/[^0-9.]/g, ""),
             priceCurrency: "BDT",
-            url: `https://xiomtech.vercel.app/products/${product.slug}`,
+            url: `https://www.xiomtech.net/products/${product.slug}`,
           }))}
         />
       ))}

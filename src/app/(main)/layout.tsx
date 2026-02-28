@@ -5,7 +5,6 @@ import SmoothScroll from "@/components/common/SmoothScroll";
 import type { Metadata } from "next";
 import { Inter, Syne } from "next/font/google";
 
-
 const syne = Syne({
   variable: "--font-syne",
   subsets: ["latin"],
@@ -19,7 +18,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const BASE_URL = "https://xiomtech.vercel.app/";
+const BASE_URL = "https://www.xiomtech.net/";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),

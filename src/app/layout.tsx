@@ -21,7 +21,7 @@ const fontSans = Noto_Sans_Arabic({
   subsets: ["arabic"],
   variable: "--font-sans",
 });
-const BASE_URL = "https://xiomtech.vercel.app";
+const BASE_URL = "https://www.xiomtech.net";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),

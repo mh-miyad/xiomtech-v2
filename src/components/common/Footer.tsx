@@ -160,9 +160,21 @@ const partners = [
 ];
 
 const socials = [
-  { icon: IconBrandFacebook, href: "https://www.facebook.com/xiomtech", label: "Facebook" },
-  { icon: IconBrandInstagram, href: "https://www.instagram.com/xiomtech", label: "Instagram" },
-  { icon: IconBrandLinkedin, href: "https://www.linkedin.com/company/xiomtech", label: "LinkedIn" },
+  {
+    icon: IconBrandFacebook,
+    href: "https://www.facebook.com/xiomtech",
+    label: "Facebook",
+  },
+  {
+    icon: IconBrandInstagram,
+    href: "https://www.instagram.com/xiomtech",
+    label: "Instagram",
+  },
+  {
+    icon: IconBrandLinkedin,
+    href: "https://www.linkedin.com/company/xiomtech",
+    label: "LinkedIn",
+  },
   { icon: IconBrandX, href: "https://x.com/xiomtech", label: "X" },
 ];
 
@@ -278,7 +290,7 @@ const Footer = () => {
           className="absolute inset-0 w-full h-full object-cover opacity-80"
         >
           <source
-            src="https://xiomtech.vercel.app/footer_globe.mp4"
+            src="https://www.xiomtech.net/footer_globe.mp4"
             type="video/mp4"
           />
         </video>

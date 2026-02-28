@@ -234,7 +234,7 @@ export default function TermsClient() {
       <WebPageSchema
         title="Terms of Service | XiomTech"
         description="Read XiomTech's Terms of Service. By using our products and services, you agree to these terms governing your account, payments, and usage."
-        url="https://xiomtech.vercel.app/terms-of-service"
+        url="https://www.xiomtech.net/terms-of-service"
         dateModified="2026-04-01"
       />
       <PageHeader

@@ -26,7 +26,7 @@ export default function WebPageSchema({
       name: "XiomTech",
       logo: {
         "@type": "ImageObject",
-        url: "https://xiomtech.vercel.app/logo.webp",
+        url: "https://www.xiomtech.net/logo.webp",
       },
     },
   };

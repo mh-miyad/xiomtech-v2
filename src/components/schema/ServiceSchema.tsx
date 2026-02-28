@@ -19,7 +19,7 @@ export default function ServiceSchema({
   url,
   provider = {
     name: "XiomTech",
-    image: "https://xiomtech.vercel.app/logo.webp",
+    image: "https://www.xiomtech.net/logo.webp",
   },
 }: ServiceSchemaProps) {
   const schema = {

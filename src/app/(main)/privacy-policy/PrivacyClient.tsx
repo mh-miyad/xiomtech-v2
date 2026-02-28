@@ -219,7 +219,7 @@ export default function PrivacyClient() {
       <WebPageSchema
         title="Privacy Policy | XiomTech"
         description="XiomTech's Privacy Policy outlines how we collect, use, and protect your personal information when you use our website and services."
-        url="https://xiomtech.vercel.app/privacy-policy"
+        url="https://www.xiomtech.net/privacy-policy"
         dateModified="2026-04-01"
       />
       <PageHeader

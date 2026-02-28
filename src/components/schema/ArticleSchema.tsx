@@ -23,7 +23,7 @@ export default function ArticleSchema({
   author,
   publisher = {
     name: "XiomTech",
-    logo: "https://xiomtech.vercel.app/logo.webp",
+    logo: "https://www.xiomtech.net/logo.webp",
   },
 }: ArticleSchemaProps) {
   const schema = {

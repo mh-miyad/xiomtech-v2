@@ -1,6 +1,6 @@
 /* ── Structured Data (JSON-LD) for SEO ── */
 
-const BASE_URL = "https://xiomtech.vercel.app/";
+const BASE_URL = "https://www.xiomtech.net/";
 
 /* ── Organization Schema ── */
 const organizationSchema = {

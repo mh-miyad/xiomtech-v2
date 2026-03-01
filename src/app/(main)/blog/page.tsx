@@ -1,5 +1,8 @@
 import PageHeader from "@/components/common/PageHeader";
-import { blogPosts } from "@/data/blogs";
+import { db } from "@/database/db_index";
+import { blogs as blogsTable } from "@/database/schema";
+import { blogPosts, type BlogPost } from "@/data/blogs";
+import { desc, eq } from "drizzle-orm";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,9 +16,44 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogPage() {
-  const featured = blogPosts[0];
-  const rest = blogPosts.slice(1);
+export const revalidate = 60;
+
+export default async function BlogPage() {
+  let dbPosts: BlogPost[] = [];
+
+  try {
+    const rows = await db
+      .select()
+      .from(blogsTable)
+      .where(eq(blogsTable.status, "published"))
+      .orderBy(desc(blogsTable.createdAt));
+
+    dbPosts = rows.map((p) => ({
+      slug: p.slug,
+      title: p.title,
+      excerpt: p.excerpt ?? "",
+      image: p.featuredImage ?? "",
+      category: p.category ?? "Other",
+      date: new Date(p.createdAt).toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      }),
+      readTime: p.readTime ?? "5 min read",
+      author: {
+        name: p.authorName ?? "XiomTech",
+        avatar: p.authorAvatar ?? "https://i.pravatar.cc/40?img=11",
+      },
+      content: p.content,
+    }));
+  } catch {
+    // fallback to static only if DB fails
+  }
+
+  // DB posts first (newest), then static hardcoded posts
+  const allPosts = [...dbPosts, ...blogPosts];
+  const featured = allPosts[0];
+  const rest = allPosts.slice(1);
 
   return (
     <main>
@@ -35,14 +73,16 @@ export default function BlogPage() {
         >
           <div className="grid md:grid-cols-2 gap-6 md:gap-10 items-center">
             <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
-              <Image
-                src={featured.image}
-                alt={featured.title}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                priority
-              />
+              {featured.image && (
+                <Image
+                  src={featured.image}
+                  alt={featured.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  priority
+                />
+              )}
             </div>
             <div>
               <div className="flex items-center gap-3 mb-4">
@@ -93,13 +133,15 @@ export default function BlogPage() {
               className="group block"
             >
               <div className="relative aspect-[16/10] overflow-hidden bg-gray-100 mb-5">
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                />
+                {post.image && (
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                )}
               </div>
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-[11px] font-semibold text-blue-600 uppercase tracking-wider">

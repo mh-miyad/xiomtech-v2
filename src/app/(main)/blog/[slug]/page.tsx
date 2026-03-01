@@ -1,7 +1,10 @@
 import ArticleSchema from "@/components/schema/ArticleSchema";
 import ContactCTA from "@/components/section/ContactCTA";
 import FAQSection from "@/components/section/FAQSection";
-import { blogPosts } from "@/data/blogs";
+import { db } from "@/database/db_index";
+import { blogs as blogsTable } from "@/database/schema";
+import { blogPosts, type BlogPost } from "@/data/blogs";
+import { eq } from "drizzle-orm";
 import { ChevronRight } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -12,13 +15,54 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+export const dynamicParams = true;
+export const revalidate = 60;
+
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
 }
 
+async function getPost(slug: string): Promise<BlogPost | null> {
+  // 1. Try static posts first
+  const staticPost = blogPosts.find((p) => p.slug === slug);
+  if (staticPost) return staticPost;
+
+  // 2. Try DB
+  try {
+    const [row] = await db
+      .select()
+      .from(blogsTable)
+      .where(eq(blogsTable.slug, slug))
+      .limit(1);
+
+    if (!row) return null;
+
+    return {
+      slug: row.slug,
+      title: row.title,
+      excerpt: row.excerpt ?? "",
+      image: row.featuredImage ?? "",
+      category: row.category ?? "Other",
+      date: new Date(row.createdAt).toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      }),
+      readTime: row.readTime ?? "5 min read",
+      author: {
+        name: row.authorName ?? "XiomTech",
+        avatar: row.authorAvatar ?? "https://i.pravatar.cc/40?img=11",
+      },
+      content: row.content,
+    };
+  } catch {
+    return null;
+  }
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = blogPosts.find((p) => p.slug === slug);
+  const post = await getPost(slug);
   if (!post) return { title: "Post Not Found" };
 
   return {
@@ -27,7 +71,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      images: [{ url: post.image, width: 800, height: 500 }],
+      ...(post.image && { images: [{ url: post.image, width: 800, height: 500 }] }),
       type: "article",
     },
     alternates: {
@@ -86,10 +130,11 @@ function renderContent(content: string) {
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
-  const post = blogPosts.find((p) => p.slug === slug);
+  const post = await getPost(slug);
 
   if (!post) notFound();
 
+  const isHtml = post.content.trim().startsWith("<");
   const related = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 4);
 
   return (
@@ -174,18 +219,20 @@ export default async function BlogPostPage({ params }: Props) {
       </section>
 
       {/* Full-width Image */}
-      <div className="max-w-360 mt-10 mx-auto px-5 md:px-8 lg:px-16 -mt-1 mb-12 md:mb-16">
-        <div className="relative w-full aspect-[21/9] overflow-hidden">
-          <Image
-            src={post.image}
-            alt={post.title}
-            fill
-            sizes="100vw"
-            className="object-cover"
-            priority
-          />
+      {post.image && (
+        <div className="max-w-360 mt-10 mx-auto px-5 md:px-8 lg:px-16 -mt-1 mb-12 md:mb-16">
+          <div className="relative w-full aspect-[21/9] overflow-hidden">
+            <Image
+              src={post.image}
+              alt={post.title}
+              fill
+              sizes="100vw"
+              className="object-cover"
+              priority
+            />
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Content + Sidebar */}
       <div className="max-w-360  mx-auto px-5 md:px-8 lg:px-16 pb-16">
@@ -193,7 +240,14 @@ export default async function BlogPostPage({ params }: Props) {
           {/* Main Content */}
           <article className="flex-1 min-w-0">
             <div className="text-base md:text-lg max-w-none">
-              {renderContent(post.content)}
+              {isHtml ? (
+                <div
+                  className="prose prose-gray max-w-none prose-headings:font-[family-name:var(--font-syne)] prose-h2:text-2xl prose-h2:md:text-3xl prose-h2:mt-12 prose-h2:mb-4 prose-p:text-gray-600 prose-p:leading-[1.85] prose-p:mb-4"
+                  dangerouslySetInnerHTML={{ __html: post.content }}
+                />
+              ) : (
+                renderContent(post.content)
+              )}
             </div>
 
             {/* Tags */}

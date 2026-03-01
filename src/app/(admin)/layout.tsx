@@ -8,15 +8,17 @@ import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
 const DashLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <QueryProvider>
-      <SidebarProvider>
-        <AdminSidebar />
-        <SidebarInset>
-          <AdminNavbar />
-          <main className="flex flex-col gap-4 p-4 md:p-6">{children}</main>
-        </SidebarInset>
-      </SidebarProvider>
-    </QueryProvider>
+    <div className="dark bg-background text-foreground min-h-screen">
+      <QueryProvider>
+        <SidebarProvider>
+          <AdminSidebar />
+          <SidebarInset>
+            <AdminNavbar />
+            <main className="flex flex-col gap-4 p-4 md:p-6">{children}</main>
+          </SidebarInset>
+        </SidebarProvider>
+      </QueryProvider>
+    </div>
   );
 };
 

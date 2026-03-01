@@ -8,7 +8,7 @@ const ServiceSection = dynamic(() => import("@/components/section/ServiceSection
 const ExpertiseSection = dynamic(() => import("@/components/section/ExpertiseSection"));
 const TestimonialSection = dynamic(() => import("@/components/section/TestimonialSection"));
 const TechStackSection = dynamic(() => import("@/components/section/TechStackSection"));
-const BlogSection = dynamic(() => import("@/components/section/BlogSection"));
+const BlogSectionServer = dynamic(() => import("@/components/section/BlogSectionServer"));
 const FAQSection = dynamic(() => import("@/components/section/FAQSection"));
 const ContactCTA = dynamic(() => import("@/components/section/ContactCTA"));
 
@@ -28,7 +28,7 @@ export default function Home() {
       <ExpertiseSection />
       <TestimonialSection />
       <TechStackSection />
-      <BlogSection />
+      <BlogSectionServer />
       <FAQSection />
       <ContactCTA />
     </main>

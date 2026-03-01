@@ -11,11 +11,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 
-import { blogPosts } from "@/data/blogs";
+import { blogPosts, type BlogPost } from "@/data/blogs";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function BlogSection() {
+export default function BlogSection({ posts }: { posts?: BlogPost[] }) {
+  const allPosts = posts ?? blogPosts;
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -104,18 +105,20 @@ export default function BlogSection() {
           }}
           className="!overflow-visible"
         >
-          {blogPosts.map((post) => (
+          {allPosts.map((post) => (
             <SwiperSlide key={post.slug}>
               <Link href={`/blog/${post.slug}`} className="group block">
                 {/* Image */}
                 <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    fill
-                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
+                  {post.image && (
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
+                  )}
                 </div>
 
                 {/* Content */}

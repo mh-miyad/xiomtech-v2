@@ -1,9 +1,11 @@
 "use client";
 import Image from "@tiptap/extension-image";
 import Link from "@tiptap/extension-link";
+import { Table, TableCell, TableHeader, TableRow } from "@tiptap/extension-table";
 import Underline from "@tiptap/extension-underline";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
+import { marked } from "marked";
 import {
   Bold,
   Code,
@@ -19,10 +21,10 @@ import {
   Minus,
   Quote,
   Strikethrough,
+  Table as TableIcon,
   Underline as UnderlineIcon,
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
-import { Markdown } from "tiptap-markdown";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -66,6 +68,12 @@ const ToolbarButton: React.FC<ToolbarButtonProps> = ({
   </button>
 );
 
+function isMarkdown(text: string): boolean {
+  return /^#{1,6}\s|^\*\*|\*[^*\s]|^-\s|^\d+\.\s|^>\s|^```|^\[.+\]\(|^---/.test(
+    text.trim(),
+  );
+}
+
 interface BlogEditorProps {
   initialContent?: string;
   onChange?: (html: string) => void;
@@ -79,6 +87,7 @@ const BlogEditor: React.FC<BlogEditorProps> = ({
   const [showImageDialog, setShowImageDialog] = useState(false);
   const [linkUrl, setLinkUrl] = useState("");
   const [showLinkDialog, setShowLinkDialog] = useState(false);
+  const [showTableMenu, setShowTableMenu] = useState(false);
   const [exportedHtml, setExportedHtml] = useState("");
   const [exportedJson, setExportedJson] = useState("");
   const [showPreview, setShowPreview] = useState(false);
@@ -94,15 +103,20 @@ const BlogEditor: React.FC<BlogEditorProps> = ({
           class: "text-blue-600 underline",
         },
       }),
-      Markdown.configure({
-        transformPastedText: true,
-        html: true,
-      }),
       Image.configure({
         HTMLAttributes: {
           class: "max-w-full h-auto rounded",
         },
       }),
+      Table.configure({
+        resizable: true,
+        HTMLAttributes: {
+          class: "border-collapse table-auto w-full",
+        },
+      }),
+      TableRow,
+      TableHeader,
+      TableCell,
     ],
     content:
       initialContent ||
@@ -110,7 +124,29 @@ const BlogEditor: React.FC<BlogEditorProps> = ({
     editorProps: {
       attributes: {
         class:
-          "prose prose-sm sm:prose lg:prose-lg xl:prose-xl focus:outline-none min-h-[400px] p-4",
+          "prose prose-sm sm:prose lg:prose-lg focus:outline-none min-h-[400px] p-4 max-w-none",
+      },
+      handlePaste: (_view, event) => {
+        const clipboardData = event.clipboardData;
+        if (!clipboardData) return false;
+
+        const html = clipboardData.getData("text/html");
+        const text = clipboardData.getData("text/plain");
+
+        // If HTML is available (paste from browser/website), let Tiptap handle it
+        if (html && html.trim().length > 0) return false;
+
+        // If plain text looks like markdown, convert it
+        if (text && isMarkdown(text)) {
+          const converted = marked.parse(text) as string;
+          // Use a timeout to let the editor focus settle
+          setTimeout(() => {
+            editor?.commands.insertContent(converted);
+          }, 0);
+          return true;
+        }
+
+        return false;
       },
     },
     onUpdate: ({ editor: e }) => {
@@ -144,6 +180,15 @@ const BlogEditor: React.FC<BlogEditorProps> = ({
     }
   };
 
+  const insertTable = (): void => {
+    editor
+      .chain()
+      .focus()
+      .insertTable({ rows: 3, cols: 3, withHeaderRow: true })
+      .run();
+    setShowTableMenu(false);
+  };
+
   const exportHtml = (): void => {
     setExportedHtml(editor.getHTML());
     setExportedJson("");
@@ -165,6 +210,7 @@ const BlogEditor: React.FC<BlogEditorProps> = ({
   };
 
   const isEmbedded = !!onChange;
+  const isInTable = editor.isActive("table");
 
   return (
     <div className="w-full">
@@ -295,6 +341,86 @@ const BlogEditor: React.FC<BlogEditorProps> = ({
           <Minus size={18} />
         </ToolbarButton>
 
+        <div className="w-px h-8 bg-border mx-1" />
+
+        {/* Table button */}
+        <div className="relative">
+          <ToolbarButton
+            onClick={() => setShowTableMenu((v) => !v)}
+            active={isInTable || showTableMenu}
+            title="Table"
+          >
+            <TableIcon size={18} />
+          </ToolbarButton>
+          {showTableMenu && (
+            <div className="absolute top-full left-0 mt-1 z-50 bg-popover border border-border rounded-lg shadow-lg p-2 min-w-45">
+              <button
+                type="button"
+                onClick={insertTable}
+                className="w-full text-left text-sm px-3 py-2 rounded hover:bg-muted transition-colors"
+              >
+                Insert 3×3 table
+              </button>
+              {isInTable && (
+                <>
+                  <div className="h-px bg-border my-1" />
+                  <button
+                    type="button"
+                    onClick={() => { editor.chain().focus().addColumnBefore().run(); setShowTableMenu(false); }}
+                    className="w-full text-left text-sm px-3 py-2 rounded hover:bg-muted transition-colors"
+                  >
+                    Add column before
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => { editor.chain().focus().addColumnAfter().run(); setShowTableMenu(false); }}
+                    className="w-full text-left text-sm px-3 py-2 rounded hover:bg-muted transition-colors"
+                  >
+                    Add column after
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => { editor.chain().focus().deleteColumn().run(); setShowTableMenu(false); }}
+                    className="w-full text-left text-sm px-3 py-2 rounded hover:bg-muted transition-colors text-destructive"
+                  >
+                    Delete column
+                  </button>
+                  <div className="h-px bg-border my-1" />
+                  <button
+                    type="button"
+                    onClick={() => { editor.chain().focus().addRowBefore().run(); setShowTableMenu(false); }}
+                    className="w-full text-left text-sm px-3 py-2 rounded hover:bg-muted transition-colors"
+                  >
+                    Add row before
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => { editor.chain().focus().addRowAfter().run(); setShowTableMenu(false); }}
+                    className="w-full text-left text-sm px-3 py-2 rounded hover:bg-muted transition-colors"
+                  >
+                    Add row after
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => { editor.chain().focus().deleteRow().run(); setShowTableMenu(false); }}
+                    className="w-full text-left text-sm px-3 py-2 rounded hover:bg-muted transition-colors text-destructive"
+                  >
+                    Delete row
+                  </button>
+                  <div className="h-px bg-border my-1" />
+                  <button
+                    type="button"
+                    onClick={() => { editor.chain().focus().deleteTable().run(); setShowTableMenu(false); }}
+                    className="w-full text-left text-sm px-3 py-2 rounded hover:bg-muted transition-colors text-destructive"
+                  >
+                    Delete table
+                  </button>
+                </>
+              )}
+            </div>
+          )}
+        </div>
+
         <ToolbarButton
           onClick={() =>
             editor.chain().focus().clearNodes().unsetAllMarks().run()
@@ -306,7 +432,10 @@ const BlogEditor: React.FC<BlogEditorProps> = ({
       </div>
 
       {/* Editor */}
-      <div className="border border-border border-t-0 rounded-b-lg h-125 overflow-y-auto bg-background">
+      <div
+        className="border border-border border-t-0 rounded-b-lg h-125 overflow-y-auto bg-background"
+        onClick={() => setShowTableMenu(false)}
+      >
         <EditorContent editor={editor} />
       </div>
 

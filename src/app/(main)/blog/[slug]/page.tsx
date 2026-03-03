@@ -242,7 +242,22 @@ export default async function BlogPostPage({ params }: Props) {
             <div className="text-base md:text-lg max-w-none">
               {isHtml ? (
                 <div
-                  className="prose prose-gray max-w-none prose-headings:font-[family-name:var(--font-syne)] prose-h2:text-2xl prose-h2:md:text-3xl prose-h2:mt-12 prose-h2:mb-4 prose-p:text-gray-600 prose-p:leading-[1.85] prose-p:mb-4"
+                  className="prose prose-gray max-w-none
+                    prose-headings:font-[family-name:var(--font-syne)]
+                    prose-h1:text-3xl prose-h1:md:text-4xl prose-h1:mt-14 prose-h1:mb-5
+                    prose-h2:text-2xl prose-h2:md:text-3xl prose-h2:mt-12 prose-h2:mb-4
+                    prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
+                    prose-p:text-gray-600 prose-p:leading-[1.85] prose-p:mb-4
+                    prose-li:text-gray-600 prose-li:leading-relaxed
+                    prose-ul:my-4 prose-ul:list-disc prose-ul:pl-6
+                    prose-ol:my-4 prose-ol:list-decimal prose-ol:pl-6
+                    prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-500
+                    prose-code:bg-gray-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-mono prose-code:text-gray-800
+                    prose-pre:bg-gray-900 prose-pre:text-gray-100 prose-pre:rounded-lg prose-pre:p-4 prose-pre:overflow-x-auto
+                    prose-a:text-blue-600 prose-a:underline hover:prose-a:text-blue-800
+                    prose-img:rounded-lg prose-img:my-6
+                    prose-strong:text-gray-900 prose-strong:font-semibold
+                    prose-hr:border-gray-200 prose-hr:my-8"
                   dangerouslySetInnerHTML={{ __html: post.content }}
                 />
               ) : (

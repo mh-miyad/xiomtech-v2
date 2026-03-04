@@ -18,7 +18,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const BASE_URL = "https://www.xiomtech.net/";
+const BASE_URL = "https://xiomtech.net";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -122,8 +122,6 @@ export const metadata: Metadata = {
   category: "technology",
   verification: {
     google: "i2xDaeI_WGRld9xi5E2so4E057YAqAmky_Hj_pPF_IM",
-    // google: "your-google-verification-token",
-    // yandex: "your-yandex-verification-token",
   },
 };
 

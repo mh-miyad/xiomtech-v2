@@ -1,6 +1,6 @@
 /* ── Structured Data (JSON-LD) for SEO ── */
 
-const BASE_URL = "https://www.xiomtech.net/";
+const BASE_URL = "https://xiomtech.net";
 
 /* ── Organization Schema ── */
 const organizationSchema = {
@@ -329,7 +329,7 @@ const posProductSchema = {
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "4.9",
-    reviewCount: "125",
+    reviewCount: "150",
     bestRating: "5",
     worstRating: "1",
   },

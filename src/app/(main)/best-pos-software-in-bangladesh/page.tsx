@@ -1,11 +1,11 @@
 import ProductSchema from "@/components/schema/ProductSchema";
 import {
-  IconChartBar,
-  IconDeviceMobile,
-  IconLanguage,
-  IconReceipt2,
-  IconShieldCheck,
-  IconWifi,
+    IconChartBar,
+    IconDeviceMobile,
+    IconLanguage,
+    IconReceipt2,
+    IconShieldCheck,
+    IconWifi,
 } from "@tabler/icons-react";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -30,7 +30,18 @@ export const metadata: Metadata = {
     title: "Best POS Software in Bangladesh 2026 | XiomPOS by XiomTech",
     description:
       "XiomPOS — the #1 POS system in Bangladesh for Retail & Restaurants. VAT compliant, offline ready, Bangla interface.",
+    url: "https://xiomtech.net/best-pos-software-in-bangladesh",
+    siteName: "XiomTech",
     type: "website",
+    images: [{ url: "https://xiomtech.net/xiom/xiompos.png", width: 1200, height: 630, alt: "XiomPOS - Best POS Software in Bangladesh" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Best POS Software in Bangladesh 2026 | XiomPOS",
+    description:
+      "XiomPOS — the #1 POS system in Bangladesh for Retail & Restaurants. VAT compliant, offline ready.",
+    images: ["https://xiomtech.net/xiom/xiompos.png"],
+    creator: "@xiomtech",
   },
   alternates: {
     canonical: "/best-pos-software-in-bangladesh",

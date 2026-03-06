@@ -156,7 +156,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `Enterprise Software Solutions in ${data.displayName} | XiomTech`,
       description: `XiomTech helps ${data.adjective} companies scale with XiomPOS, custom ERP, and digital solutions.`,
+      url: `https://xiomtech.net/solutions/${country}`,
+      siteName: "XiomTech",
       type: "website",
+      images: [{ url: "https://xiomtech.net/logo.webp", width: 512, height: 512, alt: `XiomTech Solutions - ${data.displayName}` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `Software Solutions in ${data.displayName} | XiomTech`,
+      description: `XiomTech helps ${data.adjective} companies scale with XiomPOS, custom ERP, and digital solutions.`,
+      images: ["https://xiomtech.net/logo.webp"],
+      creator: "@xiomtech",
     },
     alternates: {
       canonical: `/solutions/${country}`,
@@ -190,7 +200,7 @@ export default async function CountryPage({ params }: Props) {
       <ServiceSchema
         name={`XiomTech Software Solutions - ${data.displayName}`}
         description={`Enterprise software development, POS, and SaaS solutions tailored for the ${data.displayName} market. ${data.localContext}`}
-        url={`https://www.xiomtech.net/solutions/${country}`}
+        url={`https://xiomtech.net/solutions/${country}`}
         areaServed={[{ "@type": "Country", name: data.displayName }]}
       />
       {/* Hero */}

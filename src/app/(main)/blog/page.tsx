@@ -1,7 +1,7 @@
 import PageHeader from "@/components/common/PageHeader";
+import { blogPosts, type BlogPost } from "@/data/blogs";
 import { db } from "@/database/db_index";
 import { blogs as blogsTable } from "@/database/schema";
-import { blogPosts, type BlogPost } from "@/data/blogs";
 import { desc, eq } from "drizzle-orm";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -11,6 +11,23 @@ export const metadata: Metadata = {
   title: "Blog — Insights on Engineering, Design & Digital Products",
   description:
     "Read the latest articles from XiomTech on SaaS development, AI, enterprise UX, and building products that scale across borders.",
+  openGraph: {
+    title: "Blog — Insights on Engineering, Design & Digital Products",
+    description:
+      "Read the latest articles from XiomTech on SaaS development, AI, enterprise UX, and building products that scale across borders.",
+    url: "https://xiomtech.net/blog",
+    siteName: "XiomTech",
+    type: "website",
+    images: [{ url: "https://xiomtech.net/logo.webp", width: 512, height: 512, alt: "XiomTech Blog" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog — Insights on Engineering, Design & Digital Products",
+    description:
+      "Read the latest articles from XiomTech on SaaS development, AI, and enterprise UX.",
+    images: ["https://xiomtech.net/logo.webp"],
+    creator: "@xiomtech",
+  },
   alternates: {
     canonical: "/blog",
   },

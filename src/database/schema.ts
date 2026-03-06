@@ -1,4 +1,11 @@
-import { pgTable, serial, text, timestamp, varchar } from "drizzle-orm/pg-core";
+import {
+  integer,
+  pgTable,
+  serial,
+  text,
+  timestamp,
+  varchar,
+} from "drizzle-orm/pg-core";
 
 export const blogs = pgTable("blogs", {
   id: serial("id").primaryKey(),
@@ -27,6 +34,46 @@ export const blogs = pgTable("blogs", {
 
   // The Tiptap HTML content
   content: text("content").notNull(),
+
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
+/* ── Products Table ── */
+export const products = pgTable("products", {
+  id: serial("id").primaryKey(),
+  title: varchar("title", { length: 255 }).notNull(),
+  slug: varchar("slug", { length: 255 }).notNull().unique(),
+  tagline: varchar("tagline", { length: 500 }),
+  excerpt: text("excerpt"),
+
+  // Images & Media
+  heroImage: text("hero_image"),
+  logoImage: text("logo_image"),
+  videoUrl: text("video_url"),
+
+  // Rich content (Tiptap HTML)
+  description: text("description"),
+
+  // JSON stored as text
+  features: text("features"), // JSON array: [{icon, title, description}]
+  highlights: text("highlights"), // JSON array: [{title, description, image?}]
+
+  // Categorization
+  category: varchar("category", { length: 100 }),
+
+  // CTA
+  ctaText: varchar("cta_text", { length: 100 }).default("Get Started"),
+  ctaLink: text("cta_link"),
+
+  // SEO
+  metaTitle: varchar("meta_title", { length: 255 }),
+  metaDescription: text("meta_description"),
+  metaKeywords: text("meta_keywords"),
+
+  // Ordering & Status
+  sortOrder: integer("sort_order").default(0),
+  status: varchar("status", { length: 20 }).default("published").notNull(),
 
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),

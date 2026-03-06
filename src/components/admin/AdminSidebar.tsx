@@ -1,31 +1,32 @@
 "use client";
 
+import {
+    Sidebar,
+    SidebarContent,
+    SidebarFooter,
+    SidebarGroup,
+    SidebarGroupContent,
+    SidebarGroupLabel,
+    SidebarHeader,
+    SidebarMenu,
+    SidebarMenuButton,
+    SidebarMenuItem,
+    SidebarMenuSub,
+    SidebarMenuSubButton,
+    SidebarMenuSubItem,
+    SidebarRail,
+} from "@/components/ui/sidebar";
+import {
+    ChevronRight,
+    FileText,
+    LayoutDashboard,
+    List,
+    LogOut,
+    Package,
+    PenSquare,
+} from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import {
-  ChevronRight,
-  FileText,
-  LayoutDashboard,
-  LogOut,
-  PenSquare,
-  List,
-} from "lucide-react";
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarHeader,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
-  SidebarRail,
-} from "@/components/ui/sidebar";
 import { Collapsible } from "radix-ui";
 
 function AdminSidebar() {
@@ -116,6 +117,51 @@ function AdminSidebar() {
                           isActive={pathname === "/admin/blog/create"}
                         >
                           <Link href="/admin/blog/create">
+                            <PenSquare className="size-4" />
+                            <span>Create New</span>
+                          </Link>
+                        </SidebarMenuSubButton>
+                      </SidebarMenuSubItem>
+                    </SidebarMenuSub>
+                  </Collapsible.Content>
+                </SidebarMenuItem>
+              </Collapsible.Root>
+
+              {/* Products - Collapsible */}
+              <Collapsible.Root
+                defaultOpen={pathname.startsWith("/admin/products")}
+                className="group/collapsible-products"
+              >
+                <SidebarMenuItem>
+                  <Collapsible.Trigger asChild>
+                    <SidebarMenuButton
+                      tooltip="Products"
+                      isActive={pathname.startsWith("/admin/products")}
+                    >
+                      <Package />
+                      <span>Products</span>
+                      <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible-products:rotate-90" />
+                    </SidebarMenuButton>
+                  </Collapsible.Trigger>
+                  <Collapsible.Content>
+                    <SidebarMenuSub>
+                      <SidebarMenuSubItem>
+                        <SidebarMenuSubButton
+                          asChild
+                          isActive={pathname === "/admin/products"}
+                        >
+                          <Link href="/admin/products">
+                            <List className="size-4" />
+                            <span>All Products</span>
+                          </Link>
+                        </SidebarMenuSubButton>
+                      </SidebarMenuSubItem>
+                      <SidebarMenuSubItem>
+                        <SidebarMenuSubButton
+                          asChild
+                          isActive={pathname === "/admin/products/create"}
+                        >
+                          <Link href="/admin/products/create">
                             <PenSquare className="size-4" />
                             <span>Create New</span>
                           </Link>

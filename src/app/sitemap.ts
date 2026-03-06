@@ -1,6 +1,6 @@
 import { blogPosts } from "@/data/blogs";
 import { db } from "@/database/db_index";
-import { blogs } from "@/database/schema";
+import { blogs, products } from "@/database/schema";
 import { desc, eq } from "drizzle-orm";
 import type { MetadataRoute } from "next";
 
@@ -63,13 +63,30 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   /* ────────────────────────────────────────────
    * 2. Product / Landing pages
    * ──────────────────────────────────────────── */
+  const dbProducts = await db
+    .select({ slug: products.slug })
+    .from(products)
+    .where(eq(products.status, "published"));
+
   const productPages: MetadataRoute.Sitemap = [
+    {
+      url: `${BASE_URL}/products`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
     {
       url: `${BASE_URL}/best-pos-software-in-bangladesh`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.9,
     },
+    ...dbProducts.map((p) => ({
+      url: `${BASE_URL}/products/${p.slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    })),
   ];
 
   /* ────────────────────────────────────────────

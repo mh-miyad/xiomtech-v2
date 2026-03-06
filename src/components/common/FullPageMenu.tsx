@@ -1,31 +1,31 @@
 "use client";
 import {
-  IconApi,
-  IconArrowRight,
-  IconBrain,
-  IconBrandFacebook,
-  IconBrandInstagram,
-  IconBrandLinkedin,
-  IconBrandWhatsapp,
-  IconBrandX,
-  IconBuildingBank,
-  IconBuildingEstate,
-  IconCloud,
-  IconCode,
-  IconDeviceMobile,
-  IconDeviceTv,
-  IconGitBranch,
-  IconHeartbeat,
-  IconMail,
-  IconPalette,
-  IconPhone,
-  IconSchool,
-  IconServer,
-  IconShoppingCart,
-  IconTruck,
-  IconUsersGroup,
-  IconWorld,
-  IconX,
+    IconApi,
+    IconArrowRight,
+    IconBrain,
+    IconBrandFacebook,
+    IconBrandInstagram,
+    IconBrandLinkedin,
+    IconBrandWhatsapp,
+    IconBrandX,
+    IconBuildingBank,
+    IconBuildingEstate,
+    IconCloud,
+    IconCode,
+    IconDeviceMobile,
+    IconDeviceTv,
+    IconGitBranch,
+    IconHeartbeat,
+    IconMail,
+    IconPalette,
+    IconPhone,
+    IconSchool,
+    IconServer,
+    IconShoppingCart,
+    IconTruck,
+    IconUsersGroup,
+    IconWorld,
+    IconX,
 } from "@tabler/icons-react";
 import gsap from "gsap";
 import Image from "next/image";
@@ -48,6 +48,7 @@ type MenuItem = {
 type ProductItem = {
   name: string;
   icon: string;
+  slug: string;
 };
 
 const mainNav = [
@@ -72,12 +73,12 @@ const services: MenuItem[] = [
 ];
 
 const products: ProductItem[] = [
-  { name: "XiomPOS", icon: "/xiom/xiompos.png" },
-  { name: "XiomAccounts", icon: "/xiom/xiomaccount.png" },
-  { name: "XiomHR", icon: "/xiom/hrm.png" },
-  { name: "XiomEdu", icon: "/xiom/XiomEduFlow.png" },
-  { name: "XiomTickets", icon: "/xiom/xiomTickets.png" },
-  { name: "XiomCare", icon: "/xiom/xiomCare.png" },
+  { name: "XiomPOS", icon: "/xiom/xiompos.png", slug: "xiompos" },
+  { name: "XiomAccounts", icon: "/xiom/xiomaccount.png", slug: "xiomaccounts" },
+  { name: "XiomHR", icon: "/xiom/hrm.png", slug: "xiomhr" },
+  { name: "XiomEdu", icon: "/xiom/XiomEduFlow.png", slug: "xiomedu" },
+  { name: "XiomTickets", icon: "/xiom/xiomTickets.png", slug: "xiomtickets" },
+  { name: "XiomCare", icon: "/xiom/xiomCare.png", slug: "xiomcare" },
 ];
 
 const industries: MenuItem[] = [
@@ -416,7 +417,7 @@ const FullPageMenu = ({ isOpen, onClose }: FullPageMenuProps) => {
                     {products.map((item) => (
                       <li key={item.name} data-menu-item className="opacity-0">
                         <Link
-                          href="#"
+                          href={`/products/${item.slug}`}
                           onClick={onClose}
                           className="flex items-center gap-2.5 text-sm md:text-base text-gray-500 hover:text-blue-600 transition-colors duration-200 leading-snug group"
                         >

@@ -2,6 +2,7 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
+import Link from "next/link";
 import { Fragment, useEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -11,31 +12,37 @@ const products = [
     name: "XiomPOS",
     icon: "/xiom/xiompos.png",
     desc: "Smart point-of-sale system for retail & restaurants",
+    slug: "xiompos",
   },
   {
     name: "XiomAccounts",
     icon: "/xiom/xiomaccount.png",
     desc: "Automated accounting & financial management",
+    slug: "xiomaccounts",
   },
   {
     name: "XiomHR",
     icon: "/xiom/hrm.png",
     desc: "End-to-end human resource management",
+    slug: "xiomhr",
   },
   {
     name: "XiomEdu",
     icon: "/xiom/XiomEduFlow.png",
     desc: "Learning management & education platform",
+    slug: "xiomedu",
   },
   {
     name: "XiomTickets",
     icon: "/xiom/xiomTickets.png",
     desc: "Helpdesk & customer support ticketing",
+    slug: "xiomtickets",
   },
   {
     name: "XiomCare",
     icon: "/xiom/xiomCare.png",
     desc: "Healthcare & patient management system",
+    slug: "xiomcare",
   },
 ];
 
@@ -98,9 +105,10 @@ const GDot = ({ s = 10 }: { s?: number }) => (
 
 /* ── Product Card ── */
 const Card = ({ p }: { p: (typeof products)[0] }) => (
-  <div
+  <Link
+    href={`/products/${p.slug}`}
     data-eco-card
-    className="group relative bg-white/5 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-5 md:p-6 hover:border-blue-500/50 transition-all duration-300 hover:bg-white/[0.08] hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]"
+    className="group relative bg-white/5 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-5 md:p-6 hover:border-blue-500/50 transition-all duration-300 hover:bg-white/[0.08] hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] block"
   >
     <div className="absolute inset-0 rounded-2xl bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
     <div className="relative z-10">
@@ -111,14 +119,14 @@ const Card = ({ p }: { p: (typeof products)[0] }) => (
         height={48}
         className="size-10 md:size-12 rounded-xl object-contain mb-4"
       />
-      <h3 className="text-white font-bold text-base md:text-lg font-[family-name:var(--font-syne)] mb-1.5">
+      <h3 className="text-white font-bold text-base md:text-lg font-[family-name:var(--font-syne)] mb-1.5 group-hover:text-blue-400 transition-colors">
         {p.name}
       </h3>
       <p className="text-white/50 text-xs md:text-sm leading-relaxed">
         {p.desc}
       </p>
     </div>
-  </div>
+  </Link>
 );
 
 /* ── Mobile Connector (dot → beam → dot) ── */

@@ -6,16 +6,27 @@ import type { MetadataRoute } from "next";
 
 const BASE_URL = "https://xiomtech.net";
 
+/**
+ * Revalidate the sitemap every hour so new blog posts
+ * appear without a full redeploy.
+ */
+export const revalidate = 3600;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
 
-  /* ── Core pages ── */
-  const staticPages: MetadataRoute.Sitemap = [
+  /* ────────────────────────────────────────────
+   * 1. Core / Marketing pages
+   * ──────────────────────────────────────────── */
+  const corePages: MetadataRoute.Sitemap = [
     {
       url: BASE_URL,
       lastModified: now,
       changeFrequency: "weekly",
       priority: 1.0,
+      alternates: {
+        languages: { en: BASE_URL },
+      },
     },
     {
       url: `${BASE_URL}/about`,
@@ -24,16 +35,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/best-pos-software-in-bangladesh`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/blog`,
+      url: `${BASE_URL}/pricing`,
       lastModified: now,
       changeFrequency: "weekly",
-      priority: 0.8,
+      priority: 0.9,
     },
     {
       url: `${BASE_URL}/contact`,
@@ -48,26 +53,46 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     },
     {
-      url: `${BASE_URL}/pricing`,
+      url: `${BASE_URL}/blog`,
+      lastModified: now,
+      changeFrequency: "daily",
+      priority: 0.9,
+    },
+  ];
+
+  /* ────────────────────────────────────────────
+   * 2. Product / Landing pages
+   * ──────────────────────────────────────────── */
+  const productPages: MetadataRoute.Sitemap = [
+    {
+      url: `${BASE_URL}/best-pos-software-in-bangladesh`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.9,
     },
+  ];
+
+  /* ────────────────────────────────────────────
+   * 3. Legal pages
+   * ──────────────────────────────────────────── */
+  const legalPages: MetadataRoute.Sitemap = [
     {
       url: `${BASE_URL}/privacy-policy`,
       lastModified: now,
       changeFrequency: "yearly",
-      priority: 0.5,
+      priority: 0.3,
     },
     {
       url: `${BASE_URL}/terms-of-service`,
       lastModified: now,
       changeFrequency: "yearly",
-      priority: 0.5,
+      priority: 0.3,
     },
   ];
 
-  /* ── Dynamic country solution pages ── */
+  /* ────────────────────────────────────────────
+   * 4. Country-specific solution pages
+   * ──────────────────────────────────────────── */
   const countries = [
     "bangladesh",
     "uae",
@@ -87,11 +112,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
-  /* ── Dynamic blog pages (DB + static fallback) ── */
-  let dbBlogs: { slug: string; createdAt: Date }[] = [];
+  /* ────────────────────────────────────────────
+   * 5. Dynamic blog posts  (DB + static fallback)
+   *    → includes updatedAt for accurate lastModified
+   *    → includes featuredImage for Google image indexing
+   * ──────────────────────────────────────────── */
+  let dbBlogs: {
+    slug: string;
+    createdAt: Date;
+    updatedAt: Date;
+    featuredImage: string | null;
+  }[] = [];
+
   try {
     dbBlogs = await db
-      .select({ slug: blogs.slug, createdAt: blogs.createdAt })
+      .select({
+        slug: blogs.slug,
+        createdAt: blogs.createdAt,
+        updatedAt: blogs.updatedAt,
+        featuredImage: blogs.featuredImage,
+      })
       .from(blogs)
       .where(eq(blogs.status, "published"))
       .orderBy(desc(blogs.createdAt));
@@ -106,9 +146,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Dynamic posts from the database
     ...dbBlogs.map((post) => ({
       url: `${BASE_URL}/blog/${post.slug}`,
-      lastModified: new Date(post.createdAt),
+      lastModified: new Date(post.updatedAt ?? post.createdAt),
       changeFrequency: "weekly" as const,
       priority: 0.7,
+      ...(post.featuredImage && {
+        images: [post.featuredImage],
+      }),
     })),
     // Static hardcoded posts (only if not already in DB)
     ...blogPosts
@@ -118,8 +161,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: new Date(post.date),
         changeFrequency: "monthly" as const,
         priority: 0.7,
+        ...(post.image && {
+          images: [post.image],
+        }),
       })),
   ];
 
-  return [...staticPages, ...countryPages, ...blogPages];
+  /* ────────────────────────────────────────────
+   * Merge all — ordered by priority for readability
+   * ──────────────────────────────────────────── */
+  return [
+    ...corePages,
+    ...productPages,
+    ...countryPages,
+    ...blogPages,
+    ...legalPages,
+  ];
 }
+

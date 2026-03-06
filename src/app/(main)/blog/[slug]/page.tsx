@@ -1,9 +1,9 @@
 import ArticleSchema from "@/components/schema/ArticleSchema";
 import ContactCTA from "@/components/section/ContactCTA";
 import FAQSection from "@/components/section/FAQSection";
+import { blogPosts, type BlogPost } from "@/data/blogs";
 import { db } from "@/database/db_index";
 import { blogs as blogsTable } from "@/database/schema";
-import { blogPosts, type BlogPost } from "@/data/blogs";
 import { eq } from "drizzle-orm";
 import { ChevronRight } from "lucide-react";
 import type { Metadata } from "next";
@@ -48,6 +48,7 @@ async function getPost(slug: string): Promise<BlogPost | null> {
         day: "numeric",
         year: "numeric",
       }),
+      isoDate: new Date(row.createdAt).toISOString(),
       readTime: row.readTime ?? "5 min read",
       author: {
         name: row.authorName ?? "XiomTech",
@@ -65,14 +66,30 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPost(slug);
   if (!post) return { title: "Post Not Found" };
 
+  const ogImage = post.image || "https://xiomtech.net/logo.webp";
+  const isoDate = post.isoDate || new Date(post.date).toISOString();
+
   return {
     title: post.title,
     description: post.excerpt,
+    keywords: [post.category, "XiomTech", "Technology", "Blog"],
     openGraph: {
+      type: "article",
       title: post.title,
       description: post.excerpt,
-      ...(post.image && { images: [{ url: post.image, width: 800, height: 500 }] }),
-      type: "article",
+      url: `https://xiomtech.net/blog/${post.slug}`,
+      siteName: "XiomTech",
+      images: [{ url: ogImage, width: 1200, height: 630, alt: post.title }],
+      publishedTime: isoDate,
+      section: post.category,
+      tags: [post.category, "XiomTech", "Technology"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [ogImage],
+      creator: "@xiomtech",
     },
     alternates: {
       canonical: `/blog/${post.slug}`,
@@ -142,9 +159,12 @@ export default async function BlogPostPage({ params }: Props) {
       <ArticleSchema
         headline={post.title}
         description={post.excerpt}
-        image={post.image}
-        datePublished={post.date}
+        image={post.image || undefined}
+        datePublished={post.isoDate || new Date(post.date).toISOString()}
+        url={`/blog/${post.slug}`}
         author={{ name: post.author.name }}
+        category={post.category}
+        wordCount={post.content.split(/\s+/).length}
       />
 
       {/* Dark Hero Header */}

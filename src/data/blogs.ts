@@ -5,6 +5,7 @@ export interface BlogPost {
   image: string;
   category: string;
   date: string;
+  isoDate?: string; // ISO 8601 for JSON-LD / OG meta
   readTime: string;
   author: {
     name: string;
@@ -12,6 +13,7 @@ export interface BlogPost {
   };
   content: string;
 }
+
 
 export const blogPosts: BlogPost[] = [
   {

@@ -15,9 +15,9 @@ export const blogs = pgTable("blogs", {
   metaKeywords: text("meta_keywords"),
 
   // Author Info
-  authorName: varchar("author_name", { length: 100 }).default("Miyad Hasan"),
+  authorName: varchar("author_name", { length: 100 }).default("Mh Miyad"),
   authorAvatar: text("author_avatar").default(
-    "https://i.pravatar.cc/40?img=11",
+    "https://media.licdn.com/dms/image/v2/D4D03AQG4OejgXcL5bQ/profile-displayphoto-scale_100_100/B4DZxDEagOHwAc-/0/1770651767820?e=1774483200&v=beta&t=Z86Do_O-fJHOE6kC3EcR27m0IWfvFikuID7hkyfM6hE",
   ),
 
   readTime: varchar("read_time", { length: 50 }).default("5 min read"),

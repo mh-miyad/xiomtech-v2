@@ -58,6 +58,7 @@ export const products = pgTable("products", {
   // JSON stored as text
   features: text("features"), // JSON array: [{icon, title, description}]
   highlights: text("highlights"), // JSON array: [{title, description, image?}]
+  faqs: text("faqs"), // JSON array: [{question, answer}]
 
   // Categorization
   category: varchar("category", { length: 100 }),

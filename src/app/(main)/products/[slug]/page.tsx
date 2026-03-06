@@ -68,22 +68,12 @@ export default async function ProductPage({ params }: Props) {
 
   // Parse JSON fields
   let features: { icon: string; title: string; description: string }[] = [];
-  let highlights: {
-    title: string;
-    description: string;
-    image?: string;
-  }[] = [];
+  let highlights: { title: string; description: string; image?: string }[] = [];
+  let faqs: { question: string; answer: string }[] = [];
 
-  try {
-    features = product.features ? JSON.parse(product.features) : [];
-  } catch {
-    features = [];
-  }
-  try {
-    highlights = product.highlights ? JSON.parse(product.highlights) : [];
-  } catch {
-    highlights = [];
-  }
+  try { features  = product.features  ? JSON.parse(product.features)  : []; } catch { features  = []; }
+  try { highlights = product.highlights ? JSON.parse(product.highlights) : []; } catch { highlights = []; }
+  try { faqs       = (product as any).faqs ? JSON.parse((product as any).faqs) : []; } catch { faqs = []; }
 
   // Get related products (up to 3 others)
   let related: typeof product[] = [];
@@ -137,6 +127,7 @@ export default async function ProductPage({ params }: Props) {
           ...product,
           parsedFeatures: features,
           parsedHighlights: highlights,
+          parsedFaqs: faqs,
         }}
         relatedProducts={related}
       />

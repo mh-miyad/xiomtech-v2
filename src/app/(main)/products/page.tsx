@@ -29,8 +29,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Our Products | XiomTech",
-    description:
-      "Enterprise-grade SaaS products built for global businesses.",
+    description: "Enterprise-grade SaaS products built for global businesses.",
     images: ["https://xiomtech.net/logo.webp"],
     creator: "@xiomtech",
   },
@@ -89,7 +88,7 @@ export default async function ProductsPage() {
             href="https://wa.me/8801822830775?text=Hello%20XiomTech%2C%20I%20need%20a%20custom%20software%20solution."
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-8 py-3.5 rounded-full hover:bg-blue-700 transition-colors duration-300"
+            className="inline-flex items-center gap-2 bg-green-500 text-white font-semibold px-8 py-3.5 rounded-full hover:bg-green-700 transition-colors duration-300"
           >
             Chat on WhatsApp
           </Link>
